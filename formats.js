@@ -421,6 +421,25 @@ exports.Formats = [
 				}
 				];
 			}
+			if (name === 'groundctrl27' && move.id === 'shadowball') {
+				move.name = 'Shadow Sphere';
+				move.basePower = 90;
+			}
+			if (name === 'groundctrl27' && move.id === 'drainpunch') {
+				move.name = 'Drain Force';
+				move.category = 'Special';
+				move.basePower = 60;
+				move.drain = false;
+				move.boost = {atk:-1,spe:-1};
+				move.self = {
+					boost: {spa:1,spe:1}
+				}
+			}
+			if (name === 'groundctrl27' && move.id === 'shadowsneak') {
+				move.name = 'Sneaky Spook';
+				move.basePower = 40;
+				move.category = 'Special';
+			}
 		},
 		onSwitchInPriority: 1,
 		onSwitchIn: function(pokemon) {
@@ -437,6 +456,13 @@ exports.Formats = [
 				pokemon.typesData = [
 					{type: 'Normal', suppressed: false,  isAdded: false},
 					{type: 'Ghost', suppressed: false,  isAdded: false}
+				];
+			}
+			if (name === 'groundctrl27' && !pokemon.illusion) {
+				this.add('-start', pokemon, 'typechange', 'Ghost/Normal');
+				pokemon.typesData = [
+					{type: 'Ghost', suppressed: false,  isAdded: false},
+					{type: 'Normal', suppressed: false,  isAdded: false}
 				];
 			}
 			if (name === 'xfix') { // different message depending on hazards.
@@ -487,11 +513,13 @@ exports.Formats = [
 
 			for (var i = 0, len = allPokemon.length; i < len; i++) {
 				var pokemon = allPokemon[i];
-				var last = pokemon.moves.length - 1;
-				if (pokemon.moves[last]) {
-					pokemon.moves[last] = toId(pokemon.set.signatureMove);
-					pokemon.moveset[last].move = pokemon.set.signatureMove;
-					pokemon.baseMoveset[last].move = pokemon.set.signatureMove;
+				for (var i = 0; i < pokemon.set.baseSignatureMoves.length; i++) {
+					var last = pokemon.moves.length - i;
+					if (pokemon.moves[last]) {
+						pokemon.moves[last] = toId(pokemon.set.signatureMoves[i]);
+						pokemon.moveset[last].move = pokemon.set.signatureMoves[i];
+						pokemon.baseMoveset[last].move = pokemon.set.signatureMoves[i];
+					}
 				}
 			}
 		}

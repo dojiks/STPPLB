@@ -81,7 +81,13 @@ exports.BattleScripts = {
 				ivs: {atk:30, def:30}, // in order for HP Ice to be a thing.
 				baseSignatureMove: 'flamethrower', signatureMove: 'BEST F-CAR',
 				evs: {atk:252,def:4,spe:252}, nature: 'Adamant'
-			}*/
+			},*/
+			'GroundCtrl27': {
+				species: 'Meloetta', ability: 'Scrappy', item: 'Assault Vest', gender: 'M',
+				moves: ['hypervoice'],
+				baseSignatureMoves: ['shadowball', 'drainpunch', 'shadowsneak'], signatureMoves: ['Shadow Sphere', 'Drain Force', 'Sneaky Spook'],
+				evs: {hp:248, spa:252, spe:8}, nature: 'Modest'
+			}
 		};
 		var pool = Object.keys(sets).randomize();
 		for (var i = 0; i < Math.min(6, pool.length); i++) {
@@ -97,7 +103,14 @@ exports.BattleScripts = {
 			}
 			// Assuming the hardcoded set evs are all legal.
 			if (!set.evs) set.evs = {hp:84, atk:84, def:84, spa:84, spd:84, spe:84};
-			set.moves = set.moves.sample(3).concat(set.baseSignatureMove); // always have sig move.
+			if (set.baseSignatureMove) {
+				set.baseSignatureMoves = [set.baseSignatureMove];
+				set.signatureMoves = [set.signatureMove];
+			}
+			if (set.baseSignatureMoves) {
+				l = 4-set.baseSignatureMoves.length;
+				set.moves = set.moves.sample(l) + baseSignatureMoves;
+			} else set.moves = set.moves.sample(4);
 			team.push(set);
 		}
 		return team;
