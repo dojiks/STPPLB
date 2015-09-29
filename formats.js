@@ -514,7 +514,7 @@ exports.Formats = [
 			for (var i = 0, len = allPokemon.length; i < len; i++) {
 				var pokemon = allPokemon[i];
 				for (var i = 0; i < pokemon.set.baseSignatureMoves.length; i++) {
-					var last = pokemon.moves.length - i;
+					var last = pokemon.moves.length - pokemon.set.baseSignatureMoves.length + i;
 					if (pokemon.moves[last]) {
 						pokemon.moves[last] = toId(pokemon.set.signatureMoves[i]);
 						pokemon.moveset[last].move = pokemon.set.signatureMoves[i];
