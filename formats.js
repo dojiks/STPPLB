@@ -487,21 +487,11 @@ exports.Formats = [
 
 			for (var i = 0, len = allPokemon.length; i < len; i++) {
 				var pokemon = allPokemon[i];
-<<<<<<< HEAD
-				for (var i = 0; i < pokemon.set.baseSignatureMoves.length; i++) {
-					var last = pokemon.moves.length - pokemon.set.baseSignatureMoves.length + i;
-					if (pokemon.moves[last]) {
-						pokemon.moves[last] = toId(pokemon.set.signatureMoves[i]);
-						pokemon.moveset[last].move = pokemon.set.signatureMoves[i];
-						pokemon.baseMoveset[last].move = pokemon.set.signatureMoves[i];
-					}
-=======
 				var last = pokemon.moves.length - 1;
 				if (pokemon.moves[last]) {
 					pokemon.moves[last] = toId(pokemon.set.signatureMove);
 					pokemon.moveset[last].move = pokemon.set.signatureMove;
 					pokemon.baseMoveset[last].move = pokemon.set.signatureMove;
->>>>>>> parent of a9cc387... Added GroundCtrl27; added support for multiple sig moves on one mon.
 				}
 			}
 		}

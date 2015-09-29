@@ -97,18 +97,7 @@ exports.BattleScripts = {
 			}
 			// Assuming the hardcoded set evs are all legal.
 			if (!set.evs) set.evs = {hp:84, atk:84, def:84, spa:84, spd:84, spe:84};
-<<<<<<< HEAD
-			if (set.baseSignatureMove) {
-				set.baseSignatureMoves = [set.baseSignatureMove];
-				set.signatureMoves = [set.signatureMove];
-			}
-			if (set.baseSignatureMoves) {
-				l = 4-set.baseSignatureMoves.length;
-				set.moves = set.moves.sample(l) + set.baseSignatureMoves;
-			} else set.moves = set.moves.sample(4);
-=======
 			set.moves = set.moves.sample(3).concat(set.baseSignatureMove); // always have sig move.
->>>>>>> parent of a9cc387... Added GroundCtrl27; added support for multiple sig moves on one mon.
 			team.push(set);
 		}
 		return team;
