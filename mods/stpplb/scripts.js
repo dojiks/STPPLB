@@ -53,7 +53,7 @@ exports.BattleScripts = {
 			},
 			"Eeveelutionlvr": {
 				species: 'Eevee', ability: 'Proteon', item: 'Eviolite', gender: 'M',
-				moves: ['hydropump', 'flareblitz', 'thunderbolt', 'batonpass', 'nastyplot', 'dazzlinggleam', 'leafstorm', 'blizzard', 'nightslash', 'psychic', 'hyperbeam'], // this is probably way too OP of a moveset lol.
+				moves: ['hydropump', 'flareblitz', 'thunderbolt', 'batonpass', 'nastyplot', 'dazzlinggleam', 'energyball', 'leechseed', 'blizzard', 'nightslash', 'psychic', 'hyperbeam'], // azum stop nagging about this moveset.
 				baseSignatureMove: 'tailslap', signatureMove: 'Evolution Beam',
 				evs: {spa:252, spe:252, hp:4}, nature: 'Timid'
 			},
