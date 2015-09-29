@@ -139,13 +139,13 @@ exports.BattleAbilities = { // define custom abilities here.
 	},
 	'psychologist': { // Kooma's ability: immune to all "mental" volatile statuses.
 		onUpdate: function (pokemon) {
-			var list = ['embargo', 'encore', 'flinch', 'healblock', 'attract', 'nightmare', 'taunt', 'torment'];
+			var list = ['embargo', 'encore', 'flinch', 'healblock', 'attract', 'nightmare', 'taunt', 'torment', 'confusion'];
 			for (var i = 0; i < list.length; i++)
 				if (pokemon.volatiles[list[i]])
 					pokemon.removeVolatile(list[i]);
 		},
 		onImmunity: function (type, pokemon) {
-			var list = ['embargo', 'encore', 'flinch', 'healblock', 'attract', 'nightmare', 'taunt', 'torment'];
+			var list = ['embargo', 'encore', 'flinch', 'healblock', 'attract', 'nightmare', 'taunt', 'torment', 'confusion'];
 			for (var i = 0; i < list.length; i++)
 				if (type === list[i]) {
 					this.add('-immune', pokemon, list[i]);
