@@ -109,7 +109,7 @@ exports.BattleScripts = {
 			}
 			if (set.baseSignatureMoves) {
 				l = 4-set.baseSignatureMoves.length;
-				set.moves = set.moves.sample(l) + baseSignatureMoves;
+				set.moves = set.moves.sample(l) + set.baseSignatureMoves;
 			} else set.moves = set.moves.sample(4);
 			team.push(set);
 		}
