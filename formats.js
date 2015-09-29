@@ -348,6 +348,7 @@ exports.Formats = [
 				move.name = "Evolution Beam";
 				move.eeveelutiontypes = ['Fire', 'Water', 'Electric', 'Psychic', 'Dark', 'Ice', 'Grass', 'Fairy'];
 				move.multihit = false;
+				move.ignoreImmunity = true;
 				move.hits = 0;
 				move.basePower = 10;
 				move.accuracy = 100;
