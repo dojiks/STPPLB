@@ -286,7 +286,7 @@ exports.BattleScripts = {
 				moves: ['waterpulse', 'hiddenpowerice', 'shockwave'],
 				ivs: {atk:30, def:30}, // in order for HP Ice to be a thing.
 				baseSignatureMove: 'flamethrower', signatureMove: 'BEST F-CAR',
-				evs: {atk:252,def:4,spe:252}, nature: 'Adamant'
+				evs: {spa:252,def:4,spe:252}, nature: 'Modest'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
