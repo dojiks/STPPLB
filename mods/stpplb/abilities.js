@@ -26,7 +26,7 @@ exports.BattleAbilities = { // define custom abilities here.
 		shortDesc: "This Pokemon's moves have their secondary chances multiplied by 3.",
 		onModifyMovePriority: -2,
 		onModifyMove: function (move) {
-			if (move.secondaries && move.id !== 'secretpower' && move.id !== 'triattack' && move.id !== 'destinybeam') {
+			if (move.secondaries && move.id !== 'secretpower') {
 				for (var i = 0; i < move.secondaries.length; i++) {
 					move.secondaries[i].chance *= 3;
 				}
