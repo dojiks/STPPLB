@@ -184,3 +184,33 @@ exports.BattleAbilities = { // define custom abilities here.
 		num: 199
 	}
 }
+"messiah": {
+		desc: "This Pokemon blocks certain status moves and instead uses the move against the original user. Increases Sp.Attack by 2",
+		shortDesc: "This Pokemon blocks certain status moves and bounces them back to the user. Boosts Sp.Attack by 2",
+		id: "messiah",
+		name: "Messaiah",
+		onTryHitPriority: 1,
+		onTryHit: function (target, source, move) {
+			if (target === source || move.hasBounced || !move.flags['reflectable']) {
+				return;
+			}
+			var newMove = this.getMoveCopy(move.id);
+			newMove.hasBounced = true;
+			this.useMove(newMove, target, source);
+			return null;
+		},
+		onAllyTryHitSide: function (target, source, move) {
+			if (target.side === source.side || move.hasBounced || !move.flags['reflectable']) {
+				return;
+			}
+			var newMove = this.getMoveCopy(move.id);
+			newMove.hasBounced = true;
+			this.useMove(newMove, target, source);
+			return null;
+		},
+		effect: {
+			duration: 1
+		},
+		rating: 4.5,
+		num: 200
+	},
