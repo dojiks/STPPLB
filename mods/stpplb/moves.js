@@ -67,8 +67,11 @@ exports.BattleMovedex = {
 		},
 		self: {
 			onHit: function(pokemon) { // Mega evolves dfg
-					if (!pokemon.template.isMega) pokemon.canMegaEvo = true; // don't mega evolve if it's already mega
+					var temp = pokemon.item;
+					pokemon.item = 'houndoominite'; // in order to make it mega evolvable, add a Houndoomite temporarily.
+					if (!pokemon.template.isMega) pokemon.canMegaEvo = this.canMegaEvo(pokemon); // don't mega evolve if it's already mega
 					if (pokemon.canMegaEvo) this.runMegaEvo(pokemon);
+					pokemon.item = temp; // give its normal item back.
 				}
 		},
 		flags: {protect: 1, pulse: 1, mirror: 1, distance: 1},
