@@ -64,7 +64,7 @@ exports.BattleMovedex = {
 		target: 'any',
 		onEffectiveness: function (typeMod, type, move) {
 			return typeMod + this.getEffectiveness('Fire', type); // includes Fire in its effectiveness.
-		};
+		},
 		self: {
 			onHit: function(pokemon) { // Mega evolves dfg
 					if (!pokemon.template.isMega) pokemon.canMegaEvo = true; // don't mega evolve if it's already mega
