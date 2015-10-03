@@ -86,14 +86,15 @@ exports.BattleScripts = {
 				species: "Ampharos", ability: "Little Engine", item: 'Life Orb', gender: 'M',
 				moves: ['headsmash','frustration','withdraw', 'endure','wish'],
 				signatureMove: 'eternalstruggle',
+				happiness: 0,
 				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
 			},
-			'NoFunMantis':{
+			/*'NoFunMantis':{ // STPPLB+ only
 				species: "Scyther", ability: "No Fun Allowed", item: 'Eviolite', gender: 'M',
 				moves: ['knockoff','brickbreak','aerialace','swordsdance','agility','batonpass','roost'],
 				signatureMove: 'xscissor',
 				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant'
-			},
+			},*/
 		};
 		var pool = Object.keys(sets).randomize();
 		for (var i = 0; i < Math.min(6, pool.length); i++) {
@@ -201,6 +202,7 @@ exports.BattleScripts = {
 				species: "Ampharos", ability: "Little Engine", item: 'Life Orb', gender: 'M',
 				moves: ['headsmash','frustration','withdraw', 'endure','wish'],
 				signatureMove: 'eternalstruggle',
+				happiness: 0,
 				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
 			},
 			'NoFunMantis':{
@@ -275,12 +277,12 @@ exports.BattleScripts = {
 				signatureMove: 'shadowrush',
 				evs: {atk:252, def:4, spe:252}, nature: 'Jolly'
 			},
-			/*"Lass zeowx": { // STPPLB+ only
+			"Lass zeowx": { // STPPLB+ only
 				species: 'Liepard', ability: 'Protean', item: 'Focus Sash', gender: 'F',
 				moves: ['suckerpunch', 'shadowsneak', 'bulletpunch', 'playrough', 'spikes', 'acrobatics'].sample(2).concat('fakeout'), // always have Fake Out.
 				signatureMove: 'partingvoltturn',
 				evs: {atk:252, spa:12, spe:244}, nature: 'Hasty'
-			},*/
+			},
 			"Eeveelutionlvr": {
 				species: 'Eevee', ability: 'Proteon', item: 'Eviolite', gender: 'M',
 				moves: ['hydropump', 'flareblitz', 'thunderbolt', 'batonpass', 'nastyplot', 'dazzlinggleam', 'energyball', 'leechseed', 'blizzard', 'nightslash', 'psychic', 'hyperbeam'], // azum stop nagging about this moveset.
@@ -299,12 +301,12 @@ exports.BattleScripts = {
 				signatureMove: 'disappointment',
 				evs: {hp:252, def:252, spa:4}, nature: 'Bold'
 			},
-			/*"Kap'n Kooma": { // STPPLB+ only
+			"Kap'n Kooma": { // STPPLB+ only
 				species: 'Kingdra', ability: 'Sea and Sky', item: 'Choice Specs', gender: 'M',
 				moves: ['steameruption', 'dracometeor', 'thunder'],
 				signatureMove: 'broadside',
 				evs: {hp:4, spa:252, spe:252}, nature: 'Modest'
-			},*/
+			},
 			'BEST': { // STPPB only
 				species: 'Typhlosion', ability: 'Technician', item: 'Life Orb', gender: 'M',
 				moves: ['waterpulse', 'hiddenpowerice', 'shockwave'],
@@ -316,6 +318,7 @@ exports.BattleScripts = {
 				species: "Ampharos", ability: "Little Engine", item: 'Life Orb', gender: 'M',
 				moves: ['headsmash','frustration','withdraw', 'endure','wish'],
 				signatureMove: 'eternalstruggle',
+				happiness: 0,
 				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
 			},
 			'NoFunMantis':{
