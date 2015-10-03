@@ -167,7 +167,7 @@ exports.BattleAbilities = { // define custom abilities here.
 				for (var j = 0; j < this.sides[i].active.length; j++) {
 					var target = this.sides[i].active[j];
 					if (target === pokemon) continue;
-					if (target && target.hp && target.ability === 'primordialsea' && target.ignore['Ability'] !== true) {
+					if (target && target.hp && (target.ability === 'primordialsea' || target.ability === 'seaandsky') && target.ignore['Ability'] !== true) {
 						this.weatherData.source = target;
 						return;
 					}
@@ -176,7 +176,7 @@ exports.BattleAbilities = { // define custom abilities here.
 			this.clearWeather();
 		},
 		onModifySpe: function (speMod, pokemon) { // the swift swim portion which apparently doesn't work.
-			return this.chain(speMod, 2);
+			return this.chainModify(2);
 		},
 		id: 'seaandsky',
 		name: 'Sea and Sky',
@@ -216,5 +216,23 @@ exports.BattleAbilities = { // define custom abilities here.
 		name: "Little Engine",
 		rating: -1,
 		num: 200
+	},
+	'furriercoat': { // WhatevsFur, better fur coat, no frz.
+		shortDesc: "This Pokemon's Defense and Sp. Defense are doubled. This Pokemon cannot be frozen.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(2);
+		},
+		onModifySpdPriotiy: 6,
+		onModifySpd: function (spd) {
+			return this.chainModify(2);
+		},
+		onImmunity: function (type, pokemon) {
+			if (type === 'frz') return false;
+		},
+		id: "furriercoat",
+		name: "Furrier Coat",
+		rating: 3.5,
+		num: 201
 	},
 }
