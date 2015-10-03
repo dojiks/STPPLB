@@ -190,7 +190,13 @@ exports.BattleScripts = {
 				ivs: {atk:30, def:30}, // in order for HP Ice to be a thing.
 				signatureMove: 'bestfcar',
 				evs: {atk:252,def:4,spe:252}, nature: 'Adamant'
-			}*/
+			},*/
+			'Poomph':{
+				species: "Ampharos", ability: "Little Engine", item: 'Life Orb', gender: 'M',
+				moves: ['headsmash','frustration','withdraw', 'endure','wish'],
+				signatureMove: 'eternalstruggle',
+				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
+			},
 		};
 		var pool = Object.keys(sets).randomize();
 		for (var i = 0; i < Math.min(6, pool.length); i++) {
@@ -293,7 +299,13 @@ exports.BattleScripts = {
 				ivs: {atk:30, def:30}, // in order for HP Ice to be a thing.
 				signatureMove: 'bestfcar',
 				evs: {atk:252,def:4,spe:252}, nature: 'Adamant'
-			}
+			},
+			'Poomph':{
+				species: "Ampharos", ability: "Little Engine", item: 'Life Orb', gender: 'M',
+				moves: ['headsmash','frustration','withdraw', 'endure','wish'],
+				signatureMove: 'eternalstruggle',
+				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
+			},
 		};
 		var pool = Object.keys(sets).randomize();
 		for (var i = 0; i < Math.min(6, pool.length); i++) {
