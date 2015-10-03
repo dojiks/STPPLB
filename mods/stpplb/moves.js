@@ -166,6 +166,7 @@ exports.BattleMovedex = {
 		basePower: 205,
 		accuracy: 37,
 		pp: 16,
+		drain: [1, 2],
 		category: 'Physical',
 		flags: {pulse: 1, bullet: 1, protect: 1, mirror: 1},
 		onPrepareHit: function(target, source) { // Turns target and user into Bird-type.
