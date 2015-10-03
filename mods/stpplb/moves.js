@@ -500,7 +500,7 @@ exports.BattleMovedex = {
 		name: 'AFK',
 		id: 'afk',
 		category: 'Special',
-		type: 'Ghost',
+		type: 'Fire',
 		basePower: 120,
 		accuracy: 100,
 		pp: 5,
@@ -509,7 +509,8 @@ exports.BattleMovedex = {
 		onTry: function(attacker, defender, move) {
 			this.attrLastMove('[still]');
 			if (attacker.volatiles[move.id] && attacker.volatiles[move.id].duration === 1) {
-				this.add('-anim', attacker, 'Shadow Force', defender);
+				this.add('-anim', attacker, 'Flare Blitz', defender);
+				this.add('c|MegaCharizard|back');
 				return;
 			}
 			if (!attacker.volatiles[move.id]) {
@@ -535,7 +536,14 @@ exports.BattleMovedex = {
 				return 0;
 			}
 		},
-		secondary: false,
+		secondaries: [
+		{
+			chance: 20,
+			volatileStatus: 'confusion'
+		}, {
+			chance: 10,
+			status: 'slp'
+		}],
 		target: 'normal'
 	}
 }
