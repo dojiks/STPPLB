@@ -260,7 +260,7 @@ exports.BattleMovedex = {
 		onPrepareHit: function(target, source, move) {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, 'Bulk Up', source);
-		}
+		},
 		secondary: false,
 		target: "self",
 		type: "Fighting"
@@ -355,7 +355,7 @@ exports.BattleMovedex = {
 					move.accuracy = 100;
 				}
 			}
-		}
+		},
 		secondary: false,
 		target: "normal",
 		type: "Normal"
