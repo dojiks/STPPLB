@@ -244,20 +244,28 @@ exports.BattleAbilities = { // define custom abilities here.
 	},
 	'nofunallowed': {
 		shortDesc: "Makes opponent's ability No Fun. Causes all custom moves to fail.",
-		onFoeModifyPokemon: function (pokemon) {
-			pokemon.setAbility('nofun')
+		onFoeSwitchIn: function (pokemon) {
+			var oldAbility = pokemon.setAbility('nofun', pokemon, 'nofun', true);
+			if (oldAbility) {
+				this.add('-endability', pokemon, oldAbility, '[from] ability: No Fun Allowed');
+				this.add('-ability', pokemon, 'No Fun', '[from] ability: No Fun Allowed');
+			}
 		},
 		onStart: function (pokemon){
 			var foeactive = pokemon.side.foe.active;
 			for (var i = 0; i < foeactive.length; i++) {
 				var pokemon = foeactive[i];
-				pokemon.setAbility('nofun')
+				var oldAbility = pokemon.setAbility('nofun', pokemon, 'nofun', true);
+				if (oldAbility) {
+					this.add('-endability', pokemon, oldAbility, '[from] ability: No Fun Allowed');
+					this.add('-ability', pokemon, 'No Fun', '[from] ability: No Fun Allowed');
+				}
 			}
 		},
-		onTryAnyMove: function (target, source, effect) {
+		onAnyTryMove: function (target, source, effect) {
 			if (effect.num > 621) {
 				this.attrLastMove('[still]');
-				this.add('-activate', this.effectData.target, 'ability: No Fun Allowed');
+				this.add("raw|No Fun Mantis's No Fun Allowed suppressed the signature move!");
 				return false;
 			}
 		},
