@@ -471,6 +471,7 @@ exports.BattleMovedex = {
 		category: 'Physical',
 		basePower: 90,
 		accuracy: 100,
+		pp: 10,
 		type: 'Steel',
 		flags: {contact:1, protect:1, mirror:1},
 		onHit: function(target) {
