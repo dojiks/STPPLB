@@ -344,7 +344,7 @@ exports.BattleMovedex = {
 		},
 		onTryHit: function(target, pokemon, move) {
 			if (move.type === 'Normal') {
-				var t = move.eeveelutiontypes;
+				var t = move.eeveelutiontypes.slice(0);
 				move.accuracy = true; // I think this is bugged.
 				for (var i = 0; i < move.eeveelutiontypes.length; i++) { // hit for all eeveelution types in random order.
 					var r = this.random(t.length);
@@ -355,7 +355,7 @@ exports.BattleMovedex = {
 				move.type = 'Normal';
 				move.accuracy = 100;
 			}
-		}
+		},
 		eeveelutiontypes: ['Fire', 'Water', 'Electric', 'Psychic', 'Dark', 'Grass', 'Ice', 'Fairy'],
 		secondary: false,
 		target: "normal",
