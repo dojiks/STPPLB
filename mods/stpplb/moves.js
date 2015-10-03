@@ -156,5 +156,62 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "self",
 		type: "Normal"
+	},
+	'tm56': {
+		num: 625,
+		name: 'TM56',
+		id: 'tm56',
+		type: 'Bird',
+		basePower: 205,
+		accuracy: 37,
+		category: 'Physical',
+		onPrepareHit: function(target, source) { // Turns target and user into Bird-type.
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Calm Mind', source);
+			if (!source.hasType('Bird')) { // turn user into Bird-type and spout glitchy nonsense.
+				this.add("c|azum4roll|9̜͉̲͇̱̘̼ͬ̈́̒͌̑̓̓7ͩ͊̚5ͨ̆͐͏̪̦6̗͎ͬ̿̍̍̉ͧ͢4̯̠ͤ͛͐̄͒͡2͐ͬ̀d̺͉̜̈ͯ̓x̩̖̥̦̥͛́ͥ͑̈́ͩ͊͠║̛̥̜̱̝͍͒̌ͣ̀͌͌̒'̣͎̗̬̯r̸̗͍ͫ̓͆ͣ̎͊ ̜̻̈D͓̰̳̝̥̙͙͋̀E͉͔̥͇̫͓͍̔ͬͣ͂̓̽x̰̗̬̖͊̏̄̑̒̿͊s̜̪̏́f̧̯̼̦̓͌̇̒o̱̾̓ͩ̆̓̀F̟̰͓̩̂̆͛ͤ▓̣̩̝̙̇̓͒͋̈͡1̡̹̹͓̬͖͐̑̉̔̏xͥ̀'̻͖͍̠̉͡v̫̼̹̳̤̱͉▓̄̏͂ͤͭ̋ͫ͏̠̦̝▓̟͉͇̣̠̦̓̄ͫͥ̐̍̂▓͔̦̫̦̜̖́▓͍ͯ͗̾͆▓̮̗̠̜͙̹̟͊̎ͤ̔̽ͬ̃▓̩̟̏ͪ̇̂̂̒▓̖̼̤͉ͤ̾̋ͥͣͬ͒▓̈́̿͂̌̓▓͇̞̗̽̔̂͊̌ͣ͐▓ͬ́ͥ̔͒͒̎▓̰̪̫̩͇̲̇̔̿͢ͅ▓̞̬͎▓̖͍̖̫ͪ͐̆̅̍̂ͨͅ▓̡̭̠̗̳̬̜̝▓̤͙̥̆̌ͨͪ̆͌▓̴͉̩̈́▓ͩ̌̌̂̿̑̐▓ͨ҉͕̠͍▓̹̌̅̂ͨ͋̃͑▓̯̰̣̝̯ͭͦ̂͋̇̾͠▓̸̺̣̜̯̙̂͋̈ͨ̎̾ͧ▓͢▓͔̚▓̭͎͖̟̼̄̈̃̎́▓̧̌ͧ▓̼̹͈͗̄̆");
+				source.setType('Bird');
+				this.add('-start', source, 'typechange', 'Bird');
+			}
+			if (target.hasType('Bird')) return true;
+			target.setType('Bird');
+			this.add('-start', target, 'typechange', 'Bird');
+		},
+		onMoveFail: function (target, source, move) {
+			this.boost({accuracy:1, evasion:1}, source);
+		},
+	},
+	'hexattack': {
+		num: 626,
+		name: 'Hex Attack',
+		id: 'hexattack',
+		type: 'Ghost',
+		category: 'Special',
+		basePower: 100,
+		accuracy: 90,
+		pp: 8,
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Tri Attack', target);
+		},
+		secondary: {
+			chance: 20,
+			onHit: function (target, source) { // random status.
+				var result = this.random(6);
+				if (result === 0) {
+					target.trySetStatus('brn', source);
+				} else if (result === 1) {
+					target.trySetStatus('par', source);
+				} else if (result === 2) {
+					target.trySetStatus('frz', source);
+				} else if (result === 3) {
+					target.addVolatile('confusion');
+				} else if (result === 4) {
+					target.addVolatile('attract');
+				} else {
+					target.trySetStatus('slp', source);
+				}
+			}
+		}
 	}
 }

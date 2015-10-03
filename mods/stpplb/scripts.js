@@ -18,13 +18,13 @@ exports.BattleScripts = {
 			'azum4roll': {
 				species: "Azumarill", ability: "Glitchiate", item: "Metronome", gender: 'M',
 				moves: ['rollout', 'batonpass', 'swordsdance', 'bellydrum', 'extremespeed', 'playrough', 'thunderwave'],
-				baseSignatureMove: 'drainpunch', signatureMove: 'TM56',
+				baseSignatureMove: 'tm56', signatureMove: 'TM56',
 				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant'
 			},
 			'Iwamiger': {
 				species: "Gengar", ability: 'Serene Grace Plus', item: "Life Orb", gender: 'M',
 				moves: ['shadowball', 'flamethrower', 'icebeam', 'crunch'],
-				baseSignatureMove: 'triattack', signatureMove: 'Hex Attack',
+				baseSignatureMove: 'hexattack', signatureMove: 'Hex Attack',
 				evs: {hp:4, spa:252, spe:252}, nature: 'Timid'
 			},
 			'Poomph': {
@@ -121,13 +121,13 @@ exports.BattleScripts = {
 			'azum4roll': {
 				species: "Azumarill", ability: "Glitchiate", item: "Metronome", gender: 'M',
 				moves: ['rollout', 'batonpass', 'swordsdance', 'bellydrum', 'extremespeed', 'playrough', 'thunderwave'],
-				baseSignatureMove: 'drainpunch', signatureMove: 'TM56',
+				baseSignatureMove: 'tm56', signatureMove: 'TM56',
 				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant'
 			},
 			'Iwamiger': {
 				species: "Gengar", ability: 'Serene Grace Plus', item: "Life Orb", gender: 'M',
 				moves: ['shadowball', 'flamethrower', 'icebeam', 'crunch'],
-				baseSignatureMove: 'triattack', signatureMove: 'Hex Attack',
+				baseSignatureMove: 'hexattack', signatureMove: 'Hex Attack',
 				evs: {hp:4, spa:252, spe:252}, nature: 'Timid'
 			},
 			'Poomph': {
@@ -224,13 +224,13 @@ exports.BattleScripts = {
 			'azum4roll': {
 				species: "Azumarill", ability: "Glitchiate", item: "Metronome", gender: 'M',
 				moves: ['rollout', 'batonpass', 'swordsdance', 'bellydrum', 'extremespeed', 'playrough', 'thunderwave'],
-				baseSignatureMove: 'drainpunch', signatureMove: 'TM56',
+				baseSignatureMove: 'tm56', signatureMove: 'TM56',
 				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant'
 			},
 			'Iwamiger': {
 				species: "Gengar", ability: 'Serene Grace Plus', item: "Life Orb", gender: 'M',
 				moves: ['shadowball', 'flamethrower', 'icebeam', 'crunch'],
-				baseSignatureMove: 'triattack', signatureMove: 'Hex Attack',
+				baseSignatureMove: 'hexattack', signatureMove: 'Hex Attack',
 				evs: {hp:4, spa:252, spe:252}, nature: 'Timid'
 			},
 			'Poomph': {
