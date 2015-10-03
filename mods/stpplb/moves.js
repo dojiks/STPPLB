@@ -167,7 +167,7 @@ exports.BattleMovedex = {
 		accuracy: 37,
 		pp: 16,
 		category: 'Physical',
-		flags: {contact: 1, protect: 1, mirror: 1},
+		flags: {pulse: 1, bullet: 1, protect: 1, mirror: 1},
 		onPrepareHit: function(target, source) { // Turns target and user into Bird-type.
 			this.attrLastMove('[still]');
 			this.add('-anim', source, 'Calm Mind', source);
