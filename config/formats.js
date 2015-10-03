@@ -174,6 +174,8 @@ exports.Formats = [
 			if (pokemon.template.isMega) { // some foolery to give megas their proper ability
 				if (name == 'darkfiregamer' && pokemon.getAbility().id === 'solarpower')
 					pokemon.setAbility('darkaura');
+				if (name == 'dictatormantis' && pokemon.getAbility().id === 'technician')
+					pokemon.setAbility('Technicality');
 			}
 		},
 		onSwitchInPriority: 1,
