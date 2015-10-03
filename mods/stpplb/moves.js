@@ -169,7 +169,7 @@ exports.BattleMovedex = {
 		drain: [1, 2],
 		category: 'Physical',
 		flags: {pulse: 1, bullet: 1, protect: 1, mirror: 1},
-		onPrepareHit: function(target, source) { // Turns target and user into Bird-type.
+		onPrepareHit: function(target, source) { // Turns user into Bird-type.
 			this.attrLastMove('[still]');
 			this.add('-anim', source, 'Wish', source);
 			if (!source.hasType('Bird')) { // turn user into Bird-type and spout glitchy nonsense.
@@ -177,6 +177,8 @@ exports.BattleMovedex = {
 				source.setType('Bird');
 				this.add('-start', source, 'typechange', 'Bird');
 			}
+		},
+		onHit: function(target, source) { // Turns target into Bird-type.
 			if (target.hasType('Bird')) return true;
 			target.setType('Bird');
 			this.add('-start', target, 'typechange', 'Bird');
