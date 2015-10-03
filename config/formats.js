@@ -213,6 +213,8 @@ exports.Formats = [
 			else if (name === 'kapnkooma') this.add("c|Kap'n Kooma|Hoist the black flag lads!");
 			else if (name === 'kooma9') this.add("c|Kooma9|ello");
 			else if (name === 'best') this.add("raw|<big>GO AWAY</big>");
+			else if (name === 'poomph') this.add("c|Poomph|I'm sure I'll win this time!");
+			else if (name === 'nofunmantis') this.add("c|NoFunMantis|The fun ends here!");
 			else this.add('c|' + (pokemon.illusion ? pokemon.illusion.name : pokemon.name) + '|PLACEHOLDER MESSAGE PLEASE CONTACT TIESOUL');
 		},
 		
@@ -234,6 +236,8 @@ exports.Formats = [
 			else if (name === 'kapnkooma') this.add("c|Kap'n Kooma|Avast! I be needing a pint of grog after this.");
 			else if (name === 'kooma9') this.add("c|Kooma9|Most Disappointing Player 2015");
 			else if (name === 'best') this.add("raw|<big>BEST? FALLED</big>");
+			else if (name === 'poomph') this.add("c|Poomph|0/4 again. DansGame");
+			else if (name === 'nofunmantis') this.add("c|NoFunMantis|Nothing fun about this!");
 		},
 	},
 	
