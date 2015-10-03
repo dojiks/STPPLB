@@ -376,7 +376,7 @@ exports.BattleScripts = {
 				evs: {hp:4,atk:252,spe:252}, nature: 'Adamant'
 			},
 			'MegaCharizard': {
-				species: 'Charizard', ability: 'Truant', item: 'Charizardite Y', gender: 'M'
+				species: 'Charizard', ability: 'Truant', item: 'Charizardite Y', gender: 'M',
 				moves: ['airslash', 'earthpower', 'roost', 'slackoff', 'flamethrower'],
 				signatureMove: 'afk',
 				evs: {hp: 4, spa: 252, spe: 252}, nature: 'Timid'

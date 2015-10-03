@@ -511,6 +511,7 @@ exports.BattleMovedex = {
 			if (attacker.volatiles[move.id] && attacker.volatiles[move.id].duration === 1) {
 				this.add('-anim', attacker, 'Flare Blitz', defender);
 				this.add('c|MegaCharizard|back');
+				attacker.removeVolatile(move.id);
 				return;
 			}
 			if (!attacker.volatiles[move.id]) {
