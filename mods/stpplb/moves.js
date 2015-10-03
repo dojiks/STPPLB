@@ -54,4 +54,375 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Normal"
 	},
+	'darkfire': {
+		num: 623,
+		name: 'Darkfire',
+		id: 'darkfire',
+		basePower: 90,
+		accuracy: 100,
+		category: 'Special',
+		target: 'any',
+		flags: {protect: 1, mirror: 1},
+		onEffectiveness: function (typeMod, type, move) {
+			return typeMod + this.getEffectiveness('Fire', type); // includes Fire in its effectiveness.
+		},
+		self: {
+			onHit: function(pokemon) { // Mega evolves dfg
+					var temp = pokemon.item;
+					pokemon.item = 'houndoominite'; // in order to make it mega evolvable, add a Houndoomite temporarily.
+					if (!pokemon.template.isMega) pokemon.canMegaEvo = this.canMegaEvo(pokemon); // don't mega evolve if it's already mega
+					if (pokemon.canMegaEvo) this.runMegaEvo(pokemon);
+					pokemon.item = temp; // give its normal item back.
+				}
+		},
+		flags: {protect: 1, pulse: 1, mirror: 1, distance: 1},
+		secondary: {
+			chance: 20,
+			volatileStatus: 'flinch'
+		},
+		priority: 0,
+		pp: 15,
+		type: 'Dark'
+	},
+	'superglitch': {
+		num: 624,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "A random move is selected for use, other than After You, Assist, Belch, Bestow, Celebrate, Chatter, Copycat, Counter, Covet, Crafty Shield, Destiny Bond, Detect, Diamond Storm, Endure, Feint, Focus Punch, Follow Me, Freeze Shock, Happy Hour, Helping Hand, Hold Hands, Hyperspace Hole, Ice Burn, King's Shield, Light of Ruin, Mat Block, Me First, Metronome, Mimic, Mirror Coat, Mirror Move, Nature Power, Protect, Quash, Quick Guard, Rage Powder, Relic Song, Secret Sword, Sketch, Sleep Talk, Snarl, Snatch, Snore, Spiky Shield, Steam Eruption, Struggle, Switcheroo, Techno Blast, Thief, Thousand Arrows, Thousand Waves, Transform, Trick, V-create, or Wide Guard.",
+		shortDesc: "Picks a random move.",
+		id: "superglitch",
+		name: "(Super Glitch)",
+		pp: 10,
+		priority: 0,
+		multihit: [2, 5],
+		flags: {},
+		onHit: function (target) {
+			var moves = [];
+			for (var i in exports.BattleMovedex) {
+				var move = exports.BattleMovedex[i];
+				if (i !== move.id) continue;
+				if (move.isNonstandard) continue;
+				var noMetronome = {
+					afteryou:1, assist:1, belch:1, bestow:1, celebrate:1, chatter:1, copycat:1, counter:1, covet:1, craftyshield:1, destinybond:1, detect:1, diamondstorm:1, dragonascent:1, endure:1, feint:1, focuspunch:1, followme:1, freezeshock:1, happyhour:1, helpinghand:1, holdhands:1, hyperspacefury:1, hyperspacehole:1, iceburn:1, kingsshield:1, lightofruin:1, matblock:1, mefirst:1, metronome:1, mimic:1, mirrorcoat:1, mirrormove:1, naturepower:1, originpulse:1, precipiceblades:1, protect:1, quash:1, quickguard:1, ragepowder:1, relicsong:1, secretsword:1, sketch:1, sleeptalk:1, snarl:1, snatch:1, snore:1, spikyshield:1, steameruption:1, struggle:1, switcheroo:1, technoblast:1, thief:1, thousandarrows:1, thousandwaves:1, transform:1, trick:1, vcreate:1, wideguard:1
+				};
+				if (!noMetronome[move.id]) {
+					moves.push(move);
+				}
+			}
+			var move = '';
+			if (moves.length) {
+				moves.sort(function (a, b) {return a.num - b.num;});
+				move = moves[this.random(moves.length)].id;
+			}
+			if (!move) {
+				return false;
+			}
+			this.useMove(move, target);
+		},
+		onTryHit: function (target, source) { // can cause TMTRAINER effect randomly
+			if (!source.isActive) return null;
+			if (this.random(777) !== 42) return; // 1/777 chance to cause TMTRAINER effect
+			var opponent = pokemon.side.foe.active[0];
+			opponent.setStatus('brn');
+			var possibleStatuses = ['confusion', 'flinch', 'attract', 'focusenergy', 'foresight', 'healblock'];
+			for (var i = 0; i < possibleStatuses.length; i++) {
+				if (this.random(3) === 1) {
+					opponent.addVolatile(possibleStatuses[i]);
+				}
+			}
+
+			function generateNoise() { // make some random glitchy text.
+				var noise = '';
+				var random = this.random(40, 81);
+				for (var i = 0; i < random; i++) {
+					if (this.random(4) !== 0) {
+						// Non-breaking space
+						noise += '\u00A0';
+					} else {
+						noise += String.fromCharCode(this.random(0xA0, 0x3040));
+					}
+				}
+				return noise;
+			}
+			// weird effects.
+			this.add('-message', "(Enemy " + generateNoise.call(this) + " TMTRAINER " + opponent.name + " is frozen solid?)");
+			this.add('-message', "(Enemy " + generateNoise.call(this) + " TMTRAINER " + opponent.name + " is hurt by its burn!)");
+			this.damage(opponent.maxhp * this.random(42, 96) * 0.01, opponent, opponent);
+			var exclamation = source.status === 'brn' ? '!' : '?';
+			this.add('-message', "(Enemy " + generateNoise.call(this) + " TMTRAINER @xfix is hurt by its burn" + exclamation + ")");
+			this.damage(source.maxhp * this.random(24, 48) * 0.01, source, source);
+			return null;
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal"
+	},
+	'tm56': {
+		num: 625,
+		name: 'TM56',
+		id: 'tm56',
+		type: 'Bird',
+		basePower: 205,
+		accuracy: 37,
+		pp: 16,
+		category: 'Physical',
+		flags: {pulse: 1, bullet: 1, protect: 1, mirror: 1},
+		onPrepareHit: function(target, source) { // Turns target and user into Bird-type.
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Calm Mind', source);
+			if (!source.hasType('Bird')) { // turn user into Bird-type and spout glitchy nonsense.
+				this.add("c|azum4roll|9̜͉̲͇̱̘̼ͬ̈́̒͌̑̓̓7ͩ͊̚5ͨ̆͐͏̪̦6̗͎ͬ̿̍̍̉ͧ͢4̯̠ͤ͛͐̄͒͡2͐ͬ̀d̺͉̜̈ͯ̓x̩̖̥̦̥͛́ͥ͑̈́ͩ͊͠║̛̥̜̱̝͍͒̌ͣ̀͌͌̒'̣͎̗̬̯r̸̗͍ͫ̓͆ͣ̎͊ ̜̻̈D͓̰̳̝̥̙͙͋̀E͉͔̥͇̫͓͍̔ͬͣ͂̓̽x̰̗̬̖͊̏̄̑̒̿͊s̜̪̏́f̧̯̼̦̓͌̇̒o̱̾̓ͩ̆̓̀F̟̰͓̩̂̆͛ͤ▓̣̩̝̙̇̓͒͋̈͡1̡̹̹͓̬͖͐̑̉̔̏xͥ̀'̻͖͍̠̉͡v̫̼̹̳̤̱͉▓̄̏͂ͤͭ̋ͫ͏̠̦̝▓̟͉͇̣̠̦̓̄ͫͥ̐̍̂▓͔̦̫̦̜̖́▓͍ͯ͗̾͆▓̮̗̠̜͙̹̟͊̎ͤ̔̽ͬ̃▓̩̟̏ͪ̇̂̂̒▓̖̼̤͉ͤ̾̋ͥͣͬ͒▓̈́̿͂̌̓▓͇̞̗̽̔̂͊̌ͣ͐▓ͬ́ͥ̔͒͒̎▓̰̪̫̩͇̲̇̔̿͢ͅ▓̞̬͎▓̖͍̖̫ͪ͐̆̅̍̂ͨͅ▓̡̭̠̗̳̬̜̝▓̤͙̥̆̌ͨͪ̆͌▓̴͉̩̈́▓ͩ̌̌̂̿̑̐▓ͨ҉͕̠͍▓̹̌̅̂ͨ͋̃͑▓̯̰̣̝̯ͭͦ̂͋̇̾͠▓̸̺̣̜̯̙̂͋̈ͨ̎̾ͧ▓͢▓͔̚▓̭͎͖̟̼̄̈̃̎́▓̧̌ͧ▓̼̹͈͗̄̆");
+				source.setType('Bird');
+				this.add('-start', source, 'typechange', 'Bird');
+			}
+			if (target.hasType('Bird')) return true;
+			target.setType('Bird');
+			this.add('-start', target, 'typechange', 'Bird');
+		},
+		onMoveFail: function (target, source, move) {
+			this.boost({accuracy:1, evasion:1}, source);
+		},
+	},
+	'hexattack': {
+		num: 626,
+		name: 'Hex Attack',
+		id: 'hexattack',
+		type: 'Ghost',
+		category: 'Special',
+		basePower: 100,
+		accuracy: 90,
+		pp: 8,
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Tri Attack', target);
+		},
+		flags: {protect: 1, mirror: 1},
+		secondary: {
+			chance: 20,
+			onHit: function (target, source) { // random status.
+				var result = this.random(6);
+				if (result === 0) {
+					target.trySetStatus('brn', source);
+				} else if (result === 1) {
+					target.trySetStatus('par', source);
+				} else if (result === 2) {
+					target.trySetStatus('frz', source);
+				} else if (result === 3) {
+					target.addVolatile('confusion');
+				} else if (result === 4) {
+					target.addVolatile('attract');
+				} else {
+					target.trySetStatus('slp', source);
+				}
+			}
+		}
+	},
+	'projectilespam': {
+		num: 627,
+		name: 'Projectile Spam',
+		id: 'projectilespam',
+		type: 'Fighting',
+		category: 'Physical',
+		pp: 20,
+		basePower: 12,
+		multihit: [8, 11],
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Bullet Punch', target);
+		},
+		self: {
+			volatileStatus: 'lockedmove'
+		},
+		onAfterMove: function (pokemon) {
+			if (pokemon.volatiles['lockedmove'] && pokemon.volatiles['lockedmove'].duration === 1) {
+				pokemon.removeVolatile('lockedmove');
+			}
+		},
+		flags: {protect: 1, mirror: 1}
+	},
+	'bulk': {
+		num: 628,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Attack and Defense by 2 stages.",
+		shortDesc: "Raises the user's Attack and Defense by 2.",
+		id: "bulk",
+		isViable: true,
+		name: "BULK!!",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {
+			atk: 2,
+			def: 2
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Bulk Up', source);
+		},
+		secondary: false,
+		target: "self",
+		type: "Fighting"
+	},
+	'shadowrush': {
+		num: 629,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		desc: "No additional effect.",
+		shortDesc: "Usually goes first.",
+		id: "shadowrush",
+		name: "Shadow Rush",
+		pp: 8,
+		priority: 2,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Ghost",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Shadow Sneak', target);
+		}
+	},
+	'partingvoltturn': {
+		num: 630,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Uses Parting Shot, Volt Switch and U-Turn in the same turn.",
+		shortDesc: "Gets the fuck out of here.",
+		id: "partingvoltturn",
+		name: "Parting Volt Turn",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		onHit: function(target) {
+			this.useMove('partingshot', target);
+			this.useMove('voltswitch', target);
+			this.useMove('uturn', target);
+			this.add("c|Lass Zeowx|I'm getting outta here! Byeeeee~");
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal"
+	},
+	'evolutionbeam': {
+		num: 631,
+		accuracy: 100,
+		basePower: 10,
+		category: "Special",
+		desc: "Hits once for every eeveelution.",
+		shortDesc: "Hits once for every eeveelution.",
+		id: "evolutionbeam",
+		name: "Evolution Beam",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onPrepareHit: function (target, source, move) { // animation depending on type.
+			this.attrLastMove('[still]');
+			if (move.type === 'Normal')
+				this.add('-anim', source, "Swift", target);
+			if (move.type === 'Fire')
+				this.add('-anim', source, "Flamethrower", target);
+			if (move.type === 'Water')
+				this.add('-anim', source, "Water Gun", target);
+			if (move.type === 'Electric')
+				this.add('-anim', source, "Thunderbolt", target);
+			if (move.type === 'Psychic')
+				this.add('-anim', source, "Psybeam", target);
+			if (move.type === 'Dark')
+				this.add('-anim', source, "Dark Pulse", target);
+			if (move.type === 'Ice')
+				this.add('-anim', source, "Ice Beam", target);
+			if (move.type === 'Grass')
+				this.add('-anim', source, 'Solar Beam', target);
+			if (move.type === 'Fairy')
+				this.add('-anim', source, 'Dazzling Gleam', target);
+		},
+		self: {
+			onHit: function(target, pokemon, move) {
+				if (move.type === 'Normal') {
+					var t = move.eeveelutiontypes;
+					move.accuracy = true; // I think this is bugged.
+					for (var i = 0; i < move.eeveelutiontypes.length; i++) { // hit for all eeveelution types in random order.
+						var r = this.random(t.length);
+						move.type = t[r];
+						t.splice(r, 1);
+						this.useMove(move, pokemon, target);
+					}
+					move.type = 'Normal';
+					move.accuracy = 100;
+				}
+			}
+		},
+		eeveelutiontypes: ['Fire', 'Water', 'Electric', 'Psychic', 'Dark', 'Grass', 'Ice', 'Fairy'],
+		secondary: false,
+		target: "normal",
+		type: "Normal"
+	},
+	'hyperwahahahahaha': {
+		num: 632,
+		name: 'Hyper WAHAHAHAHAHA',
+		id: 'hyperwahahahahaha',
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		desc: "Has a 20% chance to paralyze the target and a 20% chance to cofuse it.",
+		shortDesc: "20% chance to paralyze the target and 20% to confuse target.",
+		isViable: true,
+		pp: 15,
+		priority: 0,
+		secondaries: [{chance: 20, status: 'par'}, {chance: 20, volatileStatus: 'confusion'}],
+		target: "normal",
+		type: "Electric"
+	},
+	'broadside': {
+		num: 633,
+		name: 'Broadside',
+		id: 'broadside',
+		accuracy: 100,
+		basePower: 18,
+		multihit: 5,
+		category: "Special",
+		desc: "No additional effect.",
+		shortDesc: "Hits adjacent Pokemon.",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, nonsky: 1},
+		secondary: false,
+		target: "allAdjacent",
+		type: "Water"
+	},
+	'bestfcar': {
+		num: 634,
+		name: 'BEST F-CAR',
+		id: 'bestfcar',
+		basePower: 60,
+		secondaries: [
+			{
+				chance: 20, 
+				status: 'brn'
+			}, 
+			{
+				chance: 100, 
+				self: {
+					boosts: {
+						spa: 1
+					}
+				}
+			}
+		],
+		accuracy: 100,
+		category: "Special",
+		desc: "Has a 20% chance to burn the target. Raises Sp.Atk by 1 stage.",
+		shortDesc: "20% chance to burn the target. Raises Sp.Atk by 1.",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		target: "normal",
+		type: "Fire"
+	}
 }
