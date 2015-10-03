@@ -185,6 +185,8 @@ exports.Formats = [
 			if (pokemon.template.isMega) { // more hackery for mega abilities.
 				if (name == 'darkfiregamer' && pokemon.getAbility().id === 'solarpower')
 					pokemon.setAbility('darkaura');
+				if (name == 'dictatormantis' && pokemon.getAbility().id === 'technician')
+					pokemon.setAbility('Technicality');
 			} else {
 				pokemon.canMegaEvo = this.canMegaEvo(pokemon); // Bypass one mega limit.
 			}

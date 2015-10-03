@@ -106,7 +106,13 @@ exports.BattleScripts = {
 				moves: ['barrier','craftyshield','trick','block','disable','stickyweb','embargo','quash','taunt','knockoff','bulletpunch'],
 				signatureMove: 'ironfist',
 				evs: {hp:4,atk:252,spe:252}, nature: 'Adamant'
-			}*/
+			},*/
+			'MegaCharizard': {
+				species: 'Charizard', ability: 'Truant', item: 'Charizardite Y',
+				moves: ['bravebird', 'earthquake', 'roost', 'slackoff', 'flamethrower'],
+				signatureMove: 'afk',
+				evs: {hp: 4, spa: 252, spe: 252}, nature: 'Timid'
+			}
 		};
 		var pool = Object.keys(sets).randomize();
 		for (var i = 0; i < Math.min(6, pool.length); i++) {
@@ -234,6 +240,12 @@ exports.BattleScripts = {
 				moves: ['barrier','craftyshield','trick','block','disable','stickyweb','embargo','quash','taunt','knockoff','bulletpunch'],
 				signatureMove: 'ironfist',
 				evs: {hp:4,atk:252,spe:252}, nature: 'Adamant'
+			},
+			'MegaCharizard': {
+				species: 'Charizard', ability: 'Truant', item: 'Charizardite Y',
+				moves: ['bravebird', 'earthquake', 'roost', 'slackoff', 'flamethrower'],
+				signatureMove: 'afk',
+				evs: {hp: 4, spa: 252, spe: 252}, nature: 'Timid'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -362,6 +374,12 @@ exports.BattleScripts = {
 				moves: ['barrier','craftyshield','trick','block','disable','stickyweb','embargo','quash','taunt','knockoff','bulletpunch'],
 				signatureMove: 'ironfist',
 				evs: {hp:4,atk:252,spe:252}, nature: 'Adamant'
+			},
+			'MegaCharizard': {
+				species: 'Charizard', ability: 'Truant', item: 'Charizardite Y',
+				moves: ['bravebird', 'earthquake', 'roost', 'slackoff', 'flamethrower'],
+				signatureMove: 'afk',
+				evs: {hp: 4, spa: 252, spe: 252}, nature: 'Timid'
 			}
 		};
 		var pool = Object.keys(sets).randomize();

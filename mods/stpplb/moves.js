@@ -494,5 +494,48 @@ exports.BattleMovedex = {
 				pokemon.item = temp; // give its normal item back.
 			}
 		}
+	},
+	'afk': {
+		num: 638,
+		name: 'AFK',
+		id: 'afk',
+		category: 'Special',
+		type: 'Ghost',
+		basePower: 120,
+		accuracy: 100,
+		pp: 5,
+		priority: 0,
+		flags: {charge: 1, protect: 1, mirror: 1},
+		onTry: function(attacker, defender, move) {
+			this.attrLastMove('[still]');
+			if (attacker.volatiles[move.id] && attacker.volatiles[move.id].duration === 1) {
+				this.add('-anim', attacker, 'Shadow Force', defender);
+				return;
+			}
+			if (!attacker.volatiles[move.id]) {
+				this.add('c|MegaCharizard|afk');
+				this.add('-prepare', attacker, 'Shadow Force', defender);
+			} else {
+				this.add('raw|MegaCharizard is still gone!');
+			}
+			attacker.addVolatile('afk', defender);
+			return null;
+		},
+		effect: {
+			duration: 3,
+			onLockMove: 'afk',
+			onAccuracy: function(accuracy, target, source, move) {
+				if (move.id === 'helpinghand') {
+					return;
+				}
+				if (source.hasAbility('noguard') || target.hasAbility('noguard')) {
+					return;
+				}
+				if (source.volatiles['lockon'] && target === source.volatiles['lockon'].source) return;
+				return 0;
+			}
+		},
+		secondary: false,
+		target: 'normal'
 	}
 }
