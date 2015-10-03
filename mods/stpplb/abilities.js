@@ -332,8 +332,8 @@ exports.BattleAbilities = { // define custom abilities here.
 		num: 206,
 		id: 'technicality',
 		name: 'Technicality',
-		onAnyTryMove: function (target, source, effect) {
-			if (this.random(3) === 0) {
+		onFoeTryMove: function (target, source, effect) {
+			if (this.random(10) === 0) {
 				this.attrLastMove('[still]');
 				this.add("c|DictatorMantis|This move doesn't work because I say so!");
 				return false;
