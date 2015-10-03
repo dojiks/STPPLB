@@ -476,11 +476,11 @@ exports.BattleMovedex = {
 		flags: {contact:1, protect:1, mirror:1},
 		onHit: function(target) {
 			var bannedAbilities = {multitype:1, defeatist:1, stancechange:1, truant:1};
-			if (!bannedAbilities[pokemon.ability]) {
+			if (!bannedAbilities[target.ability]) {
 				var oldAbility = target.setAbility('defeatist');
 				if (oldAbility) {
-					this.add('-endability', pokemon, oldAbility, '[from] move: Iron Fist');
-					this.add('-ability', pokemon, 'Defeatist', '[from] move: Iron Fist');
+					this.add('-endability', target, oldAbility, '[from] move: Iron Fist');
+					this.add('-ability', target, 'Defeatist', '[from] move: Iron Fist');
 					return;
 				}
 			}
