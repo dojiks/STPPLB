@@ -88,6 +88,12 @@ exports.BattleScripts = {
 				signatureMove: 'eternalstruggle',
 				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
 			},
+			'NoFunMantis':{
+				species: "Scyther", ability: "No Fun Allowed", item: 'Eviolite', gender: 'M',
+				moves: ['knockoff','brickbreak','aerialace','swordsdance','agility','batonpass','roost'],
+				signatureMove: 'xscissor',
+				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant'
+			},
 		};
 		var pool = Object.keys(sets).randomize();
 		for (var i = 0; i < Math.min(6, pool.length); i++) {
@@ -197,6 +203,12 @@ exports.BattleScripts = {
 				signatureMove: 'eternalstruggle',
 				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
 			},
+			'NoFunMantis':{
+				species: "Scyther", ability: "No Fun Allowed", item: 'Eviolite', gender: 'M',
+				moves: ['knockoff','brickbreak','aerialace','swordsdance','agility','batonpass','roost'],
+				signatureMove: 'xscissor',
+				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant'
+			},
 		};
 		var pool = Object.keys(sets).randomize();
 		for (var i = 0; i < Math.min(6, pool.length); i++) {
@@ -305,6 +317,12 @@ exports.BattleScripts = {
 				moves: ['headsmash','frustration','withdraw', 'endure','wish'],
 				signatureMove: 'eternalstruggle',
 				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
+			},
+			'NoFunMantis':{
+				species: "Scyther", ability: "No Fun Allowed", item: 'Eviolite', gender: 'M',
+				moves: ['knockoff','brickbreak','aerialace','swordsdance','agility','batonpass','roost'],
+				signatureMove: 'xscissor',
+				evs: {hp:4, atk:252, spe:252}, nature: 'Adamant'
 			},
 		};
 		var pool = Object.keys(sets).randomize();

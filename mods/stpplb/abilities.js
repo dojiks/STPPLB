@@ -235,4 +235,35 @@ exports.BattleAbilities = { // define custom abilities here.
 		rating: 3.5,
 		num: 201
 	},
+	'nofun': {
+		shortDesc: "Abilities are fun. No more ability for you.",
+		id: "nofun",
+		name: "No Fun",
+		rating: 0,
+		num: 202
+	},
+	'nofunallowed': {
+		shortDesc: "Makes opponent's ability No Fun. Causes all custom moves to fail.",
+		onFoeModifyPokemon: function (pokemon) {
+			pokemon.setAbility('nofun')
+		},
+		onStart: function (pokemon){
+			var foeactive = pokemon.side.foe.active;
+			for (var i = 0; i < foeactive.length; i++) {
+				var pokemon = foeactive[i];
+				pokemon.setAbility('nofun')
+			}
+		},
+		onTryAnyMove: function (target, source, effect) {
+			if (effect.num > 621) {
+				this.attrLastMove('[still]');
+				this.add('-activate', this.effectData.target, 'ability: No Fun Allowed');
+				return false;
+			}
+		},
+		id: "nofunallowed",
+		name: "No Fun Allowed",
+		rating: 1,
+		num: 203
+	},
 }
