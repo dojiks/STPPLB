@@ -483,7 +483,7 @@ exports.BattleMovedex = {
 					return;
 				}
 			}
-		}
+		},
 		self: {
 			onHit: function(pokemon) {
 				var temp = pokemon.item;
