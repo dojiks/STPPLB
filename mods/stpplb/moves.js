@@ -548,53 +548,52 @@ exports.BattleMovedex = {
 		target: 'normal'
 	}
 }
-+"godbird": {
-+		num: 638,
-+		accuracy: 100,
-+		basePower: 100,
-+		category: "Special",
-+		desc: "If this move is successful, it breaks through the target's Detect, King's Shield, Protect, or Spiky Shield for this turn, allowing other Pokemon to attack the target normally. If the target's side is protected by Crafty Shield, Mat Block, Quick Guard, or Wide Guard, that protection is also broken for this turn and other Pokemon may attack the target's side normally. This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks. If the user is holding a Power Herb, the move completes in one turn. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
-+		shortDesc: "Soars in the sky turn 1. Hits turn 2. Breaks protection.",
-+		id: "godbird",
-+		name: "God Burd",
-+		pp: 15,
-+		priority: 0,
-+		flags: {contact: 1, charge: 1, mirror: 1},
-+		breaksProtect: true,
-+			self: {
-+			onHit: function(pokemon) { 
-+					var temp = pokemon.item;
-+					pokemon.item = 'pidgeotite'; 
-+					if (!pokemon.template.isMega) pokemon.canMegaEvo = this.canMegaEvo(pokemon); 
-+					if (pokemon.canMegaEvo) this.runMegaEvo(pokemon);
-+					pokemon.item = temp; 
-+				}
-+		onTry: function (attacker, defender, move) {
-+			if (attacker.removeVolatile(move.id)) {
-+				return;
-+			}
-             		this.add('-prepare', attacker, move.name, defender);
-			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
-				this.add('-anim', attacker, move.name, defender);
+"godbird": {
+	num: 638,
+	accuracy: 100,
+	basePower: 100,
+	category: "Special",
+	desc: "If this move is successful, it breaks through the target's Detect, King's Shield, Protect, or Spiky Shield for this turn, allowing other Pokemon to attack the target normally. If the target's side is protected by Crafty Shield, Mat Block, Quick Guard, or Wide Guard, that protection is also broken for this turn and other Pokemon may attack the target's side normally. This attack charges on the first turn and executes on the second. On the first turn, the user avoids all attacks. If the user is holding a Power Herb, the move completes in one turn. Damage doubles and no accuracy check is done if the target has used Minimize while active.",
+	shortDesc: "Soars in the sky turn 1. Hits turn 2. Breaks protection.",
+	id: "godbird",
+	name: "God Bird",
+	pp: 15,
+	priority: 0,
+	flags: {contact: 1, charge: 1, mirror: 1},
+	breaksProtect: true,
+	onHit: function(pokemon) { 
+		var temp = pokemon.item;
+		pokemon.item = 'pidgeotite'; 
+		if (!pokemon.template.isMega) pokemon.canMegaEvo = this.canMegaEvo(pokemon); 
+		if (pokemon.canMegaEvo) this.runMegaEvo(pokemon);
+		pokemon.item = temp; 
+	},
+	onTry: function (attacker, defender, move) {
+		if (attacker.removeVolatile(move.id)) {
+			return;
+		}
+		this.add('-prepare', attacker, 'Fly', defender);
+		if (!this.runEvent('ChargeMove', attacker, defender, move)) {
+			this.add('-anim', attacker, 'Fly', defender);
+			return;
+		}
+		attacker.addVolatile('twoturnmove', defender);
+		return null;
+	},
+	effect: {
+		duration: 2,
+		onAccuracy: function (accuracy, target, source, move) {
+			if (move.id === 'helpinghand') {
 				return;
 			}
-			attacker.addVolatile('twoturnmove', defender);
-			return null;
-		},
-		effect: {
-			duration: 2,
-			onAccuracy: function (accuracy, target, source, move) {
-				if (move.id === 'helpinghand') {
-					return;
-				}
-				if (source.hasAbility('noguard') || target.hasAbility('noguard')) {
-					return;
-				}
-				if (source.volatiles['lockon'] && target === source.volatiles['lockon'].source) return;
-				return 0;
+			if (source.hasAbility('noguard') || target.hasAbility('noguard')) {
+				return;
 			}
-		},
-		secondary: false,
-		target: "normal",
-		type: "Flying"
+			if (source.volatiles['lockon'] && target === source.volatiles['lockon'].source) return;
+			return 0;
+		}
 	},
+	secondary: false,
+	target: "normal",
+	type: "Flying"
+},
