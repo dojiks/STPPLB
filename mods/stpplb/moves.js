@@ -224,6 +224,7 @@ exports.BattleMovedex = {
 		id: 'projectilespam',
 		type: 'Fighting',
 		category: 'Physical',
+		pp: 20,
 		basePower: 12,
 		multihit: [8, 11],
 		onPrepareHit: function(target, source, move) {
@@ -356,6 +357,7 @@ exports.BattleMovedex = {
 				}
 			}
 		},
+		eeveelutiontypes: ['Fire', 'Water', 'Electric', 'Psychic', 'Dark', 'Grass', 'Ice', 'Fairy'],
 		secondary: false,
 		target: "normal",
 		type: "Normal"
