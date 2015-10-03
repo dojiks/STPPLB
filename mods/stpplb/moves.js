@@ -62,6 +62,7 @@ exports.BattleMovedex = {
 		accuracy: 100,
 		category: 'Special',
 		target: 'any',
+		flags: {protect: 1, mirror: 1},
 		onEffectiveness: function (typeMod, type, move) {
 			return typeMod + this.getEffectiveness('Fire', type); // includes Fire in its effectiveness.
 		},
@@ -166,6 +167,7 @@ exports.BattleMovedex = {
 		accuracy: 37,
 		pp: 16,
 		category: 'Physical',
+		flags: {contact: 1, protect: 1, mirror: 1},
 		onPrepareHit: function(target, source) { // Turns target and user into Bird-type.
 			this.attrLastMove('[still]');
 			this.add('-anim', source, 'Calm Mind', source);
@@ -195,6 +197,7 @@ exports.BattleMovedex = {
 			this.attrLastMove('[still]');
 			this.add('-anim', source, 'Tri Attack', target);
 		},
+		flags: {protect: 1, mirror: 1},
 		secondary: {
 			chance: 20,
 			onHit: function (target, source) { // random status.
@@ -214,5 +217,210 @@ exports.BattleMovedex = {
 				}
 			}
 		}
+	},
+	'projectilespam': {
+		num: 627,
+		name: 'Projectile Spam',
+		id: 'projectilespam',
+		type: 'Fighting',
+		category: 'Physical',
+		basePower: 12,
+		multihit: [8, 11],
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Bullet Punch', target);
+		},
+		self: {
+			volatileStatus: 'lockedmove'
+		},
+		onAfterMove: function (pokemon) {
+			if (pokemon.volatiles['lockedmove'] && pokemon.volatiles['lockedmove'].duration === 1) {
+				pokemon.removeVolatile('lockedmove');
+			}
+		},
+		flags: {protect: 1, mirror: 1}
+	},
+	'bulk': {
+		num: 628,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Raises the user's Attack and Defense by 2 stages.",
+		shortDesc: "Raises the user's Attack and Defense by 2.",
+		id: "bulk",
+		isViable: true,
+		name: "BULK!!",
+		pp: 20,
+		priority: 0,
+		flags: {snatch: 1},
+		boosts: {
+			atk: 2,
+			def: 2
+		},
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Bulk Up', source);
+		}
+		secondary: false,
+		target: "self",
+		type: "Fighting"
+	},
+	'shadowrush': {
+		num: 629,
+		accuracy: 100,
+		basePower: 80,
+		category: "Physical",
+		desc: "No additional effect.",
+		shortDesc: "Usually goes first.",
+		id: "shadowrush",
+		name: "Shadow Rush",
+		pp: 8,
+		priority: 2,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Ghost",
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Shadow Sneak', target);
+		}
+	},
+	'partingvoltturn': {
+		num: 630,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Uses Parting Shot, Volt Switch and U-Turn in the same turn.",
+		shortDesc: "Gets the fuck out of here.",
+		id: "partingvoltturn",
+		name: "Parting Volt Turn",
+		pp: 10,
+		priority: 0,
+		flags: {},
+		onHit: function(target) {
+			this.useMove('partingshot', target);
+			this.useMove('voltswitch', target);
+			this.useMove('uturn', target);
+			this.add("c|Lass Zeowx|I'm getting outta here! Byeeeee~");
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal"
+	},
+	'evolutionbeam': {
+		num: 631,
+		accuracy: 100,
+		basePower: 10,
+		category: "Special",
+		desc: "Hits once for every eeveelution.",
+		shortDesc: "Hits once for every eeveelution.",
+		id: "evolutionbeam",
+		name: "Evolution Beam",
+		pp: 10,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		onPrepareHit: function (target, source, move) { // animation depending on type.
+			this.attrLastMove('[still]');
+			if (move.type === 'Normal')
+				this.add('-anim', source, "Swift", target);
+			if (move.type === 'Fire')
+				this.add('-anim', source, "Flamethrower", target);
+			if (move.type === 'Water')
+				this.add('-anim', source, "Water Gun", target);
+			if (move.type === 'Electric')
+				this.add('-anim', source, "Thunderbolt", target);
+			if (move.type === 'Psychic')
+				this.add('-anim', source, "Psybeam", target);
+			if (move.type === 'Dark')
+				this.add('-anim', source, "Dark Pulse", target);
+			if (move.type === 'Ice')
+				this.add('-anim', source, "Ice Beam", target);
+			if (move.type === 'Grass')
+				this.add('-anim', source, 'Solar Beam', target);
+			if (move.type === 'Fairy')
+				this.add('-anim', source, 'Dazzling Gleam', target);
+		},
+		self: {
+			onHit: function(target, pokemon, move) {
+				if (move.type === 'Normal') {
+					var t = move.eeveelutiontypes;
+					move.accuracy = true; // I think this is bugged.
+					for (var i = 0; i < move.eeveelutiontypes.length; i++) { // hit for all eeveelution types in random order.
+						var r = this.random(t.length);
+						move.type = t[r];
+						t.splice(r, 1);
+						this.useMove(move, pokemon, target);
+					}
+					move.type = 'Normal';
+					move.accuracy = 100;
+				}
+			}
+		}
+		secondary: false,
+		target: "normal",
+		type: "Normal"
+	},
+	'hyperwahahahahaha': {
+		num: 632,
+		name: 'Hyper WAHAHAHAHAHA',
+		id: 'hyperwahahahahaha',
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		desc: "Has a 20% chance to paralyze the target and a 20% chance to cofuse it.",
+		shortDesc: "20% chance to paralyze the target and 20% to confuse target.",
+		isViable: true,
+		pp: 15,
+		priority: 0,
+		secondaries: [{chance: 20, status: 'par'}, {chance: 20, volatileStatus: 'confusion'}],
+		target: "normal",
+		type: "Electric"
+	},
+	'broadside': {
+		num: 633,
+		name: 'Broadside',
+		id: 'broadside',
+		accuracy: 100,
+		basePower: 18,
+		multihit: 5,
+		category: "Special",
+		desc: "No additional effect.",
+		shortDesc: "Hits adjacent Pokemon.",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1, nonsky: 1},
+		secondary: false,
+		target: "allAdjacent",
+		type: "Water"
+	},
+	'bestfcar': {
+		num: 634,
+		name: 'BEST F-CAR',
+		id: 'bestfcar',
+		basePower: 60,
+		secondaries: [
+			{
+				chance: 20, 
+				status: 'brn'
+			}, 
+			{
+				chance: 100, 
+				self: {
+					boosts: {
+						spa: 1
+					}
+				}
+			}
+		],
+		accuracy: 100,
+		category: "Special",
+		desc: "Has a 20% chance to burn the target. Raises Sp.Atk by 1 stage.",
+		shortDesc: "20% chance to burn the target. Raises Sp.Atk by 1.",
+		pp: 15,
+		priority: 0,
+		flags: {protect: 1, mirror: 1},
+		target: "normal",
+		type: "Fire"
 	}
 }
