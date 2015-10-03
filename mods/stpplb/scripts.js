@@ -6,13 +6,13 @@ exports.BattleScripts = {
 			'darkfiregamer': {
 				species: "Houndoom", ability: "Dark Aura", item: "Dark Gem", gender: "M",
 				moves: ['moonblast', 'hyperbeam', 'fireblast'],
-				baseSignatureMove: 'darkpulse', signatureMove: 'Darkfire',
+				baseSignatureMove: 'darkfire', signatureMove: 'Darkfire',
 				evs: {hp:4, spa:252, spe:252}, nature: 'Timid'
 			},
 			'xfix': {
 				species: 'Xatu', ability: 'Magic Bounce', item: 'Focus Sash', gender: 'M',
 				moves: ['thunderwave', 'substitute', 'roost'],
-				baseSignatureMove: 'metronome', signatureMove: "(Super Glitch)",
+				baseSignatureMove: 'superglitch', signatureMove: "(Super Glitch)",
 				evs: {hp:252, spd:252, def:4}, nature: 'Calm'
 			},
 			'azum4roll': {
@@ -109,13 +109,13 @@ exports.BattleScripts = {
 			'darkfiregamer': {
 				species: "Houndoom", ability: "Dark Aura", item: "Dark Gem", gender: "M",
 				moves: ['moonblast', 'hyperbeam', 'fireblast'],
-				baseSignatureMove: 'darkpulse', signatureMove: 'Darkfire',
+				baseSignatureMove: 'darkfire', signatureMove: 'Darkfire',
 				evs: {hp:4, spa:252, spe:252}, nature: 'Timid'
 			},
 			'xfix': {
 				species: 'Xatu', ability: 'Magic Bounce', item: 'Focus Sash', gender: 'M',
 				moves: ['thunderwave', 'substitute', 'roost'],
-				baseSignatureMove: 'metronome', signatureMove: "(Super Glitch)",
+				baseSignatureMove: 'superglitch', signatureMove: "(Super Glitch)",
 				evs: {hp:252, spd:252, def:4}, nature: 'Calm'
 			},
 			'azum4roll': {
@@ -212,13 +212,13 @@ exports.BattleScripts = {
 			'darkfiregamer': {
 				species: "Houndoom", ability: "Dark Aura", item: "Dark Gem", gender: "M",
 				moves: ['moonblast', 'hyperbeam', 'fireblast'],
-				baseSignatureMove: 'darkpulse', signatureMove: 'Darkfire',
+				baseSignatureMove: 'darkfire', signatureMove: 'Darkfire',
 				evs: {hp:4, spa:252, spe:252}, nature: 'Timid'
 			},
 			'xfix': {
 				species: 'Xatu', ability: 'Magic Bounce', item: 'Focus Sash', gender: 'M',
 				moves: ['thunderwave', 'substitute', 'roost'],
-				baseSignatureMove: 'metronome', signatureMove: "(Super Glitch)",
+				baseSignatureMove: 'superglitch', signatureMove: "(Super Glitch)",
 				evs: {hp:252, spd:252, def:4}, nature: 'Calm'
 			},
 			'azum4roll': {

@@ -54,4 +54,104 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Normal"
 	},
+	'darkfire': {
+		num: 623,
+		name: 'Darkfire',
+		id: 'darkfire',
+		basePower: 90,
+		accuracy: 100,
+		category: 'Special',
+		target: 'any',
+		onEffectiveness: function (typeMod, type, move) {
+			return typeMod + this.getEffectiveness('Fire', type); // includes Fire in its effectiveness.
+		};
+		self: {
+			onHit: function(pokemon) { // Mega evolves dfg
+					if (!pokemon.template.isMega) pokemon.canMegaEvo = true; // don't mega evolve if it's already mega
+					if (pokemon.canMegaEvo) this.runMegaEvo(pokemon);
+				}
+		},
+		flags: {protect: 1, pulse: 1, mirror: 1, distance: 1},
+		secondary: {
+			chance: 20,
+			volatileStatus: 'flinch'
+		},
+		priority: 0,
+		pp: 15,
+		type: 'Dark'
+	},
+	'superglitch': {
+		num: 624,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "A random move is selected for use, other than After You, Assist, Belch, Bestow, Celebrate, Chatter, Copycat, Counter, Covet, Crafty Shield, Destiny Bond, Detect, Diamond Storm, Endure, Feint, Focus Punch, Follow Me, Freeze Shock, Happy Hour, Helping Hand, Hold Hands, Hyperspace Hole, Ice Burn, King's Shield, Light of Ruin, Mat Block, Me First, Metronome, Mimic, Mirror Coat, Mirror Move, Nature Power, Protect, Quash, Quick Guard, Rage Powder, Relic Song, Secret Sword, Sketch, Sleep Talk, Snarl, Snatch, Snore, Spiky Shield, Steam Eruption, Struggle, Switcheroo, Techno Blast, Thief, Thousand Arrows, Thousand Waves, Transform, Trick, V-create, or Wide Guard.",
+		shortDesc: "Picks a random move.",
+		id: "superglitch",
+		name: "(Super Glitch)",
+		pp: 10,
+		priority: 0,
+		multihit: [2, 5],
+		flags: {},
+		onHit: function (target) {
+			var moves = [];
+			for (var i in exports.BattleMovedex) {
+				var move = exports.BattleMovedex[i];
+				if (i !== move.id) continue;
+				if (move.isNonstandard) continue;
+				var noMetronome = {
+					afteryou:1, assist:1, belch:1, bestow:1, celebrate:1, chatter:1, copycat:1, counter:1, covet:1, craftyshield:1, destinybond:1, detect:1, diamondstorm:1, dragonascent:1, endure:1, feint:1, focuspunch:1, followme:1, freezeshock:1, happyhour:1, helpinghand:1, holdhands:1, hyperspacefury:1, hyperspacehole:1, iceburn:1, kingsshield:1, lightofruin:1, matblock:1, mefirst:1, metronome:1, mimic:1, mirrorcoat:1, mirrormove:1, naturepower:1, originpulse:1, precipiceblades:1, protect:1, quash:1, quickguard:1, ragepowder:1, relicsong:1, secretsword:1, sketch:1, sleeptalk:1, snarl:1, snatch:1, snore:1, spikyshield:1, steameruption:1, struggle:1, switcheroo:1, technoblast:1, thief:1, thousandarrows:1, thousandwaves:1, transform:1, trick:1, vcreate:1, wideguard:1
+				};
+				if (!noMetronome[move.id]) {
+					moves.push(move);
+				}
+			}
+			var move = '';
+			if (moves.length) {
+				moves.sort(function (a, b) {return a.num - b.num;});
+				move = moves[this.random(moves.length)].id;
+			}
+			if (!move) {
+				return false;
+			}
+			this.useMove(move, target);
+		},
+		onTryHit: function (target, source) { // can cause TMTRAINER effect randomly
+			if (!source.isActive) return null;
+			if (this.random(777) !== 42) return; // 1/777 chance to cause TMTRAINER effect
+			var opponent = pokemon.side.foe.active[0];
+			opponent.setStatus('brn');
+			var possibleStatuses = ['confusion', 'flinch', 'attract', 'focusenergy', 'foresight', 'healblock'];
+			for (var i = 0; i < possibleStatuses.length; i++) {
+				if (this.random(3) === 1) {
+					opponent.addVolatile(possibleStatuses[i]);
+				}
+			}
+
+			function generateNoise() { // make some random glitchy text.
+				var noise = '';
+				var random = this.random(40, 81);
+				for (var i = 0; i < random; i++) {
+					if (this.random(4) !== 0) {
+						// Non-breaking space
+						noise += '\u00A0';
+					} else {
+						noise += String.fromCharCode(this.random(0xA0, 0x3040));
+					}
+				}
+				return noise;
+			}
+			// weird effects.
+			this.add('-message', "(Enemy " + generateNoise.call(this) + " TMTRAINER " + opponent.name + " is frozen solid?)");
+			this.add('-message', "(Enemy " + generateNoise.call(this) + " TMTRAINER " + opponent.name + " is hurt by its burn!)");
+			this.damage(opponent.maxhp * this.random(42, 96) * 0.01, opponent, opponent);
+			var exclamation = source.status === 'brn' ? '!' : '?';
+			this.add('-message', "(Enemy " + generateNoise.call(this) + " TMTRAINER @xfix is hurt by its burn" + exclamation + ")");
+			this.damage(source.maxhp * this.random(24, 48) * 0.01, source, source);
+			return null;
+		},
+		secondary: false,
+		target: "self",
+		type: "Normal"
+	}
 }

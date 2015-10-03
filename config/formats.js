@@ -178,21 +178,6 @@ exports.Formats = [
 		},
 		onModifyMove: function(move, pokemon) { // this is where the signature moves are actually done.
 			var name = toId(pokemon.illusion && move.sourceEffect === 'allyswitch' ? pokemon.illusion.name : pokemon.name);
-			if (name === 'darkfiregamer' && move.id === 'darkpulse') { // Darkfire
-				move.name = "Darkfire";
-				move.basePower = 90;
-				move.accuracy = 100;
-				move.onEffectiveness = function (typeMod, type, move) {
-					return typeMod + this.getEffectiveness('Fire', type); // includes Fire in its effectiveness.
-				};
-				move.onHit = function(target, pokemon) { // Mega evolves dfg
-					var temp = pokemon.item;
-					pokemon.item = 'houndoominite'; // in order to make it mega evolvable, add a Houndoomite temporarily.
-					if (!pokemon.template.isMega) pokemon.canMegaEvo = this.canMegaEvo(pokemon); // don't mega evolve if it's already mega
-					if (pokemon.canMegaEvo) this.runMegaEvo(pokemon);
-					pokemon.item = temp; // give its normal item back.
-				}
-			}
 			if (name === 'xfix' && move.id == 'metronome') { // (Super Glitch)
 				if (pokemon.moveset[3] && pokemon.moveset[3].pp) { // I have no idea. No seriously. This was in the Super Staff Bros. code and I don't know what it does. Leaving it here.
 					pokemon.moveset[3].pp = Math.round(pokemon.moveset[3].pp * 10 + 6) / 10;
