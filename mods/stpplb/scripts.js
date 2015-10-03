@@ -109,7 +109,7 @@ exports.BattleScripts = {
 			},*/
 			'MegaCharizard': {
 				species: 'Charizard', ability: 'Truant', item: 'Charizardite Y',
-				moves: ['bravebird', 'earthquake', 'roost', 'slackoff', 'flamethrower'],
+				moves: ['airslash', 'earthpower', 'roost', 'slackoff', 'flamethrower'],
 				signatureMove: 'afk',
 				evs: {hp: 4, spa: 252, spe: 252}, nature: 'Timid'
 			}
@@ -243,7 +243,7 @@ exports.BattleScripts = {
 			},
 			'MegaCharizard': {
 				species: 'Charizard', ability: 'Truant', item: 'Charizardite Y',
-				moves: ['bravebird', 'earthquake', 'roost', 'slackoff', 'flamethrower'],
+				moves: ['airslash', 'earthpower', 'roost', 'slackoff', 'flamethrower'],
 				signatureMove: 'afk',
 				evs: {hp: 4, spa: 252, spe: 252}, nature: 'Timid'
 			}
@@ -377,7 +377,7 @@ exports.BattleScripts = {
 			},
 			'MegaCharizard': {
 				species: 'Charizard', ability: 'Truant', item: 'Charizardite Y',
-				moves: ['bravebird', 'earthquake', 'roost', 'slackoff', 'flamethrower'],
+				moves: ['airslash', 'earthpower', 'roost', 'slackoff', 'flamethrower'],
 				signatureMove: 'afk',
 				evs: {hp: 4, spa: 252, spe: 252}, nature: 'Timid'
 			}
