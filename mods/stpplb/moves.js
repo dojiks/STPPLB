@@ -424,5 +424,27 @@ exports.BattleMovedex = {
 		flags: {protect: 1, mirror: 1},
 		target: "normal",
 		type: "Fire"
+	},
+	'eternalstruggle': {
+		num: 635,
+		name: 'Eternal Struggle',
+		id: 'eternalstruggle',
+		category: 'Special',
+		type: 'Electric',
+		desc: 'Has 1/2 recoil.',
+		shortDesc: 'Has 1/2 recoil.',
+		pp: 8,
+		priority: 0,
+		basePower: 180,
+		accuracy: 100,
+		flags: {protect: 1, mirror: 1},
+		onPrepareHit: function (target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Discharge', target);
+		},
+		recoil: [1, 2],
+		onHit: function (target, source, move) {
+			this.boost({atk:-1, def:-1, spa:-1, spd:-1, spe:-1, accuracy:1, evasion:1}, source);
+		}
 	}
 }
