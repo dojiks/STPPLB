@@ -182,5 +182,39 @@ exports.BattleAbilities = { // define custom abilities here.
 		name: 'Sea and Sky',
 		rating: 4,
 		num: 199
-	}
+	},
+	'littleengine': { // Poomph, the little engine who couldn't. Negative version of moody.
+		desc: "This Pokemon has a random stat raised by 1 stage and another lowered by 2 stages at the end of each turn.",
+		shortDesc: "Raises a random stat by 1 and lowers another by 2 at the end of each turn.",
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual: function (pokemon) {
+			var stats = [], i= '';
+			var boost = {};
+			for (var i in pokemon.boosts) {
+				if (pokemon.boosts[i] < 6) {
+					stats.push(i);
+				}
+			}
+			if (stats.length) {
+				i = stats[this.random(stats.length)];
+				boost[i] = 1;
+			}
+			stats = [];
+			for (var j in pokemon.boosts) {
+				if (pokemon.boosts[j] > -6 && j !== i) {
+					stats.push(j);
+				}
+			}
+			if (stats.length) {
+				i = stats[this.random(stats.length)];
+				boost[i] = -2;
+			}
+			this.boost(boost);
+		},
+		id: "littleengine",
+		name: "Little Engine",
+		rating: -1,
+		num: 200
+	},
 }
