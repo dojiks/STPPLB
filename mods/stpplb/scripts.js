@@ -100,7 +100,13 @@ exports.BattleScripts = {
 				moves: ['bravebird', 'aerialace', 'swordsdance', 'roost', 'uturn', 'xscissor', 'knockoff', 'earthquake'],
 				signatureMove: 'nofun',
 				evs: {hp:216,atk:40,spe:252}, nature: 'Jolly'
-			}
+			},
+			/*'DictatorMantis': { // STPPLB+ only
+				species: 'Scizor', ability: 'Technicality', item: 'Occa Berry', gender: 'M',
+				moves: ['barrier','craftyshield','trick','block','disable','stickyweb','embargo','quash','taunt','knockoff','bulletpunch'],
+				signatureMove: 'ironfist',
+				evs: {hp:4,atk:252,spe:252}, nature: 'Adamant'
+			}*/
 		};
 		var pool = Object.keys(sets).randomize();
 		for (var i = 0; i < Math.min(6, pool.length); i++) {
@@ -222,6 +228,12 @@ exports.BattleScripts = {
 				moves: ['bravebird', 'aerialace', 'swordsdance', 'roost', 'uturn', 'xscissor', 'knockoff', 'earthquake'],
 				signatureMove: 'nofun',
 				evs: {hp:216,atk:40,spe:252}, nature: 'Jolly'
+			},
+			'DictatorMantis': {
+				species: 'Scizor', ability: 'Technicality', item: 'Occa Berry', gender: 'M',
+				moves: ['barrier','craftyshield','trick','block','disable','stickyweb','embargo','quash','taunt','knockoff','bulletpunch'],
+				signatureMove: 'ironfist',
+				evs: {hp:4,atk:252,spe:252}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -344,6 +356,12 @@ exports.BattleScripts = {
 				moves: ['bravebird', 'aerialace', 'swordsdance', 'roost', 'uturn', 'xscissor', 'knockoff', 'earthquake'],
 				signatureMove: 'nofun',
 				evs: {hp:216,atk:40,spe:252}, nature: 'Jolly'
+			},
+			'DictatorMantis': {
+				species: 'Scizor', ability: 'Technicality', item: 'Occa Berry', gender: 'M',
+				moves: ['barrier','craftyshield','trick','block','disable','stickyweb','embargo','quash','taunt','knockoff','bulletpunch'],
+				signatureMove: 'ironfist',
+				evs: {hp:4,atk:252,spe:252}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();

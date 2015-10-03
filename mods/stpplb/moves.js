@@ -463,5 +463,35 @@ exports.BattleMovedex = {
 		},
 		secondary: false,
 		target: "normal",
+	},
+	'ironfist': {
+		num: 637,
+		name: 'Iron Fist',
+		id: 'ironfist',
+		category: 'Physical',
+		basePower: 90,
+		accuracy: 100,
+		type: 'Steel',
+		flags: {contact:1, protect:1, mirror:1},
+		onHit: function(target) {
+			var bannedAbilities = {multitype:1, defeatist:1, stancechange:1, truant:1};
+			if (!bannedAbilities[pokemon.ability]) {
+				var oldAbility = target.setAbility('defeatist');
+				if (oldAbility) {
+					this.add('-endability', pokemon, oldAbility, '[from] move: Iron Fist');
+					this.add('-ability', pokemon, 'Defeatist', '[from] move: Iron Fist');
+					return;
+				}
+			}
+		}
+		self: {
+			onHit: function(pokemon) {
+				var temp = pokemon.item;
+				pokemon.item = 'Scizorite';
+				if (!pokemon.template.isMega) pokemon.canMegaEvo = this.canMegaEvo(pokemon); // don't mega evolve if it's already mega
+				if (pokemon.canMegaEvo) this.runMegaEvo(pokemon);
+				pokemon.item = temp; // give its normal item back.
+			}
+		}
 	}
 }

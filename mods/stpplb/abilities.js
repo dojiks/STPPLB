@@ -298,8 +298,7 @@ exports.BattleAbilities = { // define custom abilities here.
 		rating: 3.5,
 		num: 204
 	},
-}
-"messiah": {
+	"messiah": {
 		desc: "This Pokemon blocks certain status moves and instead uses the move against the original user. Increases Sp.Attack by 2",
 		shortDesc: "This Pokemon blocks certain status moves and bounces them back to the user. Also gets a Sp.Attack boost",
 		id: "messiah",
@@ -329,3 +328,16 @@ exports.BattleAbilities = { // define custom abilities here.
 		rating: 4.5,
 		num: 205
 	},
+	'technicality': {
+		num: 206,
+		id: 'technicality',
+		name: 'Technicality',
+		onAnyTryMove: function (target, source, effect) {
+			if (this.random(3) === 0) {
+				this.attrLastMove('[still]');
+				this.add("c|DictatorMantis|This move doesn't work because I say so!");
+				return false;
+			}
+		},
+	}
+}
