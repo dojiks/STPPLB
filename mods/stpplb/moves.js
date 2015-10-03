@@ -164,6 +164,7 @@ exports.BattleMovedex = {
 		type: 'Bird',
 		basePower: 205,
 		accuracy: 37,
+		pp: 16
 		category: 'Physical',
 		onPrepareHit: function(target, source) { // Turns target and user into Bird-type.
 			this.attrLastMove('[still]');
