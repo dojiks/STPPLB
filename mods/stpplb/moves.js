@@ -342,22 +342,20 @@ exports.BattleMovedex = {
 			if (move.type === 'Fairy')
 				this.add('-anim', source, 'Dazzling Gleam', target);
 		},
-		self: {
-			onHit: function(target, pokemon, move) {
-				if (move.type === 'Normal') {
-					var t = move.eeveelutiontypes;
-					move.accuracy = true; // I think this is bugged.
-					for (var i = 0; i < move.eeveelutiontypes.length; i++) { // hit for all eeveelution types in random order.
-						var r = this.random(t.length);
-						move.type = t[r];
-						t.splice(r, 1);
-						this.useMove(move, pokemon, target);
-					}
-					move.type = 'Normal';
-					move.accuracy = 100;
+		onTryHit: function(target, pokemon, move) {
+			if (move.type === 'Normal') {
+				var t = move.eeveelutiontypes;
+				move.accuracy = true; // I think this is bugged.
+				for (var i = 0; i < move.eeveelutiontypes.length; i++) { // hit for all eeveelution types in random order.
+					var r = this.random(t.length);
+					move.type = t[r];
+					t.splice(r, 1);
+					this.useMove(move, pokemon, target);
 				}
+				move.type = 'Normal';
+				move.accuracy = 100;
 			}
-		},
+		}
 		eeveelutiontypes: ['Fire', 'Water', 'Electric', 'Psychic', 'Dark', 'Grass', 'Ice', 'Fairy'],
 		secondary: false,
 		target: "normal",

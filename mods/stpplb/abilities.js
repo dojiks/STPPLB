@@ -274,4 +274,28 @@ exports.BattleAbilities = { // define custom abilities here.
 		rating: 1,
 		num: 203
 	},
+	"dictator": {
+		desc: "On switch-in, this Pokemon lowers the Attack, Special Attack and Speed of adjacent opposing Pokemon by 1 stage. Pokemon behind a substitute are immune.",
+		shortDesc: "On switch-in, this Pokemon lowers the Attack, Special Attack and Speed of adjacent opponents by 1 stage.",
+		onStart: function (pokemon) {
+			var foeactive = pokemon.side.foe.active;
+			var activated = false;
+			for (var i = 0; i < foeactive.length; i++) {
+				if (!foeactive[i] || !this.isAdjacent(foeactive[i], pokemon)) continue;
+				if (!activated) {
+					this.add('-ability', pokemon, 'Dictator');
+					activated = true;
+				}
+				if (foeactive[i].volatiles['substitute']) {
+					this.add('-activate', foeactive[i], 'Substitute', 'ability: Dictator', '[of] ' + pokemon);
+				} else {
+					this.boost({atk: -1, spa: -1, spe: -1}, foeactive[i], pokemon);
+				}
+			}
+		},
+		id: "dictator",
+		name: "Dictator",
+		rating: 3.5,
+		num: 204
+	},
 }
