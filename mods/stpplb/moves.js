@@ -165,7 +165,7 @@ exports.BattleMovedex = {
 		type: 'Bird',
 		basePower: 205,
 		accuracy: 37,
-		pp: 16,
+		pp: 10,
 		drain: [1, 2],
 		category: 'Physical',
 		flags: {pulse: 1, bullet: 1, protect: 1, mirror: 1},
@@ -193,7 +193,7 @@ exports.BattleMovedex = {
 		category: 'Special',
 		basePower: 100,
 		accuracy: 90,
-		pp: 8,
+		pp: 5,
 		onPrepareHit: function(target, source, move) { // animation
 			this.attrLastMove('[still]');
 			this.add('-anim', source, 'Tri Attack', target);
@@ -276,7 +276,7 @@ exports.BattleMovedex = {
 		shortDesc: "Usually goes first.",
 		id: "shadowrush",
 		name: "Shadow Rush",
-		pp: 8,
+		pp: 5,
 		priority: 2,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		secondary: false,
@@ -432,7 +432,7 @@ exports.BattleMovedex = {
 		type: 'Electric',
 		desc: 'Has 1/2 recoil.',
 		shortDesc: 'Has 1/2 recoil.',
-		pp: 8,
+		pp: 5,
 		priority: 0,
 		basePower: 180,
 		accuracy: 100,
@@ -443,7 +443,25 @@ exports.BattleMovedex = {
 		},
 		recoil: [1, 2],
 		onHit: function (target, source, move) {
-			this.boost({atk:-1, def:-1, spa:-1, spd:-1, spe:-1, accuracy:1, evasion:1}, source);
+			this.boost({atk:-1, def:-1, spa:-1, spd:-1, spe:-1}, source);
 		}
+	},
+	'nofun': {
+		num: 636,
+		name: 'No Fun',
+		id: 'nofun',
+		category: 'Physical',
+		priority: 1,
+		basePower: 90,
+		accuracy: 90,
+		type: 'Bug',
+		pp: 15,
+		flags: {protect: 1, mirror: 1},
+		onHit: function (target) {
+			target.clearBoosts();
+			this.add('-clearboost', target);
+		},
+		secondary: false,
+		target: "normal",
 	}
 }
