@@ -598,4 +598,105 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Flying"
 	},
+	'reroll': {
+		num: 639,
+		accuracy: true,
+		basePower: 0,
+		category: 'Status',
+		flags: {},
+		pp: 10,
+		priority: 0,
+		onHit: function(target) {
+			if (!target.template.isMega) {
+				var megaStoneList = [
+					'Abomasite',
+					'Absolite',
+					'Aerodactylite',
+					'Aggronite',
+					'Alakazite',
+					'Altarianite',
+					'Ampharosite',
+					'Audinite',
+					'Banettite',
+					'Beedrillite',
+					'Blastoisinite',
+					'Blazikenite',
+					'Cameruptite',
+					'Charizardite X',
+					'Charizardite Y',
+					'Diancite',
+					'Galladite',
+					'Garchompite',
+					'Gardevoirite',
+					'Gengarite',
+					'Glalitite',
+					'Gyaradosite',
+					'Heracronite',
+					'Houndoominite',
+					'Kangaskhanite',
+					'Latiasite',
+					'Latiosite',
+					'Lopunnite',
+					'Lucarionite',
+					'Manectite',
+					'Mawilite',
+					'Medichamite',
+					'Metagrossite',
+					'Mewtwonite X',
+					'Mewtwonite Y',
+					'Pidgeotite',
+					'Pinsirite',
+					'Sablenite',
+					'Salamencite',
+					'Sceptilite',
+					'Scizorite',
+					'Sharpedonite',
+					'Slowbronite',
+					'Steelixite',
+					'Swampertite',
+					'Tyranitarite',
+					'Venusaurite',
+					'Red Orb',
+					'Blue Orb'
+				];
+				target.item = megaStoneList.sample(1)[0];
+				this.add('-item', target, target.getItem(), '[from] move: Re-Roll');
+				target.canMegaEvo = target.getItem().megaStone;
+				var pokemon = target;
+				var item = pokemon.getItem();
+				if (pokemon.isActive && !pokemon.template.isMega && !pokemon.template.isPrimal && (item.id === 'redorb' || item.id === 'blueorb') && pokemon.baseTemplate.tier !== 'Uber' && !pokemon.template.evos.length) {
+					// Primal Reversion
+					var bannedMons = {'Kyurem-Black':1, 'Slaking':1, 'Regigigas':1, 'Cresselia':1, 'Shuckle':1};
+					if (!(pokemon.baseTemplate.baseSpecies in bannedMons)) {
+						var template = this.getMixedTemplate(pokemon.originalSpecies, item.id === 'redorb' ? 'Groudon-Primal' : 'Kyogre-Primal');
+						pokemon.formeChange(template);
+						pokemon.baseTemplate = template;
+
+						// Do we have a proper sprite for it?
+						if (pokemon.originalSpecies === (item.id === 'redorb' ? 'Groudon' : 'Kyogre')) {
+							pokemon.details = template.species + (pokemon.level === 100 ? '' : ', L' + pokemon.level) + (pokemon.gender === '' ? '' : ', ' + pokemon.gender) + (pokemon.set.shiny ? ', shiny' : '');
+							this.add('detailschange', pokemon, pokemon.details);
+						} else {
+							var oTemplate = this.getTemplate(pokemon.originalSpecies);
+							this.add('-formechange', pokemon, oTemplate.species, template.requiredItem);
+							this.add('-start', pokemon, this.getTemplate(template.originalMega).requiredItem, '[silent]');
+							if (oTemplate.types.length !== pokemon.template.types.length || oTemplate.types[1] !== pokemon.template.types[1]) {
+								this.add('-start', pokemon, 'typechange', pokemon.template.types.join('/'), '[silent]');
+							}
+						}
+						this.add('message', pokemon.name + "'s " + pokemon.getItem().name + " activated!");
+						this.add('message', pokemon.name + "'s Primal Reversion! It reverted to its primal form!");
+						pokemon.setAbility(template.abilities['0']);
+						pokemon.baseAbility = pokemon.ability;
+						pokemon.canMegaEvo = false;
+					}
+				}
+			}
+		},
+		name: 'Re-Roll',
+		id: 'reroll',
+		secondary: false,
+		target: 'self',
+		type: 'Normal'
+	}
 }

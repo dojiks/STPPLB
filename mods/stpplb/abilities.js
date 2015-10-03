@@ -339,5 +339,10 @@ exports.BattleAbilities = { // define custom abilities here.
 				return false;
 			}
 		},
+	},
+	'megaplunder': {
+		num: 207,
+		id: 'megaplunder',
+		name: 'Mega Plunder'
 	}
 }

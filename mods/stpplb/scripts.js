@@ -1,5 +1,53 @@
 var megaStoneList = [
-	'Salamencite'
+	'Abomasite',
+	'Absolite',
+	'Aerodactylite',
+	'Aggronite',
+	'Alakazite',
+	'Altarianite',
+	'Ampharosite',
+	'Audinite',
+	'Banettite',
+	'Beedrillite',
+	'Blastoisinite',
+	'Blazikenite',
+	'Cameruptite',
+	'Charizardite X',
+	'Charizardite Y',
+	'Diancite',
+	'Galladite',
+	'Garchompite',
+	'Gardevoirite',
+	'Gengarite',
+	'Glalitite',
+	'Gyaradosite',
+	'Heracronite',
+	'Houndoominite',
+	'Kangaskhanite',
+	'Latiasite',
+	'Latiosite',
+	'Lopunnite',
+	'Lucarionite',
+	'Manectite',
+	'Mawilite',
+	'Medichamite',
+	'Metagrossite',
+	'Mewtwonite X',
+	'Mewtwonite Y',
+	'Pidgeotite',
+	'Pinsirite',
+	'Sablenite',
+	'Salamencite',
+	'Sceptilite',
+	'Scizorite',
+	'Sharpedonite',
+	'Slowbronite',
+	'Steelixite',
+	'Swampertite',
+	'Tyranitarite',
+	'Venusaurite',
+	'Red Orb',
+	'Blue Orb'
 ];
 exports.BattleScripts = {
 	randomtpplbTeam: function(side) {
@@ -115,6 +163,12 @@ exports.BattleScripts = {
 				moves: ['airslash', 'earthpower', 'roost', 'slackoff', 'flamethrower'],
 				signatureMove: 'afk',
 				evs: {hp: 4, spa: 252, spe: 252}, nature: 'Timid'
+			},
+			'Natsugan': {
+				species: 'Flygon', ability: 'Mega Plunder', item: megaStoneList.sample(1)[0], gender: 'M',
+				moves: ['earthquake','earthpower','uturn','dragonclaw','fireblast','boomburst','dragonpulse','return','stoneedge','crunch','ironhead','dragondance','quiverdance'],
+				signatureMove: 'reroll',
+				nature: 'Serious'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -130,7 +184,7 @@ exports.BattleScripts = {
 				}
 			}
 			// Assuming the hardcoded set evs are all legal.
-			if (!set.evs) set.evs = {hp:84, atk:84, def:84, spa:84, spd:84, spe:84};
+			if (!set.evs) set.evs = {hp:88, atk:84, def:84, spa:84, spd:84, spe:84};
 			set.moves = set.moves.sample(3).concat(set.signatureMove); // always have sig move.
 			team.push(set);
 		}
@@ -249,6 +303,12 @@ exports.BattleScripts = {
 				moves: ['airslash', 'earthpower', 'roost', 'slackoff', 'flamethrower'],
 				signatureMove: 'afk',
 				evs: {hp: 4, spa: 252, spe: 252}, nature: 'Timid'
+			},
+			'Natsugan': {
+				species: 'Flygon', ability: 'Mega Plunder', item: megaStoneList.sample(1)[0], gender: 'M',
+				moves: ['earthquake','earthpower','uturn','dragonclaw','fireblast','boomburst','dragonpulse','return','stoneedge','crunch','ironhead','dragondance','quiverdance'],
+				signatureMove: 'reroll',
+				nature: 'Serious'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -383,6 +443,12 @@ exports.BattleScripts = {
 				moves: ['airslash', 'earthpower', 'roost', 'slackoff', 'flamethrower'],
 				signatureMove: 'afk',
 				evs: {hp: 4, spa: 252, spe: 252}, nature: 'Timid'
+			},
+			'Natsugan': {
+				species: 'Flygon', ability: 'Mega Plunder', item: megaStoneList.sample(1)[0], gender: 'M',
+				moves: ['earthquake','earthpower','uturn','dragonclaw','fireblast','boomburst','dragonpulse','return','stoneedge','crunch','ironhead','dragondance','quiverdance'],
+				signatureMove: 'reroll',
+				nature: 'Serious'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
