@@ -198,6 +198,13 @@ exports.Formats = [
 					{type: 'Ghost', suppressed: false,  isAdded: false}
 				];
 			}
+			if (name === 'groundctrl27' && !pokemon.illusion) {
+				this.add('-start', pokemon, 'typechange', 'Ghost/Normal');
+				pokemon.typesData = [
+					{type: 'Ghost', suppressed: false,  isAdded: false},
+					{type: 'Normal', suppressed: false,  isAdded: false}
+				]
+			}
 			if (name === 'xfix') { // different message depending on hazards.
 				var hazards = {stealthrock: 1, spikes: 1, toxicspikes: 1, stickyweb: 1};
 				var hasHazards = false;
