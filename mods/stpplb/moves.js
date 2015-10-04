@@ -787,5 +787,29 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "normal",
 		type: "Ghost"
+	},
+	'toucan': {
+		num: 643,
+		accuracy: 85,
+		basePower: 0,
+		category: "Status",
+		onTryHit: function(target, source, move) {
+			var targetName = toID(target.name)
+			var sourceName = toID(source.name)
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Chatter', target);
+			this.add('c|'+sourceName+'|Wow '+targetName+' OneHand');
+			target.addVolatile('confusion');
+		},
+		desc: 'Confuses the target.',
+		shortdesc: 'Wow Description OneHand',
+		id: 'toucan',
+		isViable: true,
+		pp: 40,
+		priority: 0,
+		name: "Toucan",
+		flags: {snatch: 1},
+		target: "normal",
+		type: "Flying"
 	}
 }
