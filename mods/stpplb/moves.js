@@ -18,6 +18,10 @@ exports.BattleMovedex = {
 				return false;
 			}
 		},
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Lunar Dance', source);
+		},
 		selfdestruct: true,
 		sideCondition: 'disappointment',
 		effect: {
@@ -65,6 +69,10 @@ exports.BattleMovedex = {
 		flags: {protect: 1, mirror: 1},
 		onEffectiveness: function (typeMod, type, move) {
 			return typeMod + this.getEffectiveness('Fire', type); // includes Fire in its effectiveness.
+		},
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Flamethrower', target);
 		},
 		self: {
 			onHit: function(pokemon) { // Mega evolves dfg
@@ -330,9 +338,9 @@ exports.BattleMovedex = {
 			if (move.type === 'Fire')
 				this.add('-anim', source, "Flamethrower", target);
 			if (move.type === 'Water')
-				this.add('-anim', source, "Water Gun", target);
+				this.add('-anim', source, "Hydro Pump", target);
 			if (move.type === 'Electric')
-				this.add('-anim', source, "Thunderbolt", target);
+				this.add('-anim', source, "Zap Cannon", target);
 			if (move.type === 'Psychic')
 				this.add('-anim', source, "Psybeam", target);
 			if (move.type === 'Dark')
@@ -376,6 +384,10 @@ exports.BattleMovedex = {
 		isViable: true,
 		pp: 15,
 		priority: 0,
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Zap Cannon', target);
+		},
 		secondaries: [{chance: 20, status: 'par'}, {chance: 20, volatileStatus: 'confusion'}],
 		target: "normal",
 		type: "Electric"
@@ -393,6 +405,10 @@ exports.BattleMovedex = {
 		pp: 15,
 		priority: 0,
 		flags: {protect: 1, mirror: 1, nonsky: 1},
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Spike Cannon', target);
+		},
 		secondary: false,
 		target: "allAdjacent",
 		type: "Water"
@@ -402,20 +418,7 @@ exports.BattleMovedex = {
 		name: 'BEST F-CAR',
 		id: 'bestfcar',
 		basePower: 60,
-		secondaries: [
-			{
-				chance: 20, 
-				status: 'brn'
-			}, 
-			{
-				chance: 100, 
-				self: {
-					boosts: {
-						spa: 1
-					}
-				}
-			}
-		],
+		secondaries: [{chance: 20, status: 'brn'}, {chance: 100, self: {boosts: {spa: 1}}}],
 		accuracy: 100,
 		category: "Special",
 		desc: "Has a 20% chance to burn the target. Raises Sp.Atk by 1 stage.",
@@ -441,7 +444,7 @@ exports.BattleMovedex = {
 		flags: {protect: 1, mirror: 1},
 		onPrepareHit: function (target, source, move) {
 			this.attrLastMove('[still]');
-			this.add('-anim', source, 'Discharge', target);
+			this.add('-anim', source, 'Volt Tackle', target);
 		},
 		recoil: [1, 2],
 		onHit: function (target, source, move) {
@@ -476,6 +479,10 @@ exports.BattleMovedex = {
 		pp: 10,
 		type: 'Steel',
 		flags: {contact:1, protect:1, mirror:1},
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Dynamic Punch', target);
+		},
 		onHit: function(target) {
 			var bannedAbilities = {multitype:1, defeatist:1, stancechange:1, truant:1};
 			if (!bannedAbilities[target.ability]) {
@@ -608,6 +615,10 @@ exports.BattleMovedex = {
 		flags: {},
 		pp: 10,
 		priority: 0,
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Swords Dance', source);
+		},
 		onHit: function(target) {
 			if (!target.template.isMega) {
 				var megaStoneList = [
