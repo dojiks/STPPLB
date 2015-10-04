@@ -176,6 +176,12 @@ exports.BattleScripts = {
 				signatureMoves: ['shadowsphere', 'drainforce', 'sneakyspook'],
 				evs: {hp: 248, spa: 252, spe: 8}, nature: 'Modest'
 			}
+			'MegaAFK'//STPPB+ only: {
+				species: 'Charizard', ability: 'Slow Start', item: 'Charizardite X', gender: 'M',
+				moves: ['dragondance', 'flareblitz', 'roost', 'earthquake'],
+				signatureMove: 'teamafk',
+				evs: {atk: 252, hp: 242, spe: 12}, nature: 'Adamant'
+			},
 		};
 		var pool = Object.keys(sets).randomize();
 		for (var i = 0; i < Math.min(6, pool.length); i++) {
