@@ -2,7 +2,7 @@ exports.BattleFormats = {
 	superglitchclause: {
 		effectType: 'Rule',
 		onStart: function () {
-			this.add('rule', 'Super Glitch Clause: Every pokemon must hold a Leppa Berry and know Recycle and Super Glitch.');
+			this.add('rule', 'Super Glitch Clause: Every pokemon must hold a Leppa Berry and know Recycle and Super Glitch. No Fun Allowed is banned.');
 		},
 		validateSet: function(set) {
 			issues = [];
@@ -40,6 +40,8 @@ exports.BattleFormats = {
 			if (!recycleFound) {
 				set.moves.push("Recycle");
 			}
+			if (set.ability.id === 'nofunallowed')
+				issues.push(set.species + " has No Fun Allowed.");
 			var totalEV = 0;
 			for (var k in set.evs) {
 				if (typeof set.evs[k] !== 'number' || set.evs[k] < 0) {
