@@ -424,21 +424,4 @@ if (stpplb) {
 		onFaint: stpplb.onFaint,
 		onBegin: stpplb.onBegin
 	});
-	exports.Formats.splice(stpplbi+3, 0, {
-		name: 'Super TPPL Bros. Doubles',
-		section: 'STPPLB',
-		column: 2,
-		
-		gameType: 'doubles',
-		mod: 'stpplb',
-		searchShow: true,
-		team: 'randomtpplb',
-		ruleset: ['HP Percentage Mod', 'Cancel Mod'],
-		onUpdate: stpplb.onUpdate,
-		onModifyMove: stpplb.onModifyMove,
-		onSwitchInPriority: 1,
-		onSwitchIn: stpplb.onSwitchIn,
-		onFaint: stpplb.onFaint,
-		onBegin: stpplb.onBegin
-	});
 }
