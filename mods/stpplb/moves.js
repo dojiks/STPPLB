@@ -131,7 +131,7 @@ exports.BattleMovedex = {
 		onTryHit: function (target, source) { // can cause TMTRAINER effect randomly
 			if (!source.isActive) return null;
 			if (this.random(777) !== 42) return; // 1/777 chance to cause TMTRAINER effect
-			var opponent = pokemon.side.foe.active[0];
+			var opponent = target;
 			opponent.setStatus('brn');
 			var possibleStatuses = ['confusion', 'flinch', 'attract', 'focusenergy', 'foresight', 'healblock'];
 			for (var i = 0; i < possibleStatuses.length; i++) {
