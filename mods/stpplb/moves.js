@@ -674,7 +674,7 @@ exports.BattleMovedex = {
 				];
 				target.item = megaStoneList.sample(1)[0];
 				this.add('-item', target, target.getItem(), '[from] move: Re-Roll');
-				target.canMegaEvo = target.getItem().megaStone;
+				target.canMegaEvo = this.canMegaEvo(target);
 				var pokemon = target;
 				var item = pokemon.getItem();
 				if (pokemon.isActive && !pokemon.template.isMega && !pokemon.template.isPrimal && (item.id === 'redorb' || item.id === 'blueorb') && pokemon.baseTemplate.tier !== 'Uber' && !pokemon.template.evos.length) {
@@ -711,5 +711,81 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: 'self',
 		type: 'Normal'
+	},
+	'shadowsphere': {
+		num: 640,
+		accuracy: 100,
+		basePower: 90,
+		category: "Special",
+		desc: "Has a 20% chance to lower the target's Special Defense by 1 stage.",
+		shortDesc: "20% chance to lower the target's Sp. Def by 1.",
+		id: "shadowsphere",
+		name: "Shadow Sphere",
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Shadow Ball', source);
+		},
+		pp: 15,
+		priority: 0,
+		flags: {bullet: 1, protect: 1, mirror: 1},
+		secondary: {
+			chance: 20,
+			boosts: {
+				spd: -1
+			}
+		},
+		target: "normal",
+		type: "Ghost"
+	},
+	'drainforce': {
+		num: 641,
+		accuracy: 100,
+		basePower: 60,
+		category: "Special",
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Giga Drain', source);
+		},
+		desc: "The user steals some stats from the target.",
+		shortDesc: "Steals some stats.",
+		id: "drainforce",
+		name: "Drain Force",
+		pp: 10,
+		priority: 0,
+		boosts: {
+			atk: -1,
+			spe: -1
+		},
+		self: {
+			boosts: {
+				spa: 1,
+				spe: 1
+			}
+		},
+		flags: {protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Fighting"
+	},
+	'sneakyspook': {
+		num: 642, // blaze it
+		accuracy: 100,
+		basePower: 40,
+		category: "Special",
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Shadow Sneak', source);
+		},
+		desc: "No additional effect.",
+		shortDesc: "Usually goes first.",
+		id: "shadowsneak",
+		isViable: true,
+		name: "Shadow Sneak",
+		pp: 30,
+		priority: 1,
+		flags: {protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Ghost"
 	}
 }

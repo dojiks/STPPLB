@@ -169,6 +169,12 @@ exports.BattleScripts = {
 				moves: ['earthquake','earthpower','uturn','dragonclaw','fireblast','boomburst','dragonpulse','return','stoneedge','crunch','ironhead','dragondance','quiverdance'],
 				signatureMove: 'reroll',
 				nature: 'Serious'
+			},
+			'GroundCtrl27': {
+				species: 'Meloetta', ability: 'Scrappy', item: 'Assault Vest', gender: 'M',
+				moves: ['hypervoice'],
+				signatureMoves: ['shadowsphere', 'drainforce', 'sneakyspook'],
+				evs: {hp: 248, spa: 252, spe: 8}, nature: 'Modest'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -185,7 +191,9 @@ exports.BattleScripts = {
 			}
 			// Assuming the hardcoded set evs are all legal.
 			if (!set.evs) set.evs = {hp:88, atk:84, def:84, spa:84, spd:84, spe:84};
-			set.moves = set.moves.sample(3).concat(set.signatureMove); // always have sig move.
+			if (set.signatureMove) set.signatureMoves = [].concat(set.signatureMove);
+			var len = set.signatureMoves.length;
+			set.moves = set.moves.sample(4-len) + set.signatureMoves; // always have sig move.
 			team.push(set);
 		}
 		return team;
@@ -309,6 +317,12 @@ exports.BattleScripts = {
 				moves: ['earthquake','earthpower','uturn','dragonclaw','fireblast','boomburst','dragonpulse','return','stoneedge','crunch','ironhead','dragondance','quiverdance'],
 				signatureMove: 'reroll',
 				nature: 'Serious'
+			},
+			'GroundCtrl27': {
+				species: 'Meloetta', ability: 'Scrappy', item: 'Assault Vest', gender: 'M',
+				moves: ['hypervoice'],
+				signatureMoves: ['shadowsphere', 'drainforce', 'sneakyspook'],
+				evs: {hp: 248, spa: 252, spe: 8}, nature: 'Modest'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -325,7 +339,8 @@ exports.BattleScripts = {
 			}
 			// Assuming the hardcoded set evs are all legal.
 			if (!set.evs) set.evs = {hp:84, atk:84, def:84, spa:84, spd:84, spe:84};
-			set.moves = set.moves.sample(3).concat(set.signatureMove); // always have sig move.
+			var len = set.signatureMoves.length;
+			set.moves = set.moves.sample(4-len) + set.signatureMoves; // always have sig move.
 			team.push(set);
 		}
 		return team;
@@ -456,6 +471,12 @@ exports.BattleScripts = {
 				signatureMove: 'godbird',
 				evs: {spa:252,def:4,spe:252}, nature: 'Timid'
 			},
+			'GroundCtrl27': {
+				species: 'Meloetta', ability: 'Scrappy', item: 'Assault Vest', gender: 'M',
+				moves: ['hypervoice'],
+				signatureMoves: ['shadowsphere', 'drainforce', 'sneakyspook'],
+				evs: {hp: 248, spa: 252, spe: 8}, nature: 'Modest'
+			}
 		};
 		var pool = Object.keys(sets).randomize();
 		for (var i = 0; i < Math.min(6, pool.length); i++) {
@@ -471,7 +492,8 @@ exports.BattleScripts = {
 			}
 			// Assuming the hardcoded set evs are all legal.
 			if (!set.evs) set.evs = {hp:84, atk:84, def:84, spa:84, spd:84, spe:84};
-			set.moves = set.moves.sample(3).concat(set.signatureMove); // always have sig move.
+			var len = set.signatureMoves.length;
+			set.moves = set.moves.sample(4-len) + set.signatureMoves; // always have sig move.
 			team.push(set);
 		}
 		return team;
