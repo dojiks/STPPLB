@@ -752,16 +752,7 @@ exports.BattleMovedex = {
 		name: "Drain Force",
 		pp: 10,
 		priority: 0,
-		boosts: {
-			atk: -1,
-			spe: -1
-		},
-		self: {
-			boosts: {
-				spa: 1,
-				spe: 1
-			}
-		},
+		drain: [1, 2],
 		flags: {protect: 1, mirror: 1},
 		secondary: false,
 		target: "normal",
