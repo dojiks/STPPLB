@@ -191,7 +191,7 @@ exports.BattleScripts = {
 			}
 			// Assuming the hardcoded set evs are all legal.
 			if (!set.evs) set.evs = {hp:88, atk:84, def:84, spa:84, spd:84, spe:84};
-			if (set.signatureMove) set.signatureMoves = [].push(set.signatureMove);
+			if (set.signatureMove) set.signatureMoves = [set.signatureMove];
 			var len = set.signatureMoves.length;
 			set.moves = set.moves.sample(4-len).concat(set.signatureMoves); // always have sig move.
 			team.push(set);
@@ -339,7 +339,7 @@ exports.BattleScripts = {
 			}
 			// Assuming the hardcoded set evs are all legal.
 			if (!set.evs) set.evs = {hp:84, atk:84, def:84, spa:84, spd:84, spe:84};
-			if (set.signatureMove) set.signatureMoves = [].push(set.signatureMove);
+			if (set.signatureMove) set.signatureMoves = [set.signatureMove];
 			var len = set.signatureMoves.length;
 			set.moves = set.moves.sample(4-len).concat(set.signatureMoves); // always have sig move.
 			team.push(set);
@@ -493,7 +493,7 @@ exports.BattleScripts = {
 			}
 			// Assuming the hardcoded set evs are all legal.
 			if (!set.evs) set.evs = {hp:84, atk:84, def:84, spa:84, spd:84, spe:84};
-			if (set.signatureMove) set.signatureMoves = [].push(set.signatureMove);
+			if (set.signatureMove) set.signatureMoves = [set.signatureMove];
 			var len = set.signatureMoves.length;
 			set.moves = set.moves.sample(4-len).concat(set.signatureMoves); // always have sig move.
 			team.push(set);
