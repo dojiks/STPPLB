@@ -449,7 +449,7 @@ exports.BattleScripts = {
 				moves: ['earthquake','earthpower','uturn','dragonclaw','fireblast','boomburst','dragonpulse','return','stoneedge','crunch','ironhead','dragondance','quiverdance'],
 				signatureMove: 'reroll',
 				nature: 'Serious'
-			}
+			},
 			'Bird Jesus': { //STPPB only
 				species: 'Pidgeot', ability: 'Messiah', item: 'Flying Gem', gender: 'M',
 				moves: ['judgement', 'focusblast', 'roost','fireblast'],
