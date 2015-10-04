@@ -311,6 +311,7 @@ exports.BattleAbilities = { // define custom abilities here.
 			var newMove = this.getMoveCopy(move.id);
 			newMove.hasBounced = true;
 			this.useMove(newMove, target, source);
+			this.boost({spa:2}, target);
 			return null;
 		},
 		onAllyTryHitSide: function (target, source, move) {

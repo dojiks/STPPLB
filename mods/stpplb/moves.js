@@ -562,12 +562,14 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {contact: 1, charge: 1, mirror: 1},
 		breaksProtect: true,
-		onHit: function(pokemon) { 
-			var temp = pokemon.item;
-			pokemon.item = 'pidgeotite'; 
-			if (!pokemon.template.isMega) pokemon.canMegaEvo = this.canMegaEvo(pokemon); 
-			if (pokemon.canMegaEvo) this.runMegaEvo(pokemon);
-			pokemon.item = temp; 
+		self: {
+			onHit: function(pokemon) { 
+				var temp = pokemon.item;
+				pokemon.item = 'pidgeotite'; 
+				if (!pokemon.template.isMega) pokemon.canMegaEvo = this.canMegaEvo(pokemon); 
+				if (pokemon.canMegaEvo) this.runMegaEvo(pokemon);
+				pokemon.item = temp; 
+			}
 		},
 		onTry: function (attacker, defender, move) {
 			if (attacker.removeVolatile(move.id)) {

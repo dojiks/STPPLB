@@ -452,7 +452,7 @@ exports.BattleScripts = {
 			},
 			'Bird Jesus': { //STPPB only
 				species: 'Pidgeot', ability: 'Messiah', item: 'Flying Gem', gender: 'M',
-				moves: ['judgement', 'focusblast', 'roost','fireblast'],
+				moves: ['judgment', 'focusblast', 'roost','fireblast'],
 				signatureMove: 'godbird',
 				evs: {spa:252,def:4,spe:252}, nature: 'Timid'
 			},
