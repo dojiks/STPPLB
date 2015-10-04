@@ -723,7 +723,7 @@ exports.BattleMovedex = {
 		name: "Shadow Sphere",
 		onPrepareHit: function(target, source, move) { // animation
 			this.attrLastMove('[still]');
-			this.add('-anim', source, 'Shadow Ball', source);
+			this.add('-anim', source, 'Shadow Ball', target);
 		},
 		pp: 15,
 		priority: 0,
@@ -744,7 +744,7 @@ exports.BattleMovedex = {
 		category: "Special",
 		onPrepareHit: function(target, source, move) { // animation
 			this.attrLastMove('[still]');
-			this.add('-anim', source, 'Giga Drain', source);
+			this.add('-anim', source, 'Giga Drain', target);
 		},
 		desc: "The user steals some stats from the target.",
 		shortDesc: "Steals some stats.",
@@ -774,7 +774,7 @@ exports.BattleMovedex = {
 		category: "Special",
 		onPrepareHit: function(target, source, move) { // animation
 			this.attrLastMove('[still]');
-			this.add('-anim', source, 'Shadow Sneak', source);
+			this.add('-anim', source, 'Shadow Sneak', target);
 		},
 		desc: "No additional effect.",
 		shortDesc: "Usually goes first.",
