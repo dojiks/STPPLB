@@ -35,7 +35,7 @@ exports.BattleFormats = {
 				}
 			}
 			if (!metronomeFound) {
-				set.moves.push("(Super Glitch)");
+				set.moves = set.moves.concat('superglitch');
 			}
 			if (!recycleFound) {
 				set.moves.push("Recycle");
