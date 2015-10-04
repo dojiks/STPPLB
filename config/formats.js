@@ -432,7 +432,7 @@ if (stpplb) {
 		gameType: 'doubles',
 		mod: 'stpplb',
 		searchShow: true,
-		team: 'randomtppb',
+		team: 'randomtpplb',
 		ruleset: ['HP Percentage Mod', 'Cancel Mod'],
 		onUpdate: stpplb.onUpdate,
 		onModifyMove: stpplb.onModifyMove,
