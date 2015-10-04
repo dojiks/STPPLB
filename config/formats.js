@@ -306,7 +306,7 @@ exports.Formats = [
 		section: 'STPPLB',
 		column: 2,
 		searchShow: true,
-		mod: 'superglitch',
+		mod: 'stpplb',
 		ruleset: ['Metronome Clause', 'Pokemon', 'HP Percentage Mod', 'Cancel Mod', 'No Switching Clause', 'No Recycle Clause'],
 		banlist: ['Unreleased'],
 		
