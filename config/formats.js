@@ -427,15 +427,14 @@ if (stpplb) {
 		onFaint: stpplb.onFaint,
 		onBegin: stpplb.onBegin
 	});
-	exports.Formats.splice(stpplbi+3, 0, {
+	exports.Formats.splice(stpplbi+2, 0, {
 		name: "Super TPPL Bros. Testing",
 		section: "STPPLB",
 		column: 2,
 		
 		mod: 'stpplb',
 		searchShow: false,
-		team: 'randomtpplbtest',
-		ruleset: ['Sleep Clause Mod', 'HP Percentage Mod', 'Cancel Mod'],
+		ruleset: ['Sleep Clause Mod', 'HP Percentage Mod', 'Cancel Mod', 'Team Preview'],
 		onUpdate: stpplb.onUpdate,
 		onModifyMove: stpplb.onModifyMove,
 		onSwitchInPriority: 1,
