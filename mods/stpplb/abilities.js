@@ -184,8 +184,8 @@ exports.BattleAbilities = { // define custom abilities here.
 		num: 199
 	},
 	'littleengine': { // Poomph, the little engine who couldn't. Negative version of moody.
-		desc: "This Pokemon has a random stat raised by 1 stage and another lowered by 2 stages at the end of each turn.",
-		shortDesc: "Raises a random stat by 1 and lowers another by 2 at the end of each turn.",
+		desc: "This Pokemon has a random stat raised by 1 stage at the end of each turn.",
+		shortDesc: "Raises a random stat by 1 at the end of each turn.",
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
@@ -200,16 +200,6 @@ exports.BattleAbilities = { // define custom abilities here.
 				i = stats[this.random(stats.length)];
 				boost[i] = 1;
 			}
-			stats = [];
-			for (var j in pokemon.boosts) {
-				if (pokemon.boosts[j] > -6 && j !== i) {
-					stats.push(j);
-				}
-			}
-			if (stats.length) {
-				i = stats[this.random(stats.length)];
-				boost[i] = -2;
-			}
 			this.boost(boost);
 		},
 		id: "littleengine",
@@ -221,11 +211,11 @@ exports.BattleAbilities = { // define custom abilities here.
 		shortDesc: "This Pokemon's Defense and Sp. Defense are doubled. This Pokemon cannot be frozen.",
 		onModifyDefPriority: 6,
 		onModifyDef: function (def) {
-			return this.chainModify(2);
+			return this.chainModify(2.25);
 		},
 		onModifySpdPriotiy: 6,
 		onModifySpd: function (spd) {
-			return this.chainModify(2);
+			return this.chainModify(2.25);
 		},
 		onImmunity: function (type, pokemon) {
 			if (type === 'frz') return false;
@@ -363,5 +353,29 @@ exports.BattleAbilities = { // define custom abilities here.
 				return null;
 			}
 		}
+	},
+	'banevade': {
+		desc: "This Pokemon is raised by end of each turn.",
+		shortDesc: "Raises a random stat by 2 and lowers another stat by 1 at the end of each turn.",
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual: function (pokemon) {
+			if (pokemon.hp <= 3*pokemon.maxhp/4 && pokemon.hp > pokemon.maxhp/2 && pokemon.evasion <1) {
+				this.boost({evasion:1-pokemon.evasion})
+			},
+			if (pokemon.hp <= pokemon.maxhp/2 && pokemon.hp > pokemon.maxhp/4 && pokemon.evasion <2) {
+				this.boost({evasion:2-pokemon.evasion})
+			},
+			if (pokemon.hp <= 1*pokemon.maxhp/4 && pokemon.hp > pokemon.maxhp/32  && pokemon.evasion <4) {
+				this.boost({evasion:4-pokemon.evasion})
+			},
+			if (pokemon.hp <= pokemon.maxhp/32 && pokemon.evasion <6) {
+				this.boost({evasion:6-pokemon.evasion})
+			}
+		},
+		id: "banevade",
+		name: "Ban Evade",
+		rating: 5,
+		num: 208
 	}
 }

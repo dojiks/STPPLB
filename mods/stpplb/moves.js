@@ -798,5 +798,31 @@ exports.BattleMovedex = {
 		flags: {snatch: 1},
 		target: "normal",
 		type: "Flying"
+	},
+	'thousandalts':{
+		num: 643, //blaze what?
+		accuracy: 100,
+		basePower: 120,
+		category: "Physical",
+		desc: "If the target lost HP, the user takes recoil damage equal to 50% the HP lost by the target, rounded half up, but not less than 1 HP.",
+		shortDesc: "Has 50% recoil.",
+		id: "thousandalts",
+		isViable: true,
+		name: "Thousand Alts",
+		pp: 15,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		onPrepareHit: function (pokemon) {
+			if (target.hasType('Dark')) return false;
+			if (!target.addType('Dark')) return false;
+			this.add('-start', pokemon, 'typeadd', 'Dark', '[from] move: Thousand Alts');
+		},
+		recoil: [1, 2],
+		secondary: secondary: {
+			chance: 20,
+			volatileStatus: 'confusion'
+		},
+		target: "normal",
+		type: "Dark"
 	}
 }
