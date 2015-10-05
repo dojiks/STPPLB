@@ -813,8 +813,8 @@ exports.BattleMovedex = {
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
 		onPrepareHit: function (pokemon) {
-			if (target.hasType('Dark')) return false;
-			if (!target.addType('Dark')) return false;
+			if (pokemon.hasType('Dark')) return false;
+			if (!pokemon.addType('Dark')) return false;
 			this.add('-start', pokemon, 'typeadd', 'Dark', '[from] move: Thousand Alts');
 		},
 		recoil: [1, 2],
