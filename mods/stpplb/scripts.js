@@ -175,6 +175,12 @@ exports.BattleScripts = {
 				moves: ['hypervoice'],
 				signatureMoves: ['shadowsphere', 'drainforce', 'sneakyspook'],
 				evs: {hp: 248, spa: 252, spe: 8}, nature: 'Modest'
+			},
+			'PikalaxALT': {
+				species: 'Pikachu', ability: 'Pika Power', item: 'Light Ball', gender: 'M',
+				moves: ['thunder','thunderbolt','quickattack','voltswitch','irontail'],
+				signatureMove: 'toucan',
+				evs: {hp: 252, spa: 252, def: 4}, nature: 'Calm'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -329,6 +335,13 @@ exports.BattleScripts = {
 				moves: ['earthquake','drainpunch','bulkup','protect','aromatherapy'],
 				signatureMove: 'wish',
 				evs: {hp: 252, def: 168, spd: 88}, nature: 'Calm'
+			},
+			'PikalaxALT': {
+				species: 'Pikachu', ability: 'Pika Power', item: 'Light Ball', gender: 'M',
+				moves: ['thunder','thunderbolt','quickattack','voltswitch','irontail'],
+				signatureMove: 'toucan',
+				evs: {hp: 252, spa: 252, def: 4}, nature: 'Calm'
+			}
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -489,6 +502,12 @@ exports.BattleScripts = {
 				moves: ['earthquake','drainpunch','bulkup','protect','aromatherapy'],
 				signatureMove: 'wish',
 				evs: {hp: 252, def: 168, spd: 88}, nature: 'Calm'
+			},
+			'PikalaxALT': {
+				species: 'Pikachu', ability: 'Pika Power', item: 'Light Ball', gender: 'M',
+				moves: ['thunder','thunderbolt','quickattack','voltswitch','irontail'],
+				signatureMove: 'toucan',
+				evs: {hp: 252, spa: 252, def: 4}, nature: 'Calm'
 			}
 		};
 		var pool = Object.keys(sets).randomize();

@@ -228,6 +228,7 @@ exports.Formats = [
 			else if (name === 'poomph') this.add("c|Poomph|I'm sure I'll win this time!");
 			else if (name === 'nofunmantis') this.add("c|NoFunMantis|The fun ends here!");
 			else if (name === 'natsugan') this.add('c|Natsugan|Flygonite when');
+			else if (name === 'pikalaxalt') this.add('c|PikalaxALT|ヽ༼ຈل͜ຈ༽ﾉ RIOT ヽ༼ຈل͜ຈ༽ﾉ');
 			else this.add('c|' + (pokemon.illusion ? pokemon.illusion.name : pokemon.name) + '|PLACEHOLDER MESSAGE PLEASE CONTACT TIESOUL');
 			var item = pokemon.getItem();
 			if (pokemon.isActive && !pokemon.template.isMega && !pokemon.template.isPrimal && (item.id === 'redorb' || item.id === 'blueorb') && pokemon.baseTemplate.tier !== 'Uber' && !pokemon.template.evos.length) {
@@ -270,10 +271,12 @@ exports.Formats = [
 		},
 		
 		onSwitchOut: function (pokemon) {
+			var name = toId(pokemon.name);
 			var oMegaTemplate = this.getTemplate(pokemon.template.originalMega);
 			if (oMegaTemplate.exists && pokemon.originalSpecies !== oMegaTemplate.baseSpecies) {
 				this.add('-end', pokemon, oMegaTemplate.requiredItem || oMegaTemplate.requiredMove, '[silent]');
 			}
+			if (name === 'pikalaxalt') this.add('c|PikalaxALT|brb restarting bot');
 		},
 		
 		onFaint: function(pokemon) { // PJSalt-y faint messages go here.
@@ -297,6 +300,7 @@ exports.Formats = [
 			else if (name === 'poomph') this.add("c|Poomph|0/4 again. DansGame");
 			else if (name === 'nofunmantis') this.add("c|NoFunMantis|Nothing fun about this!");
 			else if (name === 'natsugan') this.add('c|Natsugan|hax imo');
+			else if (name === 'pikalaxalt') this.add('c|PikalaxALT|Wow Deku OneHand');
 		},
 		onBegin: function() {
 			// Mix and Mega stuff

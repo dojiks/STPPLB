@@ -345,5 +345,23 @@ exports.BattleAbilities = { // define custom abilities here.
 		num: 207,
 		id: 'megaplunder',
 		name: 'Mega Plunder'
+	},
+	'pikapower': {
+		num: 208,
+		desc: "This Pok&#xe9;mon has a 5% chance of exploding if you try to attack it.",
+		shortdesc: "May explode when hit.",
+		id: "pikapower",
+		name: "Pika Power",
+		onTryHit: function (target, source, move) {
+			if (target === source || move.hasBounced || !move.flags['reflectable']) {
+				return;
+			}
+			if (this.random(20) === 1) {
+				this.add("c|PikalaxALT|KAPOW");
+				var newMove = this.getMoveCopy("explosion");
+				this.useMove(newMove, target, source);
+				return null;
+			}
+		}
 	}
 }
