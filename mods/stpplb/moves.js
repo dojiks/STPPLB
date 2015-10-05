@@ -856,7 +856,7 @@ exports.BattleMovedex = {
 		desc: "Causes the user's Ability to become Fur Coat. Randomly executes a move based on the user's type.",
 		shortDesc: "The user's Ability becomes Fur Coat. Executes a random move.",
 		id: "yiffyiff",
-		name: "Yiff Yiff,
+		name: "Yiff Yiff",
 		pp: 10,
 		priority: 0,
 		flags: {snatch: 1},
