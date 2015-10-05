@@ -818,7 +818,7 @@ exports.BattleMovedex = {
 				if (!pokemon.addType('Dark')) return false;
 				this.add('-start', pokemon, 'typeadd', 'Dark', '[from] move: Thousand Alts');
 			},
-		}
+		},
 		recoil: [1, 2],
 		secondary: {
 			chance: 20,
