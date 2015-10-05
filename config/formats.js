@@ -276,7 +276,6 @@ exports.Formats = [
 			if (oMegaTemplate.exists && pokemon.originalSpecies !== oMegaTemplate.baseSpecies) {
 				this.add('-end', pokemon, oMegaTemplate.requiredItem || oMegaTemplate.requiredMove, '[silent]');
 			}
-			if (name === 'pikalaxalt') this.add('c|PikalaxALT|brb restarting bot');
 		},
 		
 		onFaint: function(pokemon) { // PJSalt-y faint messages go here.
