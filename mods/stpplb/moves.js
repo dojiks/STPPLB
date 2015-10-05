@@ -355,7 +355,7 @@ exports.BattleMovedex = {
 		onTryHit: function(target, pokemon, move) {
 			if (move.type === 'Normal') {
 				var t = move.eeveelutiontypes.slice(0);
-				move.accuracy = true; // I think this is bugged.
+				move.accuracy = true; // What's this line for?
 				for (var i = 0; i < move.eeveelutiontypes.length; i++) { // hit for all eeveelution types in random order.
 					var r = this.random(t.length);
 					move.type = t[r];
@@ -379,14 +379,14 @@ exports.BattleMovedex = {
 		accuracy: 100,
 		basePower: 90,
 		category: "Special",
-		desc: "Has a 20% chance to paralyze the target and a 20% chance to cofuse it.",
-		shortDesc: "20% chance to paralyze the target and 20% to confuse target.",
+		desc: "Has a 20% chance to paralyze the target and a 20% chance to confuse it.",
+		shortDesc: "20% chance to paralyze. 20% chance to confuse.",
 		isViable: true,
 		pp: 15,
 		priority: 0,
 		onPrepareHit: function(target, source, move) { // animation
 			this.attrLastMove('[still]');
-			this.add('-anim', source, 'Zap Cannon', target);
+			this.add('-anim', source, 'Boomburst', target);
 		},
 		secondaries: [{chance: 20, status: 'par'}, {chance: 20, volatileStatus: 'confusion'}],
 		target: "normal",
@@ -730,9 +730,7 @@ exports.BattleMovedex = {
 		flags: {bullet: 1, protect: 1, mirror: 1},
 		secondary: {
 			chance: 20,
-			boosts: {
-				spd: -1
-			}
+			boosts: {spd: -1}
 		},
 		target: "normal",
 		type: "Ghost"
@@ -740,26 +738,30 @@ exports.BattleMovedex = {
 	'drainforce': {
 		num: 641,
 		accuracy: 100,
-		basePower: 60,
+		basePower: 75,
 		category: "Special",
 		onPrepareHit: function(target, source, move) { // animation
 			this.attrLastMove('[still]');
 			this.add('-anim', source, 'Giga Drain', target);
 		},
-		desc: "The user steals some stats from the target.",
-		shortDesc: "Steals some stats.",
+		desc: "The user recovers 1/2 the HP lost by the target, rounded half up. If Big Root is held by the user, the HP recovered is 1.3x normal, rounded half down. Has a 20% chance to lower the target's Attack and Speed by 1 stage, and raises the user's Special Attack and Speed by 1 stage.",
+		shortDesc: "User recovers 50% of the damage dealt. 20% chance to steal some stats.",
 		id: "drainforce",
 		name: "Drain Force",
 		pp: 10,
 		priority: 0,
 		drain: [1, 2],
 		flags: {protect: 1, mirror: 1},
-		secondary: false,
+		secondary: {
+			chance: 20,
+			boosts: {atk: -1, spe: -1},
+			self: {boosts: {spa: 1, spe: 1}}
+		},
 		target: "normal",
 		type: "Fighting"
 	},
 	'sneakyspook': {
-		num: 642, // blaze it
+		num: 642, // blaze it + 222
 		accuracy: 100,
 		basePower: 40,
 		category: "Special",
