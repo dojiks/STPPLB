@@ -167,7 +167,7 @@ exports.BattleAbilities = { // define custom abilities here.
 				for (var j = 0; j < this.sides[i].active.length; j++) {
 					var target = this.sides[i].active[j];
 					if (target === pokemon) continue;
-					if (target && target.hp && (target.ability === 'primordialsea' || target.ability === 'seaandsky') && target.ignore['Ability'] !== true) {
+					if (target && target.hp && (target.ability === 'primordialsea' || target.ability === 'seaandsky') && (!target.ignore || target.ignore['Ability'] !== true)) {
 						this.weatherData.source = target;
 						return;
 					}
