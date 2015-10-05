@@ -361,16 +361,16 @@ exports.BattleAbilities = { // define custom abilities here.
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
 			if (pokemon.hp <= 3*pokemon.maxhp/4 && pokemon.hp > pokemon.maxhp/2 && pokemon.evasion <1) {
-				this.boost({evasion:1-pokemon.evasion})
+				this.boost({evasion:1-pokemon.evasion}, pokemon);
 			}
 			if (pokemon.hp <= pokemon.maxhp/2 && pokemon.hp > pokemon.maxhp/4 && pokemon.evasion <2) {
-				this.boost({evasion:2-pokemon.evasion})
+				this.boost({evasion:2-pokemon.evasion}, pokemon);
 			}
 			if (pokemon.hp <= 1*pokemon.maxhp/4 && pokemon.hp > pokemon.maxhp/32  && pokemon.evasion <4) {
-				this.boost({evasion:4-pokemon.evasion})
+				this.boost({evasion:4-pokemon.evasion}, pokemon);
 			}
 			if (pokemon.hp <= pokemon.maxhp/32 && pokemon.evasion <6) {
-				this.boost({evasion:6-pokemon.evasion})
+				this.boost({evasion:6-pokemon.evasion}, pokemon);
 			}
 		},
 		id: "banevade",
