@@ -184,7 +184,7 @@ exports.BattleScripts = {
 			},
 			'Tadpole_0f_Doom': {
 				species: 'Poliwrath', ability: 'Ban Evade', item: 'BrightPowder', gender: 'M',
-				moves: ['closecombat', 'waterfall', 'icepunch', 'endure', 'bellydrum']
+				moves: ['closecombat', 'waterfall', 'icepunch', 'endure', 'bellydrum'],
 				signatureMove: 'thousandalts',
 				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
 			}
@@ -350,7 +350,7 @@ exports.BattleScripts = {
 			},
 			'Tadpole_0f_Doom': {
 				species: 'Poliwrath', ability: 'Ban Evade', item: 'BrightPowder', gender: 'M',
-				moves: ['closecombat', 'waterfall', 'icepunch', 'endure', 'bellydrum']
+				moves: ['closecombat', 'waterfall', 'icepunch', 'endure', 'bellydrum'],
 				signatureMove: 'thousandalts',
 				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
 			}
@@ -522,7 +522,7 @@ exports.BattleScripts = {
 			},
 			'Tadpole_0f_Doom': {
 				species: 'Poliwrath', ability: 'Ban Evade', item: 'BrightPowder', gender: 'M',
-				moves: ['closecombat', 'waterfall', 'icepunch', 'endure', 'bellydrum']
+				moves: ['closecombat', 'waterfall', 'icepunch', 'endure', 'bellydrum'],
 				signatureMove: 'thousandalts',
 				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
 			}

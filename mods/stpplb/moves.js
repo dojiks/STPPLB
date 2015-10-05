@@ -818,7 +818,7 @@ exports.BattleMovedex = {
 			this.add('-start', pokemon, 'typeadd', 'Dark', '[from] move: Thousand Alts');
 		},
 		recoil: [1, 2],
-		secondary: secondary: {
+		secondary: {
 			chance: 20,
 			volatileStatus: 'confusion'
 		},
