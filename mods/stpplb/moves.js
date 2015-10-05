@@ -83,7 +83,6 @@ exports.BattleMovedex = {
 					pokemon.item = temp; // give its normal item back.
 				}
 		},
-		flags: {protect: 1, pulse: 1, mirror: 1, distance: 1},
 		secondary: {
 			chance: 20,
 			volatileStatus: 'flinch'
@@ -173,7 +172,7 @@ exports.BattleMovedex = {
 		type: 'Bird',
 		basePower: 205,
 		accuracy: 37,
-		pp: 10,
+		pp: 15,
 		drain: [1, 2],
 		category: 'Physical',
 		flags: {pulse: 1, bullet: 1, protect: 1, mirror: 1},
@@ -303,7 +302,7 @@ exports.BattleMovedex = {
 		basePower: 0,
 		category: "Status",
 		desc: "Uses Parting Shot, Volt Switch and U-Turn in the same turn.",
-		shortDesc: "Gets the fuck out of here.",
+		shortDesc: "Gets the fuck out of here.", // hue
 		id: "partingvoltturn",
 		name: "Parting Volt Turn",
 		pp: 10,
@@ -400,11 +399,11 @@ exports.BattleMovedex = {
 		basePower: 18,
 		multihit: 5,
 		category: "Special",
-		desc: "No additional effect.",
-		shortDesc: "Hits adjacent Pokemon.",
+		desc: "Hits 5 times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits.",
+		shortDesc: "Hits 5 times in one turn.",
 		pp: 15,
 		priority: 0,
-		flags: {protect: 1, mirror: 1, nonsky: 1},
+		flags: {protect: 1, mirror: 1, bullet: 1},
 		onPrepareHit: function(target, source, move) { // animation
 			this.attrLastMove('[still]');
 			this.add('-anim', source, 'Spike Cannon', target);
@@ -421,11 +420,11 @@ exports.BattleMovedex = {
 		secondaries: [{chance: 20, status: 'brn'}, {chance: 100, self: {boosts: {spa: 1}}}],
 		accuracy: 100,
 		category: "Special",
-		desc: "Has a 20% chance to burn the target. Raises Sp.Atk by 1 stage.",
+		desc: "Has a 20% chance to burn the target. Raises the user's Special Attack by 1 stage.",
 		shortDesc: "20% chance to burn the target. Raises Sp.Atk by 1.",
 		pp: 15,
 		priority: 0,
-		flags: {protect: 1, mirror: 1},
+		flags: {protect: 1, mirror: 1, contact: 1, defrost: 1},
 		target: "normal",
 		type: "Fire"
 	},
@@ -435,8 +434,8 @@ exports.BattleMovedex = {
 		id: 'eternalstruggle',
 		category: 'Special',
 		type: 'Electric',
-		desc: 'Has 1/2 recoil.',
-		shortDesc: 'Has 1/2 recoil.',
+		desc: "If the target lost HP, the user takes recoil damage equal to 1/2 the HP lost by the target, rounded half up, but not less than 1 HP. Lowers the user's Attack, Defense, Special Attack, Special Defense, and Speed by 1 stage.",
+		shortDesc: "Lowers all stats by 1 (not acc/eva). Has 1/2 recoil.",
 		pp: 5,
 		priority: 0,
 		basePower: 180,
@@ -515,6 +514,8 @@ exports.BattleMovedex = {
 		pp: 5,
 		priority: 0,
 		flags: {charge: 1, protect: 1, mirror: 1},
+		desc: "This attack charges on the first and second turns and executes on the third, and shows how AFK the user can be. On the first and second turns, the user avoids all attacks.",
+		shortDesc: "Disappears turns 1 and 2. Hits turn 3.",
 		onTry: function(attacker, defender, move) {
 			this.attrLastMove('[still]');
 			if (attacker.volatiles[move.id] && attacker.volatiles[move.id].duration === 1) {
@@ -546,14 +547,7 @@ exports.BattleMovedex = {
 				return 0;
 			}
 		},
-		secondaries: [
-		{
-			chance: 20,
-			volatileStatus: 'confusion'
-		}, {
-			chance: 10,
-			status: 'slp'
-		}],
+		secondaries: [{chance: 20, volatileStatus: 'confusion'}, {chance: 10, status: 'slp'}],
 		target: 'normal'
 	},
 	"godbird": {
