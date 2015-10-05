@@ -288,11 +288,11 @@ exports.BattleScripts = {
 				evs: {atk:252,def:4,spe:252}, nature: 'Adamant'
 			},*/
 			'Poomph':{
-				species: "Ampharos", ability: "Little Engine", item: 'Life Orb', gender: 'M',
-				moves: ['headsmash','frustration','withdraw', 'endure','wish'],
+				species: "Ampharosmega", ability: "Little Engine", item: 'Life Orb', gender: 'M',
+				moves: ['surf','powergem','detect','wish','nastyplot'],
 				signatureMove: 'eternalstruggle',
 				happiness: 0,
-				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
+				evs: {hp:252, spa:252, def:4}, nature: 'Modest'
 			},
 			'NoFunMantis':{
 				species: "Scyther", ability: "No Fun Allowed", item: 'Eviolite', gender: 'M',
@@ -448,11 +448,11 @@ exports.BattleScripts = {
 				evs: {atk:252,def:4,spe:252}, nature: 'Adamant'
 			},
 			'Poomph':{
-				species: "Ampharos", ability: "Little Engine", item: 'Life Orb', gender: 'M',
-				moves: ['headsmash','frustration','withdraw', 'endure','wish'],
+				species: "Ampharosmega", ability: "Little Engine", item: 'Life Orb', gender: 'M',
+				moves: ['surf','powergem','detect','wish','nastyplot'],
 				signatureMove: 'eternalstruggle',
 				happiness: 0,
-				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
+				evs: {hp:252, spa:252, def:4}, nature: 'Modest'
 			},
 			'NoFunMantis':{
 				species: "Scyther", ability: "No Fun Allowed", item: 'Eviolite', gender: 'M',
