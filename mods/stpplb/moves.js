@@ -824,5 +824,92 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Dark"
+	},
+	'BAWK!': {
+		num: 644,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "The user becomes flying type and restores 1/2 of its maximum HP, rounded half up.",
+		shortDesc: "Heals the user by 50% of its max HP. User becomes flying type.",
+		id: "bawk",
+		isViable: true,
+		name: "BAWK!",
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1, heal: 1},
+		onPrepareHit: function (target, pokemon) {
+			if (pokemon.hasType('Flying')) return;
+			if (!pokemon.addType('Flying')) return;
+			this.add('-start', pokemon, 'typeadd', 'Flying', '[from] move: BAWK!');
+		},
+		heal: [1, 2],
+		secondary: false,
+		target: "self",
+		type: "Flying"
+	},
+	'Yiff Yiff': {
+		num: 645,
+		accuracy: true,
+		basePower: 0,
+		category: "Status",
+		desc: "Causes the user's Ability to become Fur Coat. Randomly executes a move based on the user's type.",
+		shortDesc: "The user's Ability becomes Fur Coat. Executes a random move.",
+		id: "yiffyiff",
+		name: "Yiff Yiff,
+		pp: 10,
+		priority: 0,
+		flags: {snatch: 1},
+		onPrepareHit: function (pokemon) {
+			if (!pokemon.hasType('Flying')) var bawked = this.random(3);
+			if (pokemon.hasType('Flying')) var bawked = this.random(4);
+			var bannedAbilities = {furcoat:1, multitype:1, stancechange:1, truant:1};
+			if (bannedAbilities[pokemon.ability]) {
+				return;
+			}
+			var oldAbility = pokemon.setAbility('furcoat');
+			if (oldAbility) {
+				this.add('-endability', pokemon, oldAbility, '[from] move: Yiff Yiff');
+				this.add('-ability', pokemon, 'Fur Coat', '[from] move: Yiff Yiff');
+			}
+			return;
+		},
+		onHit: function (target) {
+			if (bawked === 1) this.useMove('earthquake');
+			if (bawked === 2) this.useMove('iciclecrash');
+			if (bawked === 3) this.useMove('stoneedge');
+			if (bawked === 4) this.useMove('bravebird');
+		}
+		secondary: {
+			chance: 7,
+			self: {
+				boosts: {
+					atk: 1,
+					spd: 1,
+					spe: 1,
+					accuracy: 1
+				}
+			}
+		},
+		target: "self",
+		type: "Normal"
+	},
+	"arcticslash": {
+		num: 656,
+		accuracy: 100,
+		basePower: 25,
+		category: "Physical",
+		desc: "Hits two to five times. Has a 1/3 chance to hit two or three times, and a 1/6 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Ability Skill Link, this move will always hit five times.",
+		shortDesc: "Hits 2-5 times in one turn.",
+		id: "arcticslash",
+		name: "Arctic Slash",
+		pp: 30,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		critRatio: 3,
+		multihit: [2, 5],
+		secondary: false,
+		target: "normal",
+		type: "Ice"
 	}
 }
