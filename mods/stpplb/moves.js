@@ -781,8 +781,8 @@ exports.BattleMovedex = {
 		basePower: 0,
 		category: "Status",
 		onTryHit: function(target, source, move) {
-			var targetName = toID(target.name)
-			var sourceName = toID(source.name)
+			var targetName = toId(target.name)
+			var sourceName = toId(source.name)
 			this.attrLastMove('[still]');
 			this.add('-anim', source, 'Chatter', target);
 			this.add('c|'+sourceName+'|Wow '+targetName+' OneHand');
