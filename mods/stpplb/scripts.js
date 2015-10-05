@@ -134,11 +134,11 @@ exports.BattleScripts = {
 				evs: {atk:252,def:4,spe:252}, nature: 'Adamant'
 			},*/
 			'Poomph':{
-				species: "Ampharos", ability: "Little Engine", item: 'Life Orb', gender: 'M',
-				moves: ['headsmash','frustration','withdraw', 'endure','wish'],
+				species: "Ampharosmega", ability: "Little Engine", item: 'Life Orb', gender: 'M',
+				moves: ['surf','powergem','detect','wish','nastyplot'],
 				signatureMove: 'eternalstruggle',
 				happiness: 0,
-				evs: {hp:252, atk:252, def:4}, nature: 'Adamant'
+				evs: {hp:252, spa:252, def:4}, nature: 'Modest'
 			},
 			/*'NoFunMantis':{ // STPPLB+ only
 				species: "Scyther", ability: "No Fun Allowed", item: 'Eviolite', gender: 'M',
@@ -175,6 +175,12 @@ exports.BattleScripts = {
 				moves: ['hypervoice'],
 				signatureMoves: ['shadowsphere', 'drainforce', 'sneakyspook'],
 				evs: {hp: 248, spa: 252, spe: 8}, nature: 'Modest'
+			},
+			'Tadepole_0f_Doom': {
+				species: 'Poliwrath', ability: 'Ban Evade', item: 'BrightPowder', gender: 'M',
+				moves: ['closecombat', 'waterfall', 'icepunch', 'endure', 'bellydrum']
+				signatureMove: 'thousandalts',
+				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -329,6 +335,12 @@ exports.BattleScripts = {
 				moves: ['earthquake','drainpunch'],
 				signatureMoves: ['wish','aromatherapy','bulkup'],
 				evs: {hps: 252, def: 168, spd: 88}, nature: 'Calm'
+			},
+			'Tadepole_0f_Doom': {
+				species: 'Poliwrath', ability: 'Ban Evade', item: 'BrightPowder', gender: 'M',
+				moves: ['closecombat', 'waterfall', 'icepunch', 'endure', 'bellydrum']
+				signatureMove: 'thousandalts',
+				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -489,6 +501,12 @@ exports.BattleScripts = {
 				moves: ['earthquake','drainpunch'],
 				signatureMoves: ['wish','aromatherapy','bulkup'],
 				evs: {hps: 252, def: 168, spd: 88}, nature: 'Calm'
+			},
+			'Tadepole_0f_Doom': {
+				species: 'Poliwrath', ability: 'Ban Evade', item: 'BrightPowder', gender: 'M',
+				moves: ['closecombat', 'waterfall', 'icepunch', 'endure', 'bellydrum']
+				signatureMove: 'thousandalts',
+				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
