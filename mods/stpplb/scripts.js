@@ -187,6 +187,18 @@ exports.BattleScripts = {
 				moves: ['closecombat', 'waterfall', 'icepunch', 'endure', 'bellydrum'],
 				signatureMove: 'thousandalts',
 				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
+			},
+			'Whatevs4': {
+				species: 'Sneasel', ability: 'Technician', item: 'Dark Gem', gender: 'F',
+				moves: ['aerialace', 'stormthrow', 'thief'],
+				signatureMove: 'arcticslash',
+				evs: {atk: 252, hp: 4, spe: 252}, nature: 'Jolly'
+			},
+			'MihiraTheTiger': {
+				species: 'Mamoswine', ability: 'Technician', item: 'Leftovers', gender: 'M',
+				moves: ['iceshard', 'stealthrock'],
+				signatureMoves: ['yiffyiff','bawk'],
+				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -353,6 +365,18 @@ exports.BattleScripts = {
 				moves: ['closecombat', 'waterfall', 'icepunch', 'endure', 'bellydrum'],
 				signatureMove: 'thousandalts',
 				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
+			},
+			'Whatevs4': {
+				species: 'Sneasel', ability: 'Technician', item: 'Dark Gem', gender: 'F',
+				moves: ['aerialace', 'stormthrow', 'thief'],
+				signatureMove: 'arcticslash',
+				evs: {atk: 252, hp: 4, spe: 252}, nature: 'Jolly'
+			},
+			'MihiraTheTiger': {
+				species: 'Mamoswine', ability: 'Technician', item: 'Leftovers', gender: 'M',
+				moves: ['iceshard', 'stealthrock'],
+				signatureMoves: ['yiffyiff','bawk'],
+				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -525,6 +549,18 @@ exports.BattleScripts = {
 				moves: ['closecombat', 'waterfall', 'icepunch', 'endure', 'bellydrum'],
 				signatureMove: 'thousandalts',
 				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
+			},
+			'Whatevs4': {
+				species: 'Sneasel', ability: 'Technician', item: 'Dark Gem', gender: 'F',
+				moves: ['aerialace', 'stormthrow', 'thief'],
+				signatureMove: 'arcticslash',
+				evs: {atk: 252, hp: 4, spe: 252}, nature: 'Jolly'
+			},
+			'MihiraTheTiger': {
+				species: 'Mamoswine', ability: 'Technician', item: 'Leftovers', gender: 'M',
+				moves: ['iceshard', 'stealthrock'],
+				signatureMoves: ['yiffyiff','bawk'],
+				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
