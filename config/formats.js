@@ -198,13 +198,6 @@ exports.Formats = [
 					{type: 'Ghost', suppressed: false,  isAdded: false}
 				];
 			}
-			if (name === 'groundctrl27' && !pokemon.illusion) {
-				this.add('-start', pokemon, 'typechange', 'Ghost/Normal');
-				pokemon.typesData = [
-					{type: 'Ghost', suppressed: false,  isAdded: false},
-					{type: 'Normal', suppressed: false,  isAdded: false}
-				]
-			}
 			if (name === 'xfix') { // different message depending on hazards.
 				var hazards = {stealthrock: 1, spikes: 1, toxicspikes: 1, stickyweb: 1};
 				var hasHazards = false;
@@ -290,9 +283,8 @@ exports.Formats = [
 				} else {
 					this.add('c|xfix|(gg... I guess)');
 				}
-			} else if (name === 'azum4roll') {
-				this.add("c|azum4roll|This game doesn't have enough glitches!");
-			} else if (name === 'lasszeowx') this.add("c|Lass zeowx|When can I beat TPPLA BibleThump");
+			} else if (name === 'azum4roll') this.add("c|azum4roll|This game doesn't have enough glitches!");
+			else if (name === 'lasszeowx') this.add("c|Lass zeowx|When can I beat TPPLA BibleThump");
 			else if (name === 'kapnkooma') this.add("c|Kap'n Kooma|Avast! I be needing a pint of grog after this.");
 			else if (name === 'kooma9') this.add("c|Kooma9|Most Disappointing Player 2015");
 			else if (name === 'best') this.add("raw|<big>BEST? FALLED</big>");

@@ -172,13 +172,13 @@ exports.BattleScripts = {
 			},
 			'GroundCtrl27': {
 				species: 'Meloetta', ability: 'Scrappy', item: 'Assault Vest', gender: 'M',
-				moves: ['hypervoice'],
-				signatureMoves: ['shadowsphere', 'drainforce', 'sneakyspook'],
+				moves: ['hypervoice', 'psyshock', 'sneakyspook'],
+				signatureMoves: ['shadowsphere', 'drainforce'],
 				evs: {hp: 248, spa: 252, spe: 8}, nature: 'Modest'
 			},
 			'PikalaxALT': {
 				species: 'Pikachu', ability: 'Pika Power', item: 'Light Ball', gender: 'M',
-				moves: ['thunder','thunderbolt','quickattack','voltswitch','irontail'],
+				moves: ['thunder', 'thunderbolt', 'quickattack', 'voltswitch', 'irontail'],
 				signatureMove: 'toucan',
 				evs: {hp: 252, spa: 252, def: 4}, nature: 'Calm'
 			},
@@ -332,8 +332,8 @@ exports.BattleScripts = {
 			},
 			'GroundCtrl27': {
 				species: 'Meloetta', ability: 'Scrappy', item: 'Assault Vest', gender: 'M',
-				moves: ['hypervoice'],
-				signatureMoves: ['shadowsphere', 'drainforce', 'sneakyspook'],
+				moves: ['hypervoice', 'psyshock', 'sneakyspook'],
+				signatureMoves: ['shadowsphere', 'drainforce'],
 				evs: {hp: 248, spa: 252, spe: 8}, nature: 'Modest'
 			},
 			'WhatevsFur': {
@@ -344,7 +344,7 @@ exports.BattleScripts = {
 			},
 			'PikalaxALT': {
 				species: 'Pikachu', ability: 'Pika Power', item: 'Light Ball', gender: 'M',
-				moves: ['thunder','thunderbolt','quickattack','voltswitch','irontail'],
+				moves: ['thunder', 'thunderbolt', 'quickattack', 'voltswitch', 'irontail'],
 				signatureMove: 'toucan',
 				evs: {hp: 252, spa: 252, def: 4}, nature: 'Calm'
 			},
@@ -504,8 +504,8 @@ exports.BattleScripts = {
 			},
 			'GroundCtrl27': {
 				species: 'Meloetta', ability: 'Scrappy', item: 'Assault Vest', gender: 'M',
-				moves: ['hypervoice'],
-				signatureMoves: ['shadowsphere', 'drainforce', 'sneakyspook'],
+				moves: ['hypervoice', 'psyshock', 'sneakyspook'],
+				signatureMoves: ['shadowsphere', 'drainforce'],
 				evs: {hp: 248, spa: 252, spe: 8}, nature: 'Modest'
 			},
 			'WhatevsFur': {
@@ -516,7 +516,7 @@ exports.BattleScripts = {
 			},
 			'PikalaxALT': {
 				species: 'Pikachu', ability: 'Pika Power', item: 'Light Ball', gender: 'M',
-				moves: ['thunder','thunderbolt','quickattack','voltswitch','irontail'],
+				moves: ['thunder', 'thunderbolt', 'quickattack', 'voltswitch', 'irontail'],
 				signatureMove: 'toucan',
 				evs: {hp: 252, spa: 252, def: 4}, nature: 'Calm'
 			},
