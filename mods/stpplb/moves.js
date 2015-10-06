@@ -876,10 +876,10 @@ exports.BattleMovedex = {
 			return;
 		},
 		onHit: function (target, source, move) {
-			if (bawked === 0) this.useMove('earthquake');
-			if (bawked === 1) this.useMove('iciclecrash');
-			if (bawked === 2) this.useMove('stoneedge');
-			if (bawked === 3) this.useMove('bravebird');
+			if (move.bawked === 0) this.useMove('earthquake', target);
+			if (move.bawked === 1) this.useMove('iciclecrash', target);
+			if (move.bawked === 2) this.useMove('stoneedge', target);
+			if (move.bawked === 3) this.useMove('bravebird', target);
 		},
 		secondary: {
 			chance: 7,
