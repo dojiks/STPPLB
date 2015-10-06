@@ -874,7 +874,7 @@ exports.BattleMovedex = {
 		},
 		onHit: function (target, source, move) {
 			var bawked;
-			if (!pokemon.hasType('Flying')) bawked = this.random(3);
+			if (!source.hasType('Flying')) bawked = this.random(3);
 			else bawked = this.random(4);
 			if (bawked === 0) this.useMove('earthquake', target);
 			if (bawked === 1) this.useMove('iciclecrash', target);
