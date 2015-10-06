@@ -211,11 +211,11 @@ exports.BattleAbilities = { // define custom abilities here.
 		shortDesc: "This Pokemon's Defense and Sp. Defense are doubled. This Pokemon cannot be frozen.",
 		onModifyDefPriority: 6,
 		onModifyDef: function (def) {
-			return this.chainModify(2.25);
+			return this.chainModify(2);
 		},
-		onModifySpdPriotiy: 6,
+		onModifySpdPriority: 6,
 		onModifySpd: function (spd) {
-			return this.chainModify(2.25);
+			return this.chainModify(2);
 		},
 		onImmunity: function (type, pokemon) {
 			if (type === 'frz') return false;

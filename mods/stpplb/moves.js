@@ -78,7 +78,7 @@ exports.BattleMovedex = {
 			onHit: function(pokemon) { // Mega evolves dfg
 					var temp = pokemon.item;
 					pokemon.item = 'houndoominite'; // in order to make it mega evolvable, add a Houndoomite temporarily.
-					if (!pokemon.template.isMega) pokemon.canMegaEvo = this.canMegaEvo(pokemon); // don't mega evolve if it's already mega
+					pokemon.canMegaEvo = this.canMegaEvo(pokemon);
 					if (pokemon.canMegaEvo) this.runMegaEvo(pokemon);
 					pokemon.item = temp; // give its normal item back.
 				}
@@ -859,10 +859,11 @@ exports.BattleMovedex = {
 		name: "Yiff Yiff",
 		pp: 10,
 		priority: 0,
+		bawked: 0,
 		flags: {snatch: 1},
-		onPrepareHit: function (pokemon) {
-			if (!pokemon.hasType('Flying')) var bawked = this.random(3);
-			if (pokemon.hasType('Flying')) var bawked = this.random(4);
+		onPrepareHit: function (target, pokemon, move) {
+			if (!pokemon.hasType('Flying')) move.bawked = this.random(3);
+			if (pokemon.hasType('Flying')) move.bawked = this.random(4);
 			var bannedAbilities = {furcoat:1, multitype:1, stancechange:1, truant:1};
 			if (bannedAbilities[pokemon.ability]) {
 				return;
@@ -874,11 +875,11 @@ exports.BattleMovedex = {
 			}
 			return;
 		},
-		onHit: function (target) {
-			if (bawked === 1) this.useMove('earthquake');
-			if (bawked === 2) this.useMove('iciclecrash');
-			if (bawked === 3) this.useMove('stoneedge');
-			if (bawked === 4) this.useMove('bravebird');
+		onHit: function (target, source, move) {
+			if (bawked === 0) this.useMove('earthquake');
+			if (bawked === 1) this.useMove('iciclecrash');
+			if (bawked === 2) this.useMove('stoneedge');
+			if (bawked === 3) this.useMove('bravebird');
 		}
 		secondary: {
 			chance: 7,
