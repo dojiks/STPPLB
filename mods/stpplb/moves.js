@@ -825,7 +825,7 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Dark"
 	},
-	'BAWK!': {
+	'bawk': {
 		num: 644,
 		accuracy: true,
 		basePower: 0,
@@ -848,7 +848,7 @@ exports.BattleMovedex = {
 		target: "self",
 		type: "Flying"
 	},
-	'Yiff Yiff': {
+	'yiffyiff': {
 		num: 645,
 		accuracy: true,
 		basePower: 0,
@@ -880,7 +880,7 @@ exports.BattleMovedex = {
 			if (bawked === 1) this.useMove('iciclecrash');
 			if (bawked === 2) this.useMove('stoneedge');
 			if (bawked === 3) this.useMove('bravebird');
-		}
+		},
 		secondary: {
 			chance: 7,
 			self: {
