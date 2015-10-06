@@ -787,6 +787,9 @@ exports.BattleMovedex = {
 			this.add('-anim', source, 'Chatter', target);
 			this.add('c|'+sourceName+'|Wow '+targetName+' OneHand');
 			target.addVolatile('confusion');
+			var hazards = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
+			target.side.addSideCondition(hazards.sample(1)[0]);
+			target.side.addSideCondition(hazards.sample(1)[0]);
 		},
 		desc: 'Confuses the target.',
 		shortdesc: 'Wow Description OneHand',

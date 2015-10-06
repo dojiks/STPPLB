@@ -198,6 +198,9 @@ exports.Formats = [
 					{type: 'Ghost', suppressed: false,  isAdded: false}
 				];
 			}
+			if (name === 'pikalaxalt') {
+				this.boost({spa:2, def:1, spd:1, spe:2}, pokemon);
+			}
 			if (name === 'xfix') { // different message depending on hazards.
 				var hazards = {stealthrock: 1, spikes: 1, toxicspikes: 1, stickyweb: 1};
 				var hasHazards = false;
