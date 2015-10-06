@@ -859,11 +859,8 @@ exports.BattleMovedex = {
 		name: "Yiff Yiff",
 		pp: 10,
 		priority: 0,
-		bawked: 0,
 		flags: {snatch: 1},
 		onPrepareHit: function (target, pokemon, move) {
-			if (!pokemon.hasType('Flying')) move.bawked = this.random(3);
-			if (pokemon.hasType('Flying')) move.bawked = this.random(4);
 			var bannedAbilities = {furcoat:1, multitype:1, stancechange:1, truant:1};
 			if (bannedAbilities[pokemon.ability]) {
 				return;
@@ -876,10 +873,13 @@ exports.BattleMovedex = {
 			return;
 		},
 		onHit: function (target, source, move) {
-			if (move.bawked === 0) this.useMove('earthquake', target);
-			if (move.bawked === 1) this.useMove('iciclecrash', target);
-			if (move.bawked === 2) this.useMove('stoneedge', target);
-			if (move.bawked === 3) this.useMove('bravebird', target);
+			var bawked;
+			if (!pokemon.hasType('Flying')) bawked = this.random(3);
+			else bawked = this.random(4);
+			if (bawked === 0) this.useMove('earthquake', target);
+			if (bawked === 1) this.useMove('iciclecrash', target);
+			if (bawked === 2) this.useMove('stoneedge', target);
+			if (bawked === 3) this.useMove('bravebird', target);
 		},
 		secondary: {
 			chance: 7,
