@@ -456,10 +456,10 @@ exports.BattleMovedex = {
 		id: 'nofun',
 		category: 'Physical',
 		priority: 1,
-		basePower: 90,
-		accuracy: 90,
+		basePower: 40,
+		accuracy: true,
 		type: 'Bug',
-		pp: 15,
+		pp: 20,
 		flags: {protect: 1, mirror: 1},
 		onHit: function (target) {
 			target.clearBoosts();
