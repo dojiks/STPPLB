@@ -199,6 +199,18 @@ exports.BattleScripts = {
 				moves: ['iceshard', 'stealthrock'],
 				signatureMoves: ['yiffyiff','bawk'],
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
+			},
+			'HazorEx': {
+				species: 'Alakazam', ability: 'Physicalakazam', item: 'Alakazite', gender: 'M',
+				moves: ['firepunch', 'thunderpunch', 'icepunch', 'drainpunch', 'megapunch', 'endure'],
+				signatureMove: 'psychocut',
+				evs: {atk: 252, spe: 252, hp: 4}, nature: 'Adamant'
+			},
+			'Leonys': {
+				species: 'Flareon', ability: 'Incinerate', item: 'Choice Band', gender: 'M',
+				moves: ['volttackle', 'drillrun', 'irontail', 'revenge', 'pursuit','zenheadbutt'],
+				signatureMoves: ['quickattack','doubleedge'],
+				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -376,6 +388,18 @@ exports.BattleScripts = {
 				species: 'Mamoswine', ability: 'Technician', item: 'Leftovers', gender: 'M',
 				moves: ['iceshard', 'stealthrock'],
 				signatureMoves: ['yiffyiff','bawk'],
+				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
+			},
+			'HazorEx': {
+				species: 'Alakazam', ability: 'Physicalakazam', item: 'Alakazite', gender: 'M',
+				moves: ['firepunch', 'thunderpunch', 'icepunch', 'drainpunch', 'megapunch', 'endure'],
+				signatureMove: 'psychocut',
+				evs: {atk: 252, spe: 252, hp: 4}, nature: 'Adamant'
+			},
+			'Leonys': {
+				species: 'Flareon', ability: 'Incinerate', item: 'Choice Band', gender: 'M',
+				moves: ['volttackle', 'drillrun', 'irontail', 'revenge', 'pursuit','zenheadbutt'],
+				signatureMoves: ['quickattack','doubleedge'],
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
 			}
 		};
@@ -560,6 +584,18 @@ exports.BattleScripts = {
 				species: 'Mamoswine', ability: 'Technician', item: 'Leftovers', gender: 'M',
 				moves: ['iceshard', 'stealthrock'],
 				signatureMoves: ['yiffyiff','bawk'],
+				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
+			},
+			'HazorEx': {
+				species: 'Alakazam', ability: 'Physicalakazam', item: 'Alakazite', gender: 'M',
+				moves: ['firepunch', 'thunderpunch', 'icepunch', 'drainpunch', 'megapunch', 'endure'],
+				signatureMove: 'psychocut',
+				evs: {atk: 252, spe: 252, hp: 4}, nature: 'Adamant'
+			},
+			'Leonys': {
+				species: 'Flareon', ability: 'Incinerate', item: 'Choice Band', gender: 'M',
+				moves: ['volttackle', 'drillrun', 'irontail', 'revenge', 'pursuit','zenheadbutt'],
+				signatureMoves: ['quickattack','doubleedge'],
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
 			}
 		};
