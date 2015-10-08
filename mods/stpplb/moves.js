@@ -931,8 +931,8 @@ exports.BattleMovedex = {
 		beforeTurnCallback: function (pokemon) {
 			pokemon.addVolatile('ganonssword');
 			boosts: {
-				def: 3,
-				spd: 3,
+				def: 2,
+				spd: 2,
 			}
 		},
 		effect: {
@@ -945,8 +945,8 @@ exports.BattleMovedex = {
 			chance: 95,
 			self: { 
 				boosts: {
-					def: -3,
-					spd: -3,
+					def: -2,
+					spd: -2,
 				}
 			}
 		},
