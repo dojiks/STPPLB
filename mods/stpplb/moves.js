@@ -915,5 +915,42 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: "normal",
 		type: "Ice"
+	},
+	"ganonssword": {
+		num: 657,
+		accuracy: 100,
+		basePower: 120,
+		category: "Physical",
+		desc: "The user's defenses increase by two stages at the beginning of the turn. The user attacks last. The user's defenses drop by two stages at the end of the turn.",
+		shortDesc: "Sharply increases def. and sp. def. at the start of the turn. Attacks last and harshly lowers def. and sp. def.",
+		id: "ganonssword",
+		name: "Ganon's Sword",
+		pp: 10,
+		priority: -3,
+		flags: {contact: 1, protect: 1},
+		beforeTurnCallback: function (pokemon) {
+			pokemon.addVolatile('ganonssword');
+			boosts: {
+				def: 3,
+				spd: 3,
+			}
+		},
+		effect: {
+			duration: 1,
+			onStart: function (pokemon) {
+				this.add('-singleturn', pokemon, "move: Ganon's Sword");
+			}
+		},
+		secondary: {
+			chance: 95,
+			self: { 
+				boosts: {
+					def: -3,
+					spd: -3,
+				}
+			}
+		},
+		target: "normal",
+		type: "Dark"
 	}
 }
