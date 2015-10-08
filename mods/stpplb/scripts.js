@@ -211,6 +211,12 @@ exports.BattleScripts = {
 				moves: ['volttackle', 'drillrun', 'irontail', 'revenge', 'pursuit','zenheadbutt'],
 				signatureMoves: ['quickattack','doubleedge'],
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
+			},
+			'Xinc': {
+				species: 'Bisharp', ability: 'Defiant+', item: 'Leftovers', gender: 'M',
+				moves: ['knockoff','drainpunch','ironhead','suckerpunch'],
+				signatureMove: 'ganonssword',
+				evs: {hp: 200, atk: 252, spe: 56}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -401,6 +407,12 @@ exports.BattleScripts = {
 				moves: ['volttackle', 'drillrun', 'irontail', 'revenge', 'pursuit','zenheadbutt'],
 				signatureMoves: ['quickattack','doubleedge'],
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
+			},
+			'Xinc': {
+				species: 'Bisharp', ability: 'Defiant+', item: 'Leftovers', gender: 'M',
+				moves: ['knockoff','drainpunch','ironhead','suckerpunch'],
+				signatureMove: 'ganonssword',
+				evs: {hp: 200, atk: 252, spe: 56}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -597,6 +609,12 @@ exports.BattleScripts = {
 				moves: ['volttackle', 'drillrun', 'irontail', 'revenge', 'pursuit','zenheadbutt'],
 				signatureMoves: ['quickattack','doubleedge'],
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
+			},
+			'Xinc': {
+				species: 'Bisharp', ability: 'Defiant+', item: 'Leftovers', gender: 'M',
+				moves: ['knockoff','drainpunch','ironhead','suckerpunch'],
+				signatureMove: 'ganonssword',
+				evs: {hp: 200, atk: 252, spe: 56}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
