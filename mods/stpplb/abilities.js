@@ -406,7 +406,7 @@ exports.BattleAbilities = { // define custom abilities here.
 		rating: 3.5,
 		num: 209
 	},
-	'physicalakzam': { // Makes Alakazam into a physical tank
+	'physicalakazam': { // Makes Alakazam into a physical tank
 		shortDesc: "This Pokemon's Attack is increased 2.5x and its Defense is doubled.",
 		onModifyDefPriority: 6,
 		onModifyDef: function (def) {
