@@ -213,8 +213,8 @@ exports.BattleAbilities = { // define custom abilities here.
 		onModifyDef: function (def) {
 			return this.chainModify(2);
 		},
-		onModifySpdPriority: 6,
-		onModifySpd: function (spd) {
+		onModifySpDPriority: 6,
+		onModifySpD: function (spd) {
 			return this.chainModify(2);
 		},
 		onImmunity: function (type, pokemon) {
@@ -357,6 +357,12 @@ exports.BattleAbilities = { // define custom abilities here.
 	'banevade': {
 		desc: "This Pokemon is raised by end of each turn.",
 		shortDesc: "Raises a random stat by 2 and lowers another stat by 1 at the end of each turn.",
+		onTryHit: function (pokemon, target, move) {
+			if (move.ohko) {
+				this.add('-immune', pokemon, '[msg]');
+				return null;
+			}
+		},
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
@@ -377,5 +383,42 @@ exports.BattleAbilities = { // define custom abilities here.
 		name: "Ban Evade",
 		rating: 5,
 		num: 208
+	},
+	'incinerate': {
+		desc: "This Pokemon's Normal type moves become Fire type and have their power multiplied by 1.3. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		shortDesc: "This Pokemon's Normal type moves become Fire type and have 1.3x power.",
+		onModifyMovePriority: -1,
+		onModifyMove: function (move, pokemon) {
+			if (move.id !== 'struggle' && move.type == 'Normal') { // don't mess with Struggle, only change normal moves.
+				move.type = 'Fire';
+				if (move.category !== 'Status') pokemon.addVolatile('incinerate');
+			}
+		},
+		effect: {
+			duration: 1,
+			onBasePowerPriority: 8,
+			onBasePower: function (basePower, pokemon, target, move) {
+				return this.chainModify([0x14CD, 0x1000]); // not sure how this one works but this was in the Aerilate code in Pokemon Showdown.
+			}
+		},
+		id: "incinerate",
+		name: "Incinerate",
+		rating: 3.5,
+		num: 209
+	},
+	'physicalakzam': { // Makes Alakazam into a physical tank
+		shortDesc: "This Pokemon's Attack and Defense are doubled.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(2);
+		},
+		onModifyAtkPriority: 6,
+		onModifyAtk: function (atk) {
+			return this.chainModify(2);
+		},
+		id: "physicalakazam",
+		name: "Physicalakazam",
+		rating: 3.5,
+		num: 210
 	}
 }
