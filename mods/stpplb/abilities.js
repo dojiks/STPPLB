@@ -4,7 +4,7 @@ exports.BattleAbilities = { // define custom abilities here.
 		shortDesc: "This Pokemon's moves become Bird type and have 1.3x power.",
 		onModifyMovePriority: -1,
 		onModifyMove: function (move, pokemon) {
-			if (move.id !== 'struggle' && move.type !== 'Bird') { // don't boost moves if they are already Bird-type (TM56). Also don't mess with Struggle.
+			if (move.id !== 'struggle') { // still boost moves even if they are already Bird-type (TM56). Also don't mess with Struggle.
 				move.type = 'Bird';
 				if (move.category !== 'Status') pokemon.addVolatile('glitchiate');
 			}
@@ -13,12 +13,12 @@ exports.BattleAbilities = { // define custom abilities here.
 			duration: 1,
 			onBasePowerPriority: 8,
 			onBasePower: function (basePower, pokemon, target, move) {
-				return this.chainModify([0x14CD, 0x1000]); // not sure how this one works but this was in the Aerilate code in Pokemon Showdown.
+				return this.chainModify([0x14CD, 0x1000]); // multiplies BP by 5325/4096 (~1.3000488), like in the games
 			}
 		},
 		id: "glitchiate",
 		name: "Glitchiate",
-		rating: 3.5,
+		rating: 4,
 		num: 192
 	},
 	"serenegraceplus": {
@@ -45,6 +45,11 @@ exports.BattleAbilities = { // define custom abilities here.
 			for (var i = 0; i < activeFoe.length; i++) {
 				var pokemon = activeFoe[i];
 				var secondarytype = (pokemon.typesData[1] ? pokemon.typesData[1].type : false);
+				if (pokemon.typesData[1] === 'Ghost') { // no more Ghost/Ghost madness!
+					this.add('-start', pokemon, 'typechange', 'Ghost');
+					pokemon.typesData = [{type: 'Ghost', suppressed: false,  isAdded: false}];
+					continue;
+				}
 				this.add('-start', pokemon, 'typechange', 'Ghost' + (secondarytype ? '/' + secondarytype : ''));
 				pokemon.typesData[0] = {type: 'Ghost', suppressed: false,  isAdded: false};
 			}
@@ -161,6 +166,9 @@ exports.BattleAbilities = { // define custom abilities here.
 		onStart: function (source) {
 			this.setWeather('primordialsea');
 		},
+		onAnySetWeather: function (target, source, weather) {
+			if (this.getWeather().id === 'primordialsea' && !(weather.id in {desolateland:1, primordialsea:1, deltastream:1})) return false; // no more Sandstorm overwriting the Heavy Rain!
+		},
 		onEnd: function (pokemon) {
 			if (this.weatherData.source !== pokemon) return;
 			for (var i = 0; i < this.sides.length; i++) {
@@ -175,15 +183,18 @@ exports.BattleAbilities = { // define custom abilities here.
 			}
 			this.clearWeather();
 		},
-		onModifySpe: function (speMod, pokemon) { // the swift swim portion which apparently doesn't work.
-			return this.chainModify(2);
+		onModifySpe: function (spe, pokemon) { // let's try this again
+			if (this.isWeather(['raindance', 'primordialsea'])) {
+				return this.chainModify(2);
+			}
+			/* return this.chainModify(2); */
 		},
 		id: 'seaandsky',
 		name: 'Sea and Sky',
-		rating: 4,
+		rating: 5,
 		num: 199
 	},
-	'littleengine': { // Poomph, the little engine who couldn't. Negative version of moody.
+	'littleengine': { // Poomph, the little engine who couldn't. Little moody.
 		desc: "This Pokemon has a random stat raised by 1 stage at the end of each turn.",
 		shortDesc: "Raises a random stat by 1 at the end of each turn.",
 		onResidualOrder: 26,
@@ -204,7 +215,7 @@ exports.BattleAbilities = { // define custom abilities here.
 		},
 		id: "littleengine",
 		name: "Little Engine",
-		rating: -1,
+		rating: 4.5,
 		num: 200
 	},
 	'furriercoat': { // WhatevsFur, better fur coat, no frz.
@@ -213,8 +224,8 @@ exports.BattleAbilities = { // define custom abilities here.
 		onModifyDef: function (def) {
 			return this.chainModify(2);
 		},
-		onModifySpdPriority: 6,
-		onModifySpd: function (spd) {
+		onModifySpDPriority: 6,
+		onModifySpD: function (spd) { //SpD not Spd TriHard
 			return this.chainModify(2);
 		},
 		onImmunity: function (type, pokemon) {
@@ -261,7 +272,7 @@ exports.BattleAbilities = { // define custom abilities here.
 		},
 		id: "nofunallowed",
 		name: "No Fun Allowed",
-		rating: 1,
+		rating: 3.5,
 		num: 203
 	},
 	"dictator": {
@@ -285,12 +296,12 @@ exports.BattleAbilities = { // define custom abilities here.
 		},
 		id: "dictator",
 		name: "Dictator",
-		rating: 3.5,
+		rating: 4,
 		num: 204
 	},
 	"messiah": {
-		desc: "This Pokemon blocks certain status moves and instead uses the move against the original user. Increases Sp.Attack by 2",
-		shortDesc: "This Pokemon blocks certain status moves and bounces them back to the user. Also gets a Sp.Attack boost",
+		desc: "This Pokemon blocks certain status moves and instead uses the move against the original user. Increases Sp.Attack by 2 when triggered",
+		shortDesc: "This Pokemon blocks certain status moves and bounces them back to the user. Also gets a SpA boost when triggered",
 		id: "messiah",
 		name: "Messiah",
 		onTryHitPriority: 1,
@@ -311,6 +322,7 @@ exports.BattleAbilities = { // define custom abilities here.
 			var newMove = this.getMoveCopy(move.id);
 			newMove.hasBounced = true;
 			this.useMove(newMove, target, source);
+			this.boost({spa:2}, target); // now boosts when bouncing back hazards
 			return null;
 		},
 		effect: {
@@ -321,6 +333,7 @@ exports.BattleAbilities = { // define custom abilities here.
 	},
 	'technicality': {
 		num: 206,
+		rating: 2,
 		id: 'technicality',
 		name: 'Technicality',
 		onFoeTryMove: function (target, source, effect) {
@@ -333,20 +346,22 @@ exports.BattleAbilities = { // define custom abilities here.
 	},
 	'megaplunder': {
 		num: 207,
+		rating: 0,
 		id: 'megaplunder',
 		name: 'Mega Plunder'
 	},
 	'pikapower': {
 		num: 208,
-		desc: "This Pok&#xe9;mon has a 5% chance of exploding if you try to attack it.",
+		rating: 2,
+		desc: "This Pok&#xe9;mon has a 10% chance of exploding if you target it.",
 		shortdesc: "May explode when hit.",
 		id: "pikapower",
 		name: "Pika Power",
 		onTryHit: function (target, source, move) {
-			if (target === source || move.hasBounced || !move.flags['reflectable']) {
+			if (target === source || move.hasBounced) {
 				return;
 			}
-			if (this.random(20) === 1) {
+			if (this.random(10) === 1) {
 				this.add("c|PikalaxALT|KAPOW");
 				var newMove = this.getMoveCopy("explosion");
 				this.useMove(newMove, target, source);
@@ -355,8 +370,8 @@ exports.BattleAbilities = { // define custom abilities here.
 		}
 	},
 	'banevade': {
-		desc: "This Pokemon is raised by end of each turn.",
-		shortDesc: "Raises a random stat by 2 and lowers another stat by 1 at the end of each turn.",
+		desc: "This Pokemon's evasion is evaluated by end of each turn. Higher evasion at lower HP.",
+		shortDesc: "Higher evasion at lower HP.",
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
@@ -375,7 +390,7 @@ exports.BattleAbilities = { // define custom abilities here.
 		},
 		id: "banevade",
 		name: "Ban Evade",
-		rating: 5,
+		rating: 3,
 		num: 208
 	}
 }

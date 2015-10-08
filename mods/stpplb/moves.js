@@ -775,40 +775,13 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Ghost"
 	},
-	'toucan': {
-		num: 643,
-		accuracy: 85,
-		basePower: 0,
-		category: "Status",
-		onTryHit: function(target, source, move) {
-			var targetName = toId(target.name)
-			var sourceName = toId(source.name)
-			this.attrLastMove('[still]');
-			this.add('-anim', source, 'Chatter', target);
-			this.add('c|'+sourceName+'|Wow '+targetName+' OneHand');
-			target.addVolatile('confusion');
-			var hazards = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
-			target.side.addSideCondition(hazards.sample(1)[0]);
-			target.side.addSideCondition(hazards.sample(1)[0]);
-		},
-		desc: 'Confuses the target.',
-		shortdesc: 'Wow Description OneHand',
-		id: 'toucan',
-		isViable: true,
-		pp: 40,
-		priority: 0,
-		name: "Toucan",
-		flags: {snatch: 1},
-		target: "normal",
-		type: "Flying"
-	},
-	'thousandalts':{
+	'thousandalts': {
 		num: 643, //blaze what?
 		accuracy: 100,
 		basePower: 120,
 		category: "Physical",
 		desc: "If the target lost HP, the user takes recoil damage equal to 50% the HP lost by the target, rounded half up, but not less than 1 HP.",
-		shortDesc: "Has 50% recoil.",
+		shortDesc: "Adds Dark to the user's type(s) before attacking. Has 50% recoil. 20% chance to confuse.",
 		id: "thousandalts",
 		isViable: true,
 		name: "Thousand Alts",
@@ -821,10 +794,7 @@ exports.BattleMovedex = {
 			this.add('-start', pokemon, 'typeadd', 'Dark', '[from] move: Thousand Alts');
 		},
 		recoil: [1, 2],
-		secondary: {
-			chance: 20,
-			volatileStatus: 'confusion'
-		},
+		secondary: {chance: 20,	volatileStatus: 'confusion'},
 		target: "normal",
 		type: "Dark"
 	},
@@ -862,7 +832,7 @@ exports.BattleMovedex = {
 		name: "Yiff Yiff",
 		pp: 10,
 		priority: 0,
-		flags: {snatch: 1},
+		flags: {},
 		onPrepareHit: function (target, pokemon, move) {
 			var bannedAbilities = {furcoat:1, multitype:1, stancechange:1, truant:1};
 			if (bannedAbilities[pokemon.ability]) {
@@ -884,17 +854,7 @@ exports.BattleMovedex = {
 			if (bawked === 2) this.useMove('stoneedge', target);
 			if (bawked === 3) this.useMove('bravebird', target);
 		},
-		secondary: {
-			chance: 7,
-			self: {
-				boosts: {
-					atk: 1,
-					spd: 1,
-					spe: 1,
-					accuracy: 1
-				}
-			}
-		},
+		secondary: {chance: 10,	self: {boosts: {atk: 1, spd: 1, spe: 1, accuracy: 1}}},
 		target: "self",
 		type: "Normal"
 	},
@@ -904,16 +864,45 @@ exports.BattleMovedex = {
 		basePower: 25,
 		category: "Physical",
 		desc: "Hits two to five times. Has a 1/3 chance to hit two or three times, and a 1/6 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Ability Skill Link, this move will always hit five times.",
-		shortDesc: "Hits 2-5 times in one turn.",
+		shortDesc: "Hits 2-5 times in one turn. High crit ratio.",
 		id: "arcticslash",
 		name: "Arctic Slash",
 		pp: 30,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		critRatio: 3,
+		critRatio: 2, //nerf imo
 		multihit: [2, 5],
 		secondary: false,
 		target: "normal",
 		type: "Ice"
+	},
+	'toucan': {
+		num: 657,
+		accuracy: 85,
+		basePower: 0,
+		category: "Status",
+		onTryHit: function(target, source, move) {
+			var targetName = toId(target.name);
+			var sourceName = toId(source.name);
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Chatter', target);
+			this.add('c|'+sourceName+'|Wow '+targetName+' OneHand');
+		},
+		onHit: function(target) {
+			var hazards = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
+			target.side.addSideCondition(hazards[this.random(4)]);
+		},
+		volatileStatus: 'confusion',
+		secondary: false,
+		desc: 'Confuses the target.',
+		shortdesc: 'Wow Description OneHand',
+		id: 'toucan',
+		isViable: true,
+		pp: 25,
+		priority: 0,
+		name: "Toucan",
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1, reflectable: 1},
+		target: "normal",
+		type: "Flying"
 	}
 }
