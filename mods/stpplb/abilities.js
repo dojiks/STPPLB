@@ -407,14 +407,14 @@ exports.BattleAbilities = { // define custom abilities here.
 		num: 209
 	},
 	'physicalakzam': { // Makes Alakazam into a physical tank
-		shortDesc: "This Pokemon's Attack and Defense are doubled.",
+		shortDesc: "This Pokemon's Attack is increased 2.5x and its Defense is doubled.",
 		onModifyDefPriority: 6,
 		onModifyDef: function (def) {
 			return this.chainModify(2);
 		},
 		onModifyAtkPriority: 6,
 		onModifyAtk: function (atk) {
-			return this.chainModify(2);
+			return this.chainModify(2.5);
 		},
 		id: "physicalakazam",
 		name: "Physicalakazam",
