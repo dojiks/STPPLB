@@ -176,6 +176,8 @@ exports.Formats = [
 					pokemon.setAbility('darkaura');
 				if (name == 'dictatormantis' && pokemon.getAbility().id === 'technician')
 					pokemon.setAbility('Technicality');
+				if (name == 'hazorex' && pokemon.getAbility().id !=== 'physicalakazam')
+					pokemon.setAbility('Physicalakazam');
 			}
 		},
 		onSwitchInPriority: 1,
@@ -188,6 +190,9 @@ exports.Formats = [
 				
 				if (name == 'dictatormantis' && pokemon.getAbility().id === 'technician')
 					pokemon.setAbility('Technicality');
+				
+				if (name == 'hazorex' && pokemon.getAbility().id !=== 'physicalakazam')
+					pokemon.setAbility('Physicalakazam');
 			} else {
 				pokemon.canMegaEvo = this.canMegaEvo(pokemon); // Bypass one mega limit.
 			}
@@ -227,6 +232,7 @@ exports.Formats = [
 			else if (name === 'bigfatmantis') this.add("c|BigFatMantis|gldhf");
 			else if (name === 'nofunmantis') this.add("c|NoFunMantis|gldhf");
 			else if (name === 'dictatormantis') this.add("c|DictatorMantis|Do you even have enough yays to be battling?");
+			else if (name === 'xinc') this.add("c|Xinc|Iwa took Gengar. DansGame");
 			else if (name === 'natsugan') this.add('c|Natsugan|Flygonite when');
 			else if (name === 'pikalaxalt') this.add('c|PikalaxALT|ヽ༼ຈل͜ຈ༽ﾉ RIOT ヽ༼ຈل͜ຈ༽ﾉ');
 			else this.add('c|' + (pokemon.illusion ? pokemon.illusion.name : pokemon.name) + '|PLACEHOLDER MESSAGE PLEASE CONTACT TIESOUL');
@@ -301,6 +307,7 @@ exports.Formats = [
 			else if (name === 'bigfatmantis') this.add("c|BigFatMantis|GGioz");
 			else if (name === 'nofunmantis') this.add("c|NoFunMantis|GGCtrl27");
 			else if (name === 'dictatormantis') this.add("c|DictatorMantis|bg DansGame");
+			else if (name === 'xinc') this.add("c|Xinc|Bruh");
 			else if (name === 'natsugan') this.add('c|Natsugan|hax imo');
 			else if (name === 'pikalaxalt') this.add('c|PikalaxALT|Wow Deku OneHand');
 		},
