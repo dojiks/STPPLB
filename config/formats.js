@@ -222,7 +222,11 @@ exports.Formats = [
 			else if (name === 'kooma9') this.add("c|Kooma9|ello");
 			else if (name === 'best') this.add("raw|<big>GO AWAY</big>");
 			else if (name === 'poomph') this.add("c|Poomph|I'm sure I'll win this time!");
-			else if (name === 'nofunmantis') this.add("c|NoFunMantis|The fun ends here!");
+			else if (name === 'tadpole_0f_doom') this.add("c|Tadpole_0f_Doom|I'm not racist. I own Pokemon Black. TriHard");
+			else if (name === 'trollkitten') this.add("c|TrollKitten|Have time to listen to my lore?");
+			else if (name === 'bigfatmantis') this.add("c|BigFatMantis|gldhf");
+			else if (name === 'nofunmantis') this.add("c|NoFunMantis|gldhf");
+			else if (name === 'dictatormantis') this.add("c|DictatorMantis|Do you even have enough yays to be battling?");
 			else if (name === 'natsugan') this.add('c|Natsugan|Flygonite when');
 			else if (name === 'pikalaxalt') this.add('c|PikalaxALT|ヽ༼ຈل͜ຈ༽ﾉ RIOT ヽ༼ຈل͜ຈ༽ﾉ');
 			else this.add('c|' + (pokemon.illusion ? pokemon.illusion.name : pokemon.name) + '|PLACEHOLDER MESSAGE PLEASE CONTACT TIESOUL');
@@ -292,7 +296,11 @@ exports.Formats = [
 			else if (name === 'kooma9') this.add("c|Kooma9|Most Disappointing Player 2015");
 			else if (name === 'best') this.add("raw|<big>BEST? FALLED</big>");
 			else if (name === 'poomph') this.add("c|Poomph|0/4 again. DansGame");
-			else if (name === 'nofunmantis') this.add("c|NoFunMantis|Nothing fun about this!");
+			else if (name === 'tadpole_0f_doom') this.add("c|Tadpole_0f_Doom|You'll never take me alive!");
+			else if (name === 'trollkitten') this.add("c|TrollKitten|I need time away from the sub to clear my head after this.");
+			else if (name === 'bigfatmantis') this.add("c|BigFatMantis|GGioz");
+			else if (name === 'nofunmantis') this.add("c|NoFunMantis|GGCtrl27");
+			else if (name === 'dictatormantis') this.add("c|DictatorMantis|bg DansGame");
 			else if (name === 'natsugan') this.add('c|Natsugan|hax imo');
 			else if (name === 'pikalaxalt') this.add('c|PikalaxALT|Wow Deku OneHand');
 		},
