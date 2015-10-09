@@ -199,6 +199,12 @@ exports.BattleScripts = {
 				moves: ['iceshard', 'stealthrock'],
 				signatureMoves: ['yiffyiff','bawk'],
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
+			},
+			'Abyll': {
+				species: 'Milotic', ability: 'Silver Scale', item: 'Lunchabylls', gender: 'M',
+				moves: ['dragontail', 'mirrorcoat', 'icebeam'].concat(['recover', 'moonlight'].sample(1)),
+				signatureMoves: ['rainbowspray'],
+				evs: {hp: 252, def: 252, spdef: 4}, nature: 'Sassy'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -377,6 +383,12 @@ exports.BattleScripts = {
 				moves: ['iceshard', 'stealthrock'],
 				signatureMoves: ['yiffyiff','bawk'],
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
+			},
+			'Abyll': {
+				species: 'Milotic', ability: 'Silver Scale', item: 'Lunchabylls', gender: 'M',
+				moves: ['dragontail', 'mirrorcoat', 'icebeam'].concat(['recover', 'moonlight'].sample(1)),
+				signatureMoves: ['rainbowspray'],
+				evs: {hp: 252, def: 252, spdef: 4}, nature: 'Sassy'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -561,6 +573,12 @@ exports.BattleScripts = {
 				moves: ['iceshard', 'stealthrock'],
 				signatureMoves: ['yiffyiff','bawk'],
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
+			},
+			'Abyll': {
+				species: 'Milotic', ability: 'Silver Scale', item: 'Lunchabylls', gender: 'M',
+				moves: ['dragontail', 'mirrorcoat', 'icebeam'].concat(['recover', 'moonlight'].sample(1)),
+				signatureMoves: ['rainbowspray'],
+				evs: {hp: 252, def: 252, spdef: 4}, nature: 'Sassy'
 			}
 		};
 		var pool = Object.keys(sets).randomize();

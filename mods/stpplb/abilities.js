@@ -393,4 +393,24 @@ exports.BattleAbilities = { // define custom abilities here.
 		rating: 3,
 		num: 208
 	}
+	'silverscale': { // Abyll's Milotic's ability: Upgraded marvel scale
+		desc: "If this Pokemon has a major status condition, its Sp Defense is multiplied by 1.5, and Speed by 1.25.",
+		shortDesc: "If this Pokemon is statused, its Sp Defense is 1.5x and Speed is 1.25x.",
+		onModifySpDPriority: 6,
+		onModifySpD: function (spD, pokemon) {
+			if (pokemon.status) {
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpePriority: 6,
+		onModifySpe: function (spe, pokemon) {
+			if (pokemon.status) {
+				return this.chainModify(1.25);
+			}
+		},
+		id: "silverscale",
+		name: "Silver Scale",
+		rating: 2.5,
+		num: 209
+	}
 }
