@@ -904,33 +904,30 @@ exports.BattleMovedex = {
 		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1, reflectable: 1},
 		target: "normal",
 		type: "Flying"
-	}
+	},
 	'rainbowspray': {
-		accuracy = 100,
-		basePower = 90,
-		category = "Special",
-		desc = "This move combines Fairy in its type effectiveness against the target. Has a 20% chance to confuse or paralyze target.",
-		shortDesc = "Combines Fairy in its type effectiveness.",
-		name = "Rainbow Spray",
-		pp = 10,
-		flags = {protect: 1, mirror: 1, distance: 1},
-		onEffectiveness = function (typeMod, type, move) {
+		id: 'rainbowspray',
+		name:"Rainbow Spray",
+		num: 658,
+		accuracy: 100,
+		basePower: 80,
+		category: "Special",
+		desc: "This move combines Fairy in its type effectiveness against the target. Has a chance to confuse or paralyze target.",
+		shortDesc: "Combines Fairy in its type effectiveness.",
+		pp: 10,
+		flags: {protect: 1, mirror: 1, distance: 1},
+		onEffectiveness: function (typeMod, type, move) {
 			return typeMod + this.getEffectiveness('Fairy', type);
 		},
-		priority = 0,
-		secondaries = [
-		{
-			chance: 20,
-			onHit: function (target, source) { // random status.
-				var result = this.random(2),
-				if (result === 0) {
-					target.trySetStatus('confuse', source);
-				} else if (result === 1) {
-					target.trySetStatus('par', source);
-				}
-			}
-		}],
-		target = "any",
-		type = "Water"
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Tri Attack', target);
+		},
+		priority: 0,
+		secondaries: [
+			{chance: 45, status: 'confusion'},
+			{chance: 25, status: 'par'}],
+		target: "any",
+		type: "Water"
 	}
 }

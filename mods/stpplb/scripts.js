@@ -202,7 +202,7 @@ exports.BattleScripts = {
 			},
 			'Abyll': {
 				species: 'Milotic', ability: 'Silver Scale', item: 'Lunchabylls', gender: 'M',
-				moves: ['dragontail', 'mirrorcoat', 'icebeam'].concat(['recover', 'moonlight'].sample(1)),
+				moves: ['dragontail', 'mirrorcoat', 'icebeam', 'recover'],
 				signatureMoves: ['rainbowspray'],
 				evs: {hp: 252, def: 252, spdef: 4}, nature: 'Sassy'
 			}
@@ -386,7 +386,7 @@ exports.BattleScripts = {
 			},
 			'Abyll': {
 				species: 'Milotic', ability: 'Silver Scale', item: 'Lunchabylls', gender: 'M',
-				moves: ['dragontail', 'mirrorcoat', 'icebeam'].concat(['recover', 'moonlight'].sample(1)),
+				moves: ['dragontail', 'mirrorcoat', 'icebeam', 'recover'],
 				signatureMoves: ['rainbowspray'],
 				evs: {hp: 252, def: 252, spdef: 4}, nature: 'Sassy'
 			}
@@ -576,7 +576,7 @@ exports.BattleScripts = {
 			},
 			'Abyll': {
 				species: 'Milotic', ability: 'Silver Scale', item: 'Lunchabylls', gender: 'M',
-				moves: ['dragontail', 'mirrorcoat', 'icebeam'].concat(['recover', 'moonlight'].sample(1)),
+				moves: ['dragontail', 'mirrorcoat', 'icebeam', 'recover'],
 				signatureMoves: ['rainbowspray'],
 				evs: {hp: 252, def: 252, spdef: 4}, nature: 'Sassy'
 			}
