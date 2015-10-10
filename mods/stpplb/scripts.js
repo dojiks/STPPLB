@@ -213,7 +213,7 @@ exports.BattleScripts = {
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
 			},
 			'Xinc': {
-				species: 'Bisharp', ability: 'Defiant+', item: 'Leftovers', gender: 'M',
+				species: 'Bisharp', ability: 'Defiant Plus', item: 'Leftovers', gender: 'M',
 				moves: ['knockoff','drainpunch','ironhead','suckerpunch','bulletpunch'],
 				signatureMove: 'ganonssword',
 				evs: {hp: 200, atk: 252, spe: 56}, nature: 'Adamant'
@@ -421,7 +421,7 @@ exports.BattleScripts = {
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
 			},
 			'Xinc': {
-				species: 'Bisharp', ability: 'Defiant+', item: 'Leftovers', gender: 'M',
+				species: 'Bisharp', ability: 'Defiant Plus', item: 'Leftovers', gender: 'M',
 				moves: ['knockoff','drainpunch','ironhead','suckerpunch'],
 				signatureMove: 'ganonssword',
 				evs: {hp: 200, atk: 252, spe: 56}, nature: 'Adamant'
@@ -629,7 +629,7 @@ exports.BattleScripts = {
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
 			},
 			'Xinc': {
-				species: 'Bisharp', ability: 'Defiant+', item: 'Leftovers', gender: 'M',
+				species: 'Bisharp', ability: 'Defiant Plus', item: 'Leftovers', gender: 'M',
 				moves: ['knockoff','drainpunch','ironhead','suckerpunch'],
 				signatureMove: 'ganonssword',
 				evs: {hp: 200, atk: 252, spe: 56}, nature: 'Adamant'

@@ -1029,4 +1029,20 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Normal"
 	},
+	'setmine': {
+		num: 662,
+		accuracy: true,
+		basePower: 160,
+		category: 'Special',
+		desc: 'Lays a mine.',
+		shortDesc: 'Lays a mine.',
+		id: 'setmine',
+		name: 'Set Mine',
+		pp: 5,
+		priority: 0,
+		flags: {mirror: 1},
+		secondary: false,
+		target: 'side',
+		type: 'Fire'
+	}
 }
