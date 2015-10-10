@@ -370,7 +370,7 @@ exports.BattleScripts = {
 				species: 'Pikachu', ability: 'Pika Power', item: 'Light Ball', gender: 'M',
 				moves: ['thunder', 'thunderbolt', 'quickattack', 'voltswitch', 'irontail'],
 				signatureMove: 'toucan',
-				evs: {hp: 252, spa: 252, def: 4}, nature: 'Calm'
+				evs: {spa: 252, spd: 4, spe: 252}, nature: 'Hasty'
 			},
 			'Tadpole_0f_Doom': {
 				species: 'Poliwrath', ability: 'Ban Evade', item: 'BrightPowder', gender: 'M',
@@ -561,7 +561,7 @@ exports.BattleScripts = {
 				species: 'Pikachu', ability: 'Pika Power', item: 'Light Ball', gender: 'M',
 				moves: ['thunder', 'thunderbolt', 'quickattack', 'voltswitch', 'irontail'],
 				signatureMove: 'toucan',
-				evs: {hp: 252, spa: 252, def: 4}, nature: 'Calm'
+				evs: {spa: 252, spd: 4, spe: 252}, nature: 'Hasty'
 			},
 			'Tadpole_0f_Doom': {
 				species: 'Poliwrath', ability: 'Ban Evade', item: 'BrightPowder', gender: 'M',
