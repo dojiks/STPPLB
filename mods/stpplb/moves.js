@@ -896,7 +896,7 @@ exports.BattleMovedex = {
 			if (!pokemon.removeVolatile('ganonssword')) {
 				return;
 			}
-		}
+		},
 		effect: {
 			duration: 1,
 			onStart: function (pokemon) {
