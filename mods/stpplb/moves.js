@@ -775,40 +775,13 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Ghost"
 	},
-	'toucan': {
-		num: 643,
-		accuracy: 85,
-		basePower: 0,
-		category: "Status",
-		onTryHit: function(target, source, move) {
-			var targetName = toId(target.name)
-			var sourceName = toId(source.name)
-			this.attrLastMove('[still]');
-			this.add('-anim', source, 'Chatter', target);
-			this.add('c|'+sourceName+'|Wow '+targetName+' OneHand');
-			target.addVolatile('confusion');
-			var hazards = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
-			target.side.addSideCondition(hazards.sample(1)[0]);
-			target.side.addSideCondition(hazards.sample(1)[0]);
-		},
-		desc: 'Confuses the target.',
-		shortdesc: 'Wow Description OneHand',
-		id: 'toucan',
-		isViable: true,
-		pp: 40,
-		priority: 0,
-		name: "Toucan",
-		flags: {snatch: 1},
-		target: "normal",
-		type: "Flying"
-	},
-	'thousandalts':{
+	'thousandalts': {
 		num: 643, //blaze what?
 		accuracy: 100,
 		basePower: 120,
 		category: "Physical",
 		desc: "If the target lost HP, the user takes recoil damage equal to 50% the HP lost by the target, rounded half up, but not less than 1 HP.",
-		shortDesc: "Has 50% recoil.",
+		shortDesc: "Adds Dark to the user's type(s) before attacking. Has 50% recoil. 20% chance to confuse.",
 		id: "thousandalts",
 		isViable: true,
 		name: "Thousand Alts",
@@ -821,10 +794,7 @@ exports.BattleMovedex = {
 			this.add('-start', pokemon, 'typeadd', 'Dark', '[from] move: Thousand Alts');
 		},
 		recoil: [1, 2],
-		secondary: {
-			chance: 20,
-			volatileStatus: 'confusion'
-		},
+		secondary: {chance: 20,	volatileStatus: 'confusion'},
 		target: "normal",
 		type: "Dark"
 	},
@@ -862,7 +832,7 @@ exports.BattleMovedex = {
 		name: "Yiff Yiff",
 		pp: 10,
 		priority: 0,
-		flags: {snatch: 1},
+		flags: {},
 		onPrepareHit: function (target, pokemon, move) {
 			var bannedAbilities = {furcoat:1, multitype:1, stancechange:1, truant:1};
 			if (bannedAbilities[pokemon.ability]) {
@@ -884,17 +854,7 @@ exports.BattleMovedex = {
 			if (bawked === 2) this.useMove('stoneedge', target);
 			if (bawked === 3) this.useMove('bravebird', target);
 		},
-		secondary: {
-			chance: 7,
-			self: {
-				boosts: {
-					atk: 1,
-					spd: 1,
-					spe: 1,
-					accuracy: 1
-				}
-			}
-		},
+		secondary: {chance: 10,	self: {boosts: {atk: 1, spd: 1, spe: 1, accuracy: 1}}},
 		target: "self",
 		type: "Normal"
 	},
@@ -904,13 +864,13 @@ exports.BattleMovedex = {
 		basePower: 25,
 		category: "Physical",
 		desc: "Hits two to five times. Has a 1/3 chance to hit two or three times, and a 1/6 chance to hit four or five times. If one of the hits breaks the target's substitute, it will take damage for the remaining hits. If the user has the Ability Skill Link, this move will always hit five times.",
-		shortDesc: "Hits 2-5 times in one turn.",
+		shortDesc: "Hits 2-5 times in one turn. High crit ratio.",
 		id: "arcticslash",
 		name: "Arctic Slash",
 		pp: 30,
 		priority: 0,
 		flags: {contact: 1, protect: 1, mirror: 1},
-		critRatio: 3,
+		critRatio: 2, //nerf imo
 		multihit: [2, 5],
 		secondary: false,
 		target: "normal",
@@ -952,5 +912,124 @@ exports.BattleMovedex = {
 		},
 		target: "normal",
 		type: "Dark"
-	}
+	},
+	'toucan': {
+		num: 658,
+		accuracy: 85,
+		basePower: 0,
+		category: "Status",
+		onTryHit: function(target, source, move) {
+			var targetName = toId(target.name);
+			var sourceName = toId(source.name);
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Chatter', target);
+			this.add('c|'+sourceName+'|Wow '+targetName+' OneHand');
+		},
+		onHit: function(target) {
+			var hazards = ['spikes', 'toxicspikes', 'stealthrock', 'stickyweb'];
+			target.side.addSideCondition(hazards[this.random(4)]);
+		},
+		volatileStatus: 'confusion',
+		secondary: false,
+		desc: 'Confuses the target.',
+		shortdesc: 'Wow Description OneHand',
+		id: 'toucan',
+		isViable: true,
+		pp: 25,
+		priority: 0,
+		name: "Toucan",
+		flags: {protect: 1, mirror: 1, sound: 1, authentic: 1, reflectable: 1},
+		target: "normal",
+		type: "Flying"
+	},
+	'rainbowspray': {
+		id: 'rainbowspray',
+		name:"Rainbow Spray",
+		num: 659,
+		accuracy: 100,
+		basePower: 80,
+		category: "Special",
+		desc: "This move combines Fairy in its type effectiveness against the target. Has a chance to confuse or paralyze target.",
+		shortDesc: "Combines Fairy in its type effectiveness.",
+		pp: 10,
+		flags: {protect: 1, mirror: 1, distance: 1},
+		onEffectiveness: function (typeMod, type, move) {
+			return typeMod + this.getEffectiveness('Fairy', type);
+		},
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Tri Attack', target);
+		},
+		priority: 0,
+		secondaries: [
+			{chance: 45, volatileStatus: 'confusion'},
+			{chance: 35, status: 'par'}],
+		target: "any",
+		type: "Water"
+	},
+	"spindash": {
+		num: 660,
+		accuracy: 90,
+		basePower: 50,
+		basePowerCallback: function (pokemon, target) {
+			var bp = 50;
+			var bpTable = [50, 100, 200, 400, 800];
+			if (pokemon.volatiles.spindash && pokemon.volatiles.spindash.hitCount) {
+				bp = (bpTable[pokemon.volatiles.spindash.hitCount] || 800);
+			}
+			pokemon.addVolatile('spindash');
+			if (pokemon.volatiles.defensecurl) {
+				bp *= 2;
+			}
+			this.debug("spindash bp: " + bp);
+			return bp;
+		},
+		category: "Physical",
+		desc: "If this move is successful, the user is locked into this move and cannot make another move until it misses, 5 turns have passed, or the attack cannot be used. Power doubles with each successful hit of this move and doubles again if Defense Curl was used previously by the user. If this move is called by Sleep Talk, the move is used for one turn.",
+		shortDesc: "Power doubles with each hit. Repeats for 5 turns.",
+		id: "spindash",
+		name: "Spindash",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		effect: {
+			duration: 2,
+			onLockMove: 'spindash',
+			onStart: function () {
+				this.effectData.hitCount = 1;
+			},
+			onRestart: function () {
+				this.effectData.hitCount++;
+				if (this.effectData.hitCount < 5) {
+					this.effectData.duration = 2;
+				}
+			},
+			onResidual: function (target) {
+				if (target.lastMove === 'struggle') {
+					// don't lock
+					delete target.volatiles['spindash'];
+				}
+			}
+		},
+		secondary: false,
+		target: "normal",
+		type: "Normal"
+	},
+	"boost": {
+		num: 661,
+		accuracy: 70,
+		basePower: 100,
+		category: "Physical",
+		desc: "No additional effect.",
+		shortDesc: "Very Nearly always goes first.",
+		id: "boost",
+		isViable: true,
+		name: "Boost",
+		pp: 5,
+		priority: 3,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Normal"
+	},
 }

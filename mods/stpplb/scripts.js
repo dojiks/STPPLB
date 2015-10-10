@@ -180,7 +180,7 @@ exports.BattleScripts = {
 				species: 'Pikachu', ability: 'Pika Power', item: 'Light Ball', gender: 'M',
 				moves: ['thunder', 'thunderbolt', 'quickattack', 'voltswitch', 'irontail'],
 				signatureMove: 'toucan',
-				evs: {hp: 252, spa: 252, def: 4}, nature: 'Calm'
+				evs: {spa: 252, spd: 4, spe: 252}, nature: 'Hasty'
 			},
 			'Tadpole_0f_Doom': {
 				species: 'Poliwrath', ability: 'Ban Evade', item: 'BrightPowder', gender: 'M',
@@ -217,6 +217,18 @@ exports.BattleScripts = {
 				moves: ['knockoff','drainpunch','ironhead','suckerpunch','bulletpunch'],
 				signatureMove: 'ganonssword',
 				evs: {hp: 200, atk: 252, spe: 56}, nature: 'Adamant'
+			},
+			'Abyll': {
+				species: 'Milotic', ability: 'Silver Scale', item: 'Lunchabylls', gender: 'M',
+				moves: ['dragontail', 'mirrorcoat', 'icebeam', 'recover'],
+				signatureMoves: ['rainbowspray'],
+				evs: {hp: 252, def: 252, spdef: 4}, nature: 'Sassy'
+			},
+			'Speedy Pokson': {
+				species: 'Serperior', ability: 'Gotta Go Fast', item: 'Speed Shoes', gender: 'M',
+				moves: ['flyingpress', 'bulletpunch', 'rollout', 'extremespeed','quickattack','leafblade','watershuriken','mysticalfire','aurasphere'],
+				signatureMoves: ['spindash','boost'],
+				evs: {spe: 252, atk: 252, hp: 4}, nature: 'Jolly'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -376,7 +388,7 @@ exports.BattleScripts = {
 				species: 'Pikachu', ability: 'Pika Power', item: 'Light Ball', gender: 'M',
 				moves: ['thunder', 'thunderbolt', 'quickattack', 'voltswitch', 'irontail'],
 				signatureMove: 'toucan',
-				evs: {hp: 252, spa: 252, def: 4}, nature: 'Calm'
+				evs: {spa: 252, spd: 4, spe: 252}, nature: 'Hasty'
 			},
 			'Tadpole_0f_Doom': {
 				species: 'Poliwrath', ability: 'Ban Evade', item: 'BrightPowder', gender: 'M',
@@ -413,6 +425,12 @@ exports.BattleScripts = {
 				moves: ['knockoff','drainpunch','ironhead','suckerpunch'],
 				signatureMove: 'ganonssword',
 				evs: {hp: 200, atk: 252, spe: 56}, nature: 'Adamant'
+			},
+			'Abyll': {
+				species: 'Milotic', ability: 'Silver Scale', item: 'Lunchabylls', gender: 'M',
+				moves: ['dragontail', 'mirrorcoat', 'icebeam', 'recover'],
+				signatureMoves: ['rainbowspray'],
+				evs: {hp: 252, def: 252, spdef: 4}, nature: 'Sassy'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -578,7 +596,7 @@ exports.BattleScripts = {
 				species: 'Pikachu', ability: 'Pika Power', item: 'Light Ball', gender: 'M',
 				moves: ['thunder', 'thunderbolt', 'quickattack', 'voltswitch', 'irontail'],
 				signatureMove: 'toucan',
-				evs: {hp: 252, spa: 252, def: 4}, nature: 'Calm'
+				evs: {spa: 252, spd: 4, spe: 252}, nature: 'Hasty'
 			},
 			'Tadpole_0f_Doom': {
 				species: 'Poliwrath', ability: 'Ban Evade', item: 'BrightPowder', gender: 'M',
@@ -615,6 +633,12 @@ exports.BattleScripts = {
 				moves: ['knockoff','drainpunch','ironhead','suckerpunch'],
 				signatureMove: 'ganonssword',
 				evs: {hp: 200, atk: 252, spe: 56}, nature: 'Adamant'
+			},
+			'Abyll': {
+				species: 'Milotic', ability: 'Silver Scale', item: 'Lunchabylls', gender: 'M',
+				moves: ['dragontail', 'mirrorcoat', 'icebeam', 'recover'],
+				signatureMoves: ['rainbowspray'],
+				evs: {hp: 252, def: 252, spdef: 4}, nature: 'Sassy'
 			}
 		};
 		var pool = Object.keys(sets).randomize();

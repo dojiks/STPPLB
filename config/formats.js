@@ -204,7 +204,8 @@ exports.Formats = [
 				];
 			}
 			if (name === 'pikalaxalt') {
-				this.boost({spa:2, def:1, spd:1, spe:2}, pokemon);
+				this.boost({def:1, spd:1}, pokemon);
+				this.add('c|PikalaxALT|ヽ༼ຈل͜ຈ༽ﾉ RIOT ヽ༼ຈل͜ຈ༽ﾉ');
 			}
 			if (name === 'xfix') { // different message depending on hazards.
 				var hazards = {stealthrock: 1, spikes: 1, toxicspikes: 1, stickyweb: 1};
@@ -234,7 +235,6 @@ exports.Formats = [
 			else if (name === 'dictatormantis') this.add("c|DictatorMantis|Do you even have enough yays to be battling?");
 			else if (name === 'xinc') this.add("c|Xinc|Iwa took Gengar. DansGame");
 			else if (name === 'natsugan') this.add('c|Natsugan|Flygonite when');
-			else if (name === 'pikalaxalt') this.add('c|PikalaxALT|ヽ༼ຈل͜ຈ༽ﾉ RIOT ヽ༼ຈل͜ຈ༽ﾉ');
 			else this.add('c|' + (pokemon.illusion ? pokemon.illusion.name : pokemon.name) + '|PLACEHOLDER MESSAGE PLEASE CONTACT TIESOUL');
 			var item = pokemon.getItem();
 			if (pokemon.isActive && !pokemon.template.isMega && !pokemon.template.isPrimal && (item.id === 'redorb' || item.id === 'blueorb') && pokemon.baseTemplate.tier !== 'Uber' && !pokemon.template.evos.length) {
