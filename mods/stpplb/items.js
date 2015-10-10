@@ -18,5 +18,18 @@ exports.BattleItems = {
 		},
 		gen: 7,
 		desc: "At the end of every turn, holder restores 1/16 of its max HP. Recovers 1/8th hp if statused"
+	},
+	'speedshoes': {
+		id: 'speedshoes',
+		name: 'Speed Shoes',
+		num: 445,
+		fling: {
+			basePower: 15
+		},
+		desc: "Doubles speed.",
+		shortDesc: "Doubles speed.",
+		onModifySpe: function (spe, pokemon) {
+			return this.chainModify(2);
+		}
 	}
 }

@@ -412,5 +412,22 @@ exports.BattleAbilities = { // define custom abilities here.
 		name: "Silver Scale",
 		rating: 2.5,
 		num: 210
+	},
+	'gottagofast': { // Pokson's speedboost
+		id: 'gottagofast',
+		name: 'Gotta Go Fast',
+		rating: 2.5,
+		num: 211,
+		desc: "Chance of boosting speed when using signature move",
+		shortDesc: "Chance of boost when using special move",
+		onAnyMove: function (target, source, move) {
+			if(move.id == "boost" || move.id == "spindash") {
+				if(this.random(1) == 0)
+					this.boost({spe: 6}, source);
+			}
+		},
+		onStart: function (pokemon) {
+			this.boost({def: -1, spd: -1});
+		}
 	}
 }

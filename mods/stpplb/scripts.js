@@ -205,6 +205,12 @@ exports.BattleScripts = {
 				moves: ['dragontail', 'mirrorcoat', 'icebeam', 'recover'],
 				signatureMoves: ['rainbowspray'],
 				evs: {hp: 252, def: 252, spdef: 4}, nature: 'Sassy'
+			},
+			'Speedy Pokson': {
+				species: 'Serperior', ability: 'Gotta Go Fast', item: 'Speed Shoes', gender: 'M',
+				moves: ['flyingpress', 'bulletpunch', 'rollout', 'extremespeed','quickattack','leafblade','watershuriken','mysticalfire','aurasphere'],
+				signatureMoves: ['spindash','boost'],
+				evs: {spe: 252, atk: 252, hp: 4}, nature: 'Jolly'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -389,6 +395,7 @@ exports.BattleScripts = {
 				moves: ['dragontail', 'mirrorcoat', 'icebeam', 'recover'],
 				signatureMoves: ['rainbowspray'],
 				evs: {hp: 252, def: 252, spdef: 4}, nature: 'Sassy'
+			
 			}
 		};
 		var pool = Object.keys(sets).randomize();

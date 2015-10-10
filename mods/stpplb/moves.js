@@ -925,9 +925,74 @@ exports.BattleMovedex = {
 		},
 		priority: 0,
 		secondaries: [
-			{chance: 45, status: 'confusion'},
-			{chance: 25, status: 'par'}],
+			{chance: 45, volatileStatus: 'confusion'},
+			{chance: 35, status: 'par'}],
 		target: "any",
 		type: "Water"
-	}
+	},
+	"spindash": {
+		num: 659,
+		accuracy: 90,
+		basePower: 50,
+		basePowerCallback: function (pokemon, target) {
+			var bp = 50;
+			var bpTable = [50, 100, 200, 400, 800];
+			if (pokemon.volatiles.spindash && pokemon.volatiles.spindash.hitCount) {
+				bp = (bpTable[pokemon.volatiles.spindash.hitCount] || 800);
+			}
+			pokemon.addVolatile('spindash');
+			if (pokemon.volatiles.defensecurl) {
+				bp *= 2;
+			}
+			this.debug("spindash bp: " + bp);
+			return bp;
+		},
+		category: "Physical",
+		desc: "If this move is successful, the user is locked into this move and cannot make another move until it misses, 5 turns have passed, or the attack cannot be used. Power doubles with each successful hit of this move and doubles again if Defense Curl was used previously by the user. If this move is called by Sleep Talk, the move is used for one turn.",
+		shortDesc: "Power doubles with each hit. Repeats for 5 turns.",
+		id: "spindash",
+		name: "Spindash",
+		pp: 20,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		effect: {
+			duration: 2,
+			onLockMove: 'spindash',
+			onStart: function () {
+				this.effectData.hitCount = 1;
+			},
+			onRestart: function () {
+				this.effectData.hitCount++;
+				if (this.effectData.hitCount < 5) {
+					this.effectData.duration = 2;
+				}
+			},
+			onResidual: function (target) {
+				if (target.lastMove === 'struggle') {
+					// don't lock
+					delete target.volatiles['spindash'];
+				}
+			}
+		},
+		secondary: false,
+		target: "normal",
+		type: "Normal"
+	},
+	"boost": {
+		num: 660,
+		accuracy: 70,
+		basePower: 100,
+		category: "Physical",
+		desc: "No additional effect.",
+		shortDesc: "Very Nearly always goes first.",
+		id: "boost",
+		isViable: true,
+		name: "Boost",
+		pp: 5,
+		priority: 3,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		secondary: false,
+		target: "normal",
+		type: "Normal"
+	},
 }
