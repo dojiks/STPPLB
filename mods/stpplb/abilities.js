@@ -519,10 +519,9 @@ exports.BattleAbilities = { // define custom abilities here.
 				if (move.basePower < 60) continue;
 				if (move.category === 'Status' && move.boosts && move.boosts.atk && move.boosts.atk > 0) continue;
 				if (pokemon.hasMove(move)) continue;
-				move.push(move);
+				moves.push(move);
 			}
 			var move = '';
-			console.log(moves.length);
 			if (moves.length) {
 				moves.sort(function (a, b) {return a.num - b.num;});
 				move = moves[this.random(moves.length)];
