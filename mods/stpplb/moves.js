@@ -456,10 +456,10 @@ exports.BattleMovedex = {
 		id: 'nofun',
 		category: 'Physical',
 		priority: 1,
-		basePower: 90,
-		accuracy: 90,
+		basePower: 40,
+		accuracy: true,
 		type: 'Bug',
-		pp: 15,
+		pp: 20,
 		flags: {protect: 1, mirror: 1},
 		onHit: function (target) {
 			target.clearBoosts();
@@ -876,8 +876,45 @@ exports.BattleMovedex = {
 		target: "normal",
 		type: "Ice"
 	},
-	'toucan': {
+	"ganonssword": {
 		num: 657,
+		accuracy: 100,
+		basePower: 120,
+		category: "Physical",
+		desc: "The user's defenses increase by two stages at the beginning of the turn. The user attacks last. The user's defenses drop by two stages at the end of the turn.",
+		shortDesc: "Sharply increases def. and sp. def. at the start of the turn. Attacks last and harshly lowers def. and sp. def.",
+		id: "ganonssword",
+		name: "Ganon's Sword",
+		pp: 10,
+		priority: -3,
+		flags: {contact: 1, protect: 1},
+		beforeTurnCallback: function (pokemon) {
+			pokemon.addVolatile('ganonssword');
+			boosts: {
+				def: 2,
+				spd: 2,
+			}
+		},
+		effect: {
+			duration: 1,
+			onStart: function (pokemon) {
+				this.add('-singleturn', pokemon, "move: Ganon's Sword");
+			}
+		},
+		secondary: {
+			chance: 95,
+			self: { 
+				boosts: {
+					def: -2,
+					spd: -2,
+				}
+			}
+		},
+		target: "normal",
+		type: "Dark"
+	},
+	'toucan': {
+		num: 658,
 		accuracy: 85,
 		basePower: 0,
 		category: "Status",
@@ -908,7 +945,7 @@ exports.BattleMovedex = {
 	'rainbowspray': {
 		id: 'rainbowspray',
 		name:"Rainbow Spray",
-		num: 658,
+		num: 659,
 		accuracy: 100,
 		basePower: 80,
 		category: "Special",
@@ -931,7 +968,7 @@ exports.BattleMovedex = {
 		type: "Water"
 	},
 	"spindash": {
-		num: 659,
+		num: 660,
 		accuracy: 90,
 		basePower: 50,
 		basePowerCallback: function (pokemon, target) {
@@ -979,7 +1016,7 @@ exports.BattleMovedex = {
 		type: "Normal"
 	},
 	"boost": {
-		num: 660,
+		num: 661,
 		accuracy: 70,
 		basePower: 100,
 		category: "Physical",

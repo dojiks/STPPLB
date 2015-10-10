@@ -200,6 +200,24 @@ exports.BattleScripts = {
 				signatureMoves: ['yiffyiff','bawk'],
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
 			},
+			'HazorEx': {
+				species: 'Alakazam', ability: 'Physicalakazam', item: 'Alakazite', gender: 'M',
+				moves: ['firepunch', 'thunderpunch', 'icepunch', 'drainpunch', 'megapunch', 'endure'],
+				signatureMove: 'psychocut',
+				evs: {atk: 252, spe: 252, hp: 4}, nature: 'Adamant'
+			},
+			'Leonys': {
+				species: 'Flareon', ability: 'Incinerate', item: 'Choice Band', gender: 'M',
+				moves: ['volttackle', 'drillrun', 'irontail', 'revenge', 'pursuit','zenheadbutt'],
+				signatureMoves: ['quickattack','doubleedge'],
+				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
+			},
+			'Xinc': {
+				species: 'Bisharp', ability: 'Defiant+', item: 'Leftovers', gender: 'M',
+				moves: ['knockoff','drainpunch','ironhead','suckerpunch','bulletpunch'],
+				signatureMove: 'ganonssword',
+				evs: {hp: 200, atk: 252, spe: 56}, nature: 'Adamant'
+			},
 			'Abyll': {
 				species: 'Milotic', ability: 'Silver Scale', item: 'Lunchabylls', gender: 'M',
 				moves: ['dragontail', 'mirrorcoat', 'icebeam', 'recover'],
@@ -390,12 +408,29 @@ exports.BattleScripts = {
 				signatureMoves: ['yiffyiff','bawk'],
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
 			},
+			'HazorEx': {
+				species: 'Alakazam', ability: 'Physicalakazam', item: 'Alakazite', gender: 'M',
+				moves: ['firepunch', 'thunderpunch', 'icepunch', 'drainpunch', 'megapunch', 'endure'],
+				signatureMove: 'psychocut',
+				evs: {atk: 252, spe: 252, hp: 4}, nature: 'Adamant'
+			},
+			'Leonys': {
+				species: 'Flareon', ability: 'Incinerate', item: 'Choice Band', gender: 'M',
+				moves: ['volttackle', 'drillrun', 'irontail', 'revenge', 'pursuit','zenheadbutt'],
+				signatureMoves: ['quickattack','doubleedge'],
+				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
+			},
+			'Xinc': {
+				species: 'Bisharp', ability: 'Defiant+', item: 'Leftovers', gender: 'M',
+				moves: ['knockoff','drainpunch','ironhead','suckerpunch'],
+				signatureMove: 'ganonssword',
+				evs: {hp: 200, atk: 252, spe: 56}, nature: 'Adamant'
+			},
 			'Abyll': {
 				species: 'Milotic', ability: 'Silver Scale', item: 'Lunchabylls', gender: 'M',
 				moves: ['dragontail', 'mirrorcoat', 'icebeam', 'recover'],
 				signatureMoves: ['rainbowspray'],
 				evs: {hp: 252, def: 252, spdef: 4}, nature: 'Sassy'
-			
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -580,6 +615,24 @@ exports.BattleScripts = {
 				moves: ['iceshard', 'stealthrock'],
 				signatureMoves: ['yiffyiff','bawk'],
 				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
+			},
+			'HazorEx': {
+				species: 'Alakazam', ability: 'Physicalakazam', item: 'Alakazite', gender: 'M',
+				moves: ['firepunch', 'thunderpunch', 'icepunch', 'drainpunch', 'megapunch', 'endure'],
+				signatureMove: 'psychocut',
+				evs: {atk: 252, spe: 252, hp: 4}, nature: 'Adamant'
+			},
+			'Leonys': {
+				species: 'Flareon', ability: 'Incinerate', item: 'Choice Band', gender: 'M',
+				moves: ['volttackle', 'drillrun', 'irontail', 'revenge', 'pursuit','zenheadbutt'],
+				signatureMoves: ['quickattack','doubleedge'],
+				evs: {hp: 252, atk: 252, def: 4}, nature: 'Adamant'
+			},
+			'Xinc': {
+				species: 'Bisharp', ability: 'Defiant+', item: 'Leftovers', gender: 'M',
+				moves: ['knockoff','drainpunch','ironhead','suckerpunch'],
+				signatureMove: 'ganonssword',
+				evs: {hp: 200, atk: 252, spe: 56}, nature: 'Adamant'
 			},
 			'Abyll': {
 				species: 'Milotic', ability: 'Silver Scale', item: 'Lunchabylls', gender: 'M',

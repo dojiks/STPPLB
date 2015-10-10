@@ -372,6 +372,12 @@ exports.BattleAbilities = { // define custom abilities here.
 	'banevade': {
 		desc: "This Pokemon's evasion is evaluated by end of each turn. Higher evasion at lower HP.",
 		shortDesc: "Higher evasion at lower HP.",
+		onTryHit: function (pokemon, target, move) {
+			if (move.ohko) {
+				this.add('-immune', pokemon, '[msg]');
+				return null;
+			}
+		},
 		onResidualOrder: 26,
 		onResidualSubOrder: 1,
 		onResidual: function (pokemon) {
@@ -393,6 +399,70 @@ exports.BattleAbilities = { // define custom abilities here.
 		rating: 3,
 		num: 208
 	},
+	'incinerate': {
+		desc: "This Pokemon's Normal type moves become Fire type and have their power multiplied by 1.3. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
+		shortDesc: "This Pokemon's Normal type moves become Fire type and have 1.3x power.",
+		onModifyMovePriority: -1,
+		onModifyMove: function (move, pokemon) {
+			if (move.id !== 'struggle' && move.type == 'Normal') { // don't mess with Struggle, only change normal moves.
+				move.type = 'Fire';
+				if (move.category !== 'Status') pokemon.addVolatile('incinerate');
+			}
+		},
+		effect: {
+			duration: 1,
+			onBasePowerPriority: 8,
+			onBasePower: function (basePower, pokemon, target, move) {
+				return this.chainModify([0x14CD, 0x1000]); // not sure how this one works but this was in the Aerilate code in Pokemon Showdown.
+			}
+		},
+		id: "incinerate",
+		name: "Incinerate",
+		rating: 3.5,
+		num: 209
+	},
+	'physicalakazam': { // Makes Alakazam into a physical tank
+		shortDesc: "This Pokemon's Attack is increased 2.5x and its Defense is doubled.",
+		onModifyDefPriority: 6,
+		onModifyDef: function (def) {
+			return this.chainModify(2);
+		},
+		onModifyAtkPriority: 6,
+		onModifyAtk: function (atk) {
+			return this.chainModify(2.5);
+		},
+		id: "physicalakazam",
+		name: "Physicalakazam",
+		rating: 3.5,
+		num: 210
+	},
+	"defiant+": {
+		desc: "This Pokemon's Attack and Speed is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon. If this Pokemon has a major status condition, its Speed is multiplied by 1.5; the Speed drop from paralysis is ignored.",
+		shortDesc: "This Pokemon's Attack and Speed is raised by 2 for each of its stats that is lowered by a foe. If this Pokemon is statused, its Speed is 1.5x; ignores Speed drop from paralysis.",
+		onAfterEachBoost: function (boost, target, source) {
+			if (!source || target.side === source.side) {
+				return;
+			}
+			var statsLowered = false;
+			for (var i in boost) {
+				if (boost[i] < 0) {
+					statsLowered = true;
+				}
+			}
+			if (statsLowered) {
+				this.boost({atk: 2, spe: 2});
+			}
+		},
+		onModifySpe: function (spe, pokemon) {
+			if (pokemon.status) {
+				return this.chainModify(1.5);
+			}
+		},
+		id: "defiant+",
+		name: "Defiant+",
+		rating: 2.5,
+		num: 211
+	},
 	'silverscale': { // Abyll's Milotic's ability: Upgraded marvel scale
 		desc: "If this Pokemon has a major status condition, its Sp Defense is multiplied by 1.5, and Speed by 1.25.",
 		shortDesc: "If this Pokemon is statused, its Sp Defense is 1.5x and Speed is 1.25x.",
@@ -411,13 +481,13 @@ exports.BattleAbilities = { // define custom abilities here.
 		id: "silverscale",
 		name: "Silver Scale",
 		rating: 2.5,
-		num: 210
+		num: 212
 	},
 	'gottagofast': { // Pokson's speedboost
 		id: 'gottagofast',
 		name: 'Gotta Go Fast',
 		rating: 2.5,
-		num: 211,
+		num: 213,
 		desc: "Chance of boosting speed when using signature move",
 		shortDesc: "Chance of boost when using special move",
 		onAnyMove: function (target, source, move) {
