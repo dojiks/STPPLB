@@ -243,6 +243,12 @@ exports.BattleScripts = {
 				signatureMove: 'quicksketch',
 				evs: {hp: 252, spd: 240, spe: 16}, nature: 'Calm',
 				ivs: {atk: 0}
+			},
+			'Lyca': {
+				species: 'Absol', ability: 'Jack(y) of All Trades', item: 'Scope Lens', gender: 'M',
+				moves: ['nightslash', 'slash', 'psychocut', 'shadowclaw', 'playrough', 'knockoff'],
+				signatureMoves: ['quityourbullshit', 'keepcalmandfocus'],
+				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -459,6 +465,12 @@ exports.BattleScripts = {
 				signatureMove: 'quicksketch',
 				evs: {hp: 252, spd: 240, spe: 16}, nature: 'Calm',
 				ivs: {atk: 0}
+			},
+			'Lyca': {
+				species: 'Absol', ability: 'Jack(y) of All Trades', item: 'Scope Lens', gender: 'M',
+				moves: ['nightslash', 'slash', 'psychocut', 'shadowclaw', 'playrough', 'knockoff'],
+				signatureMoves: ['quityourbullshit', 'keepcalmandfocus'],
+				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -681,6 +693,12 @@ exports.BattleScripts = {
 				signatureMove: 'quicksketch',
 				evs: {hp: 252, spd: 240, spe: 16}, nature: 'Calm',
 				ivs: {atk: 0}
+			},
+			'Lyca': {
+				species: 'Absol', ability: 'Jack(y) of All Trades', item: 'Scope Lens', gender: 'M',
+				moves: ['nightslash', 'slash', 'psychocut', 'shadowclaw', 'playrough', 'knockoff'],
+				signatureMoves: ['quityourbullshit', 'keepcalmandfocus'],
+				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
 			}
 		};
 		var pool = Object.keys(sets).randomize();

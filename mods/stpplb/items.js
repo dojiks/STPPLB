@@ -31,5 +31,21 @@ exports.BattleItems = {
 		onModifySpe: function (spe, pokemon) {
 			return this.chainModify(2);
 		}
+	},
+	'dex': {
+		id: 'dex',
+		name: 'Dex',
+		num: 446,
+		fling: {basePower: 15},
+		desc: 'Boosts accuracy by 20% and crit rate by one stage.',
+		shortDesc: 'Boosts accuracy by 20% and crit rate by one stage.',
+		onModifyMove: function (move) {
+			move.critRatio++;
+		},
+		onSourceModifyAccuracy: function (accuracy) {
+			if (typeof accuracy === 'number') {
+				return accuracy * 1.2;
+			}
+		},
 	}
 }

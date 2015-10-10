@@ -1152,5 +1152,50 @@ exports.BattleMovedex = {
 		secondary: false,
 		target: 'normal',
 		type: 'Normal'
+	},
+	'keepcalmandfocus': {
+		id: 'keepcalmandfocus',
+		name: 'Keep Calm and Focus!',
+		pp: 5,
+		priority: 0,
+		category: 'Status',
+		basePower: 0,
+		accuracy: true,
+		flags: {snatch: 1, heal: 1},
+		onHit: function(pokemon) {
+			if (this.random(10) === 0) {
+				this.heal(this.modify(pokemon.maxhp, 0.25));
+				this.boost({atk: 2}, pokemon);
+			} else {
+				this.heal(this.modify(pokemon.maxhp, 0.5));
+				this.boost({def: 1, spd: 1}, pokemon);
+			}
+			this.cureStatus();
+			var temp = pokemon.item;
+			pokemon.item = 'absolite';
+			pokemon.canMegaEvo = this.canMegaEvo(pokemon);
+			if (pokemon.canMegaEvo) this.runMegaEvo(pokemon);
+			pokemon.item = temp;
+		},
+		type: 'Normal',
+		target: 'self',
+		num: 667
+	},
+	'quityourbullshit': {
+		id: 'quityourbullshit',
+		name: 'Quit your Bullshit',
+		pp: 10,
+		priority: 0,
+		category: 'Physical',
+		basePower: 80,
+		accuracy: 95,
+		onHit: function (target) {
+			target.clearBoosts();
+			target.cureStatus();
+			this.add('-clearboost', target);
+		},
+		num: 668,
+		type: 'Fighting',
+		target: 'normal'
 	}
 }

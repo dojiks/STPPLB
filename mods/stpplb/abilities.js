@@ -511,8 +511,9 @@ exports.BattleAbilities = { // define custom abilities here.
 		onResidualSubOrder: 1,
 		onResidual: function(pokemon) {
 			var moves = [];
-			for (var i in exports.BattleMovedex) {
-				var move = exports.BattleMovedex[i];
+			var movedex = require('./moves.js').BattleMovedex;
+			for (var i in movedex) {
+				var move = movedex[i];
 				if (i !== move.id) continue;
 				if (move.isNonstandard) continue;
 				if (move.category === 'Physical') continue;
@@ -542,5 +543,34 @@ exports.BattleAbilities = { // define custom abilities here.
 			pokemon.moves[0] = toId(move.name);
 			this.add('message', pokemon.name + ' acquired ' + move.name + ' using its Drawing Request!');
 		}
+	},
+	"mindgames": {
+		desc: "When this Pokemon switches in, it appears as the last unfainted Pokemon in its party until it takes direct damage from another Pokemon's attack. This Pokemon's actual level and HP are displayed instead of those of the mimicked Pokemon.",
+		shortDesc: "This Pokemon appears as the last Pokemon in the party until it takes direct damage.",
+		onBeforeSwitchIn: function (pokemon) {
+			pokemon.illusion = null;
+			var foe = pokemon.side.foe;
+			pokemon.illusion = foe.pokemon[this.random(foe.pokemon.length)];
+		},
+		// illusion clearing is hardcoded in the damage function
+		id: "mindgames",
+		name: "Mind Games",
+		rating: 4.5,
+		num: 149
+	},
+	'jackyofalltrades': {
+		desc: '',
+		shortDesc: '',
+		id: 'jackyofalltrades',
+		name: 'Jack(y) of All Trades',
+		rating: 4,
+		num: 150,
+		onBasePowerPriority: 8,
+		onBasePower: function (basePower, attacker, defender, move) {
+			if (basePower <= 80) {
+				this.debug('Technician boost');
+				return this.chainModify(1.5);
+			}
+		},
 	}
 }
