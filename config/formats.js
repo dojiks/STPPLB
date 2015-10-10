@@ -176,7 +176,7 @@ exports.Formats = [
 					pokemon.setAbility('darkaura');
 				if (name == 'dictatormantis' && pokemon.getAbility().id === 'technician')
 					pokemon.setAbility('Technicality');
-				if (name == 'hazorex' && pokemon.getAbility().id !=== 'physicalakazam')
+				if (name == 'hazorex' && pokemon.getAbility().id !== 'physicalakazam')
 					pokemon.setAbility('Physicalakazam');
 			}
 		},
@@ -191,7 +191,7 @@ exports.Formats = [
 				if (name == 'dictatormantis' && pokemon.getAbility().id === 'technician')
 					pokemon.setAbility('Technicality');
 				
-				if (name == 'hazorex' && pokemon.getAbility().id !=== 'physicalakazam')
+				if (name == 'hazorex' && pokemon.getAbility().id !== 'physicalakazam')
 					pokemon.setAbility('Physicalakazam');
 			} else {
 				pokemon.canMegaEvo = this.canMegaEvo(pokemon); // Bypass one mega limit.

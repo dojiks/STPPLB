@@ -890,10 +890,7 @@ exports.BattleMovedex = {
 		flags: {contact: 1, protect: 1},
 		beforeTurnCallback: function (pokemon) {
 			pokemon.addVolatile('ganonssword');
-			boosts: {
-				def: 2,
-				spd: 2,
-			}
+			this.boost({def:2,spd:2});
 		},
 		effect: {
 			duration: 1,
