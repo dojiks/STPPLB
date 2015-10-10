@@ -245,7 +245,7 @@ exports.BattleScripts = {
 				ivs: {atk: 0}
 			},
 			'Lyca': {
-				species: 'Absol', ability: 'Jack(y) of All Trades', item: 'Scope Lens', gender: 'M',
+				species: 'Absol', ability: 'Jack(y) of All Trades', item: 'Scope Lens', gender: 'F',
 				moves: ['nightslash', 'slash', 'psychocut', 'shadowclaw', 'playrough', 'knockoff'],
 				signatureMoves: ['quityourbullshit', 'keepcalmandfocus'],
 				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
@@ -467,7 +467,7 @@ exports.BattleScripts = {
 				ivs: {atk: 0}
 			},
 			'Lyca': {
-				species: 'Absol', ability: 'Jack(y) of All Trades', item: 'Scope Lens', gender: 'M',
+				species: 'Absol', ability: 'Jack(y) of All Trades', item: 'Scope Lens', gender: 'F',
 				moves: ['nightslash', 'slash', 'psychocut', 'shadowclaw', 'playrough', 'knockoff'],
 				signatureMoves: ['quityourbullshit', 'keepcalmandfocus'],
 				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
@@ -695,7 +695,7 @@ exports.BattleScripts = {
 				ivs: {atk: 0}
 			},
 			'Lyca': {
-				species: 'Absol', ability: 'Jack(y) of All Trades', item: 'Scope Lens', gender: 'M',
+				species: 'Absol', ability: 'Jack(y) of All Trades', item: 'Scope Lens', gender: 'F',
 				moves: ['nightslash', 'slash', 'psychocut', 'shadowclaw', 'playrough', 'knockoff'],
 				signatureMoves: ['quityourbullshit', 'keepcalmandfocus'],
 				evs: {hp: 252, atk: 252, spe: 4}, nature: 'Adamant'
