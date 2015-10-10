@@ -516,16 +516,16 @@ exports.BattleAbilities = { // define custom abilities here.
 				if (i !== move.id) continue;
 				if (move.isNonstandard) continue;
 				if (move.category === 'Physical') continue;
+				if (move.basePower < 60) continue;
 				if (move.category === 'Status' && move.boosts && move.boosts.atk && move.boosts.atk > 0) continue;
 				if (pokemon.hasMove(move)) continue;
-				if (!noMetronome[move.id]) {
-					moves.push(move);
-				}
+				move.push(move);
 			}
 			var move = '';
+			console.log(moves.length);
 			if (moves.length) {
 				moves.sort(function (a, b) {return a.num - b.num;});
-				move = moves[this.random(moves.length)].id;
+				move = moves[this.random(moves.length)];
 			}
 			if (!move) {
 				return false;
@@ -540,8 +540,8 @@ exports.BattleAbilities = { // define custom abilities here.
 				used: false,
 				virtual: true
 			};
-			pokemon.moves[moveslot] = toId(move.name);
-			this.add('-message', pokemon.name + ' acquired ' + move.name + ' using its Drawing Request!');
+			pokemon.moves[0] = toId(move.name);
+			this.add('message', pokemon.name + ' acquired ' + move.name + ' using its Drawing Request!');
 		}
 	}
 }

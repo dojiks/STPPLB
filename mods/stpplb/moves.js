@@ -1095,7 +1095,7 @@ exports.BattleMovedex = {
 		onHit: function (target, source) {
 			source.addVolatile('lockon', target);
 			this.add('-activate', source, 'move: Lock On', '[of] ' + target);
-			this.add('c|' + this.effectData.source.name + '|Say hello to Becky and Betsy!');
+			this.add('c|' + source.name + '|Say hello to Becky and Betsy!');
 		},
 		self: {volatileStatus: 'focusenergy'},
 		pp: 20
