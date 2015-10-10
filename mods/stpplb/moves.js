@@ -1120,5 +1120,37 @@ exports.BattleMovedex = {
 		},
 		target: 'normal',
 		type: 'Steel'
+	},
+	'quicksketch': {
+		num: 666, // hue
+		accuracy: true,
+		basePower: 0,
+		category: 'Status',
+		id: 'quicksketch',
+		name: 'Quick Sketch',
+		pp: 5,
+		priority: 0,
+		flags: {protect: 1, authentic: 1},
+		onHit: function(target, source) {
+			var disallowedMoves = {struggle:1, transform:1};
+			if (source.transformed || !target.lastMove || disallowedMoves[target.lastMove] || source.moves.indexOf(target.lastMove) >= 0) return false;
+			var move = Tools.getMove(target.lastMove);
+			source.moveset[1] = {
+				move: move.name,
+				id: move.id,
+				pp: move.pp,
+				maxpp: move.pp,
+				target: move.target,
+				disabled: false,
+				used: false,
+				virtual: true
+			};
+			source.moves[1] = toId(move.name);
+			this.add('message', source.name + ' acquired ' + move.name + ' using its Quick Sketch!');
+			this.useMove(move, source, target);
+		},
+		secondary: false,
+		target: 'normal',
+		type: 'Normal'
 	}
 }

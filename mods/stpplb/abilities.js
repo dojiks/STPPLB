@@ -499,5 +499,49 @@ exports.BattleAbilities = { // define custom abilities here.
 		onStart: function (pokemon) {
 			this.boost({def: -1, spd: -1});
 		}
+	},
+	'drawingrequest': {
+		id: 'drawingrequest',
+		name: 'Drawing Request',
+		rating: 3,
+		num: 214,
+		desc: "At the end of each turn, replaces this Pokemon's first move with a random move from the pool of all Special attacks >= 60 BP and all status moves, minus the ones that boost the user's Attack stat, and the ones this Pokemon already has.",
+		shortDesc: 'TL;DR',
+		onResidualOrder: 26,
+		onResidualSubOrder: 1,
+		onResidual: function(pokemon) {
+			var moves = [];
+			for (var i in exports.BattleMovedex) {
+				var move = exports.BattleMovedex[i];
+				if (i !== move.id) continue;
+				if (move.isNonstandard) continue;
+				if (move.category === 'Physical') continue;
+				if (move.category === 'Status' && move.boosts && move.boosts.atk && move.boosts.atk > 0) continue;
+				if (pokemon.hasMove(move)) continue;
+				if (!noMetronome[move.id]) {
+					moves.push(move);
+				}
+			}
+			var move = '';
+			if (moves.length) {
+				moves.sort(function (a, b) {return a.num - b.num;});
+				move = moves[this.random(moves.length)].id;
+			}
+			if (!move) {
+				return false;
+			}
+			pokemon.moveset[0] = {
+				move: move.name,
+				id: move.id,
+				pp: move.pp,
+				maxpp: move.pp,
+				target: move.target,
+				disabled: false,
+				used: false,
+				virtual: true
+			};
+			pokemon.moves[moveslot] = toId(move.name);
+			this.add('-message', pokemon.name + ' acquired ' + move.name + ' using its Drawing Request!');
+		}
 	}
 }
