@@ -229,6 +229,13 @@ exports.BattleScripts = {
 				moves: ['flyingpress', 'bulletpunch', 'rollout', 'extremespeed','quickattack','leafblade','watershuriken','mysticalfire','aurasphere'],
 				signatureMoves: ['spindash','boost'],
 				evs: {spe: 252, atk: 252, hp: 4}, nature: 'Jolly'
+			},
+			'ColeWalski': {
+				species: 'Empoleon', ability: 'Sniper', item: 'Scope Lens', gender: 'M',
+				moves: ['hydropump','flashcannon'],
+				signatureMoves: ['setmine', 'locknload', 'assassinate'],
+				evs: {hp: 252, spa: 252, spe: 4}, nature: 'Modest',
+				ivs: {atk: 0}
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -431,6 +438,13 @@ exports.BattleScripts = {
 				moves: ['dragontail', 'mirrorcoat', 'icebeam', 'recover'],
 				signatureMoves: ['rainbowspray'],
 				evs: {hp: 252, def: 252, spdef: 4}, nature: 'Sassy'
+			},
+			'ColeWalski': {
+				species: 'Empoleon', ability: 'Sniper', item: 'Scope Lens', gender: 'M',
+				moves: ['hydropump','flashcannon'],
+				signatureMoves: ['setmine', 'locknload', 'assassinate'],
+				evs: {hp: 252, spa: 252, spe: 4}, nature: 'Modest',
+				ivs: {atk: 0}
 			}
 		};
 		var pool = Object.keys(sets).randomize();
@@ -639,6 +653,13 @@ exports.BattleScripts = {
 				moves: ['dragontail', 'mirrorcoat', 'icebeam', 'recover'],
 				signatureMoves: ['rainbowspray'],
 				evs: {hp: 252, def: 252, spdef: 4}, nature: 'Sassy'
+			},
+			'ColeWalski': {
+				species: 'Empoleon', ability: 'Sniper', item: 'Scope Lens', gender: 'M',
+				moves: ['hydropump','flashcannon'],
+				signatureMoves: ['setmine', 'locknload', 'assassinate'],
+				evs: {hp: 252, spa: 252, spe: 4}, nature: 'Modest',
+				ivs: {atk: 0}
 			}
 		};
 		var pool = Object.keys(sets).randomize();

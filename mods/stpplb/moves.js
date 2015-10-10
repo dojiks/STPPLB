@@ -1037,17 +1037,88 @@ exports.BattleMovedex = {
 	'setmine': {
 		num: 662,
 		accuracy: true,
-		basePower: 160,
-		category: 'Special',
+		basePower: 0,
+		category: 'Status',
 		desc: 'Lays a mine.',
 		shortDesc: 'Lays a mine.',
 		id: 'setmine',
 		name: 'Set Mine',
 		pp: 5,
 		priority: 0,
-		flags: {mirror: 1},
+		flags: {reflectable: 1},
 		secondary: false,
-		target: 'side',
+		sideCondition: 'setmine',
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+		},
+		effect: {
+			onStart: function(side) {
+				this.add('-sidestart', side, 'move: Set Mine');
+				this.add('c|' + this.effectData.source.name + '|Tick tick boom!');
+			},
+			onSwitchIn: function(pokemon) {
+				this.useMove('Mine', this.effectData.source, pokemon);
+				pokemon.side.removeSideCondition('setmine');
+			}
+		},
+		target: 'foeSide',
 		type: 'Fire'
+	},
+	'mine': {
+		num: 663,
+		accuracy: true,
+		basePower: 160,
+		category: 'Special',
+		target: 'normal',
+		onPrepareHit: function(target, source, move) { // animation
+			this.attrLastMove('[still]');
+			this.add('-anim', target, 'Explosion', target);
+			this.add('-anim', target, 'Sky Drop', target);
+		},
+		id: 'mine',
+		name: 'Mine',
+		type: 'Fire',
+		pp: 20
+	},
+	'locknload': {
+		num: 664,
+		accuracy: true,
+		basePower: 0,
+		category: 'Status',
+		target: 'normal',
+		id: 'locknload',
+		name: 'Lock \'n\' Load',
+		type: 'Steel',
+		onTryHit: function (target, source) {
+			if (source.volatiles['lockon']) source.removeVolatile('lockon');
+		},
+		onHit: function (target, source) {
+			source.addVolatile('lockon', target);
+			this.add('-activate', source, 'move: Lock On', '[of] ' + target);
+			this.add('c|' + this.effectData.source.name + '|Say hello to Becky and Betsy!');
+		},
+		self: {volatileStatus: 'focusenergy'},
+		pp: 20
+	},
+	'assassinate': {
+		num: 665,
+		accuracy: 0,
+		basePower: 0,
+		category: 'Physical',
+		desc: 'Deals damage to the target equal to the target\'s maximum HP. Ignores accuracy and evasiveness modifiers.',
+		shortDesc: "OHKOs the target. Fails if user is a lower level.",
+		id: 'assassinate',
+		name: 'Assassinate',
+		pp: 5,
+		priority: 0,
+		flags: {contact: 1, protect: 1, mirror: 1},
+		ohko: true,
+		secondary: false,
+		onPrepareHit: function(target, source) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Metal Claw', target);
+		},
+		target: 'normal',
+		type: 'Steel'
 	}
 }
