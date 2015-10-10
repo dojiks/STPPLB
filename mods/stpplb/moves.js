@@ -1170,7 +1170,7 @@ exports.BattleMovedex = {
 				this.heal(this.modify(pokemon.maxhp, 0.5));
 				this.boost({def: 1, spd: 1}, pokemon);
 			}
-			this.cureStatus();
+			pokemon.cureStatus();
 			var temp = pokemon.item;
 			pokemon.item = 'absolite';
 			pokemon.canMegaEvo = this.canMegaEvo(pokemon);
