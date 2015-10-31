@@ -1197,5 +1197,28 @@ exports.BattleMovedex = {
 		num: 668,
 		type: 'Fighting',
 		target: 'normal'
+'linkkarma': {
+		id: 'link karma',
+		num: 669,
+		name: 'Link Karma',
+		type: 'Steel',
+		category: 'Physical',
+		pp: 10,
+		basePower: 12,
+		multihit: [5, 10],
+		onPrepareHit: function(target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, 'Flash Cannon', target);
+		},
+		self: {
+			volatileStatus: 'lockedmove'
+		},
+		onAfterMove: function (pokemon) {
+			if (pokemon.volatiles['lockedmove'] && pokemon.volatiles['lockedmove'].duration === 1) {
+				pokemon.removeVolatile('lockedmove');
+			}
+		},
+		flags: {protect: 1, mirror: 1}
+	},
 	}
 }
